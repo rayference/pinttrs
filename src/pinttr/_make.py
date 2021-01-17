@@ -27,7 +27,9 @@ def attrib(
     on_setattr=NOTHING,
     units=NOTHING,
 ):
-    """Create a new attribute on a class."""
+    """
+    Create a new attribute on a class.
+    """
 
     # Initialise attr.ib arguments
     metadata = dict() if not metadata else metadata
@@ -37,8 +39,8 @@ def attrib(
         # Set field metadata
         if callable(units) and isinstance(units(), pint.Unit):
             units_callable = units
+        
         elif isinstance(units, pint.Unit):
-
             def units_callable():
                 return units
 
