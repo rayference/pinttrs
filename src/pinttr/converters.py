@@ -20,12 +20,20 @@ def ensure_units(value, default_units, convert=False):
         Converted ``value``.
     """
     if callable(default_units):
-        default_units = default_units()
+        units = default_units()
+    else:
+        units = default_units
+
+    if not isinstance(units, pint.Unit):
+        raise TypeError(
+            "Argument 'units' must be a pint.Units or a callable returning "
+            "a pint.Units."
+        )
 
     if isinstance(value, pint.Quantity):
         if convert:
-            return value.to(default_units)
+            return value.to(units)
         else:
             return value
     else:
-        return value * default_units
+        return value * units
