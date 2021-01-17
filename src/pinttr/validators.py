@@ -12,14 +12,18 @@ def has_compatible_units(instance, attribute, value):
     try:
         if not units_compatible(value.units, compatible_units):
             raise UnitsError(
-                f"Incompatible units '{value.units}' "
+                units1=value.units,
+                units2=compatible_units,
+                extra_msg=f": incompatible units '{value.units}' "
                 f"used to set field '{attribute.name}' "
-                f"(allowed: '{compatible_units}')."
+                f"(allowed: '{compatible_units}').",
             )
 
     except AttributeError:  # value.units doesn't exist
         raise UnitsError(
-            f"Unitless value '{value}' "
+            units1=None,
+            units2=compatible_units,
+            extra_msg=f": unitless value '{value}' "
             f"used to set field '{attribute.name}' "
-            f"(requires units '{compatible_units}')."
+            f"(requires units '{compatible_units}').",
         )
