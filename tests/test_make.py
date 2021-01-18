@@ -1,7 +1,8 @@
 import attr
 import pint
-import pinttr
 import pytest
+
+import pinttr
 from pinttr._metadata import MetadataKey
 from pinttr.exceptions import UnitsError
 
@@ -9,6 +10,10 @@ ureg = pint.UnitRegistry()
 
 
 def test_attrib_metadata():
+    """
+    Unit tests for :func:`pinttrs._make.attrib` (metadata checks on produced
+    attribute specifications).
+    """
     # If 'units' argument is not passed, behaviour is similar to that of attr.ib()
     field_no_quantity = pinttr.ib(default=ureg.Quantity(0, "m"))
     assert MetadataKey.UNITS not in field_no_quantity.metadata
@@ -35,6 +40,9 @@ def test_attrib_metadata():
 
 
 def test_attrib_converter_validator():
+    """
+    Unit tests for :func:`pinttrs._make.attrib` (converter and validator).
+    """
     dynamic_units = ureg.m
 
     # If no converter is defined, automatic unit conversion and validation is added

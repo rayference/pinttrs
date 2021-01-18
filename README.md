@@ -1,6 +1,6 @@
 # Pinttrs
 
-*pint x attrs*
+*Pint meets attrs*
 
 ## Motivation
 

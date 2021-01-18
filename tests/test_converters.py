@@ -1,12 +1,15 @@
-import pint
 import pytest
 from pint import DimensionalityError
+
 from pinttr.converters import *
 
 ureg = pint.UnitRegistry()
 
 
 def test_ensure_units():
+    """
+    Unit tests for :func:`pinttrs.converters.ensure_units`.
+    """
     # Units are applied to unitless values
     assert ensure_units(100, ureg.km) == ureg.Quantity(100, "km")
     # Default behaviour does not convert quantity values
@@ -27,6 +30,6 @@ def test_ensure_units():
     # If we pass a callable value, it is evaluated
     def f():
         return ureg.km
+
     assert ensure_units(100, f) == ureg.Quantity(100, "km")
     assert ensure_units(100, lambda: ureg.s) == ureg.Quantity(100, "s")
-    
