@@ -1,7 +1,9 @@
-
 # VS Code
 .vscode/*
 *.code-workspace
+
+# PyCharm
+.idea/*
 
 # Local History for Visual Studio Code
 .history/
