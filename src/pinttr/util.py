@@ -8,7 +8,7 @@ def always_iterable(obj, base_type=(str, bytes)):
     .. note::
 
         Copied from the more-itertools library
-        [https://github.com/more-itertools].
+        [https://github.com/more-itertools/more-itertools].
     """
     if obj is None:
         return iter(())

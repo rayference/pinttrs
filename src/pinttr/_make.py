@@ -1,13 +1,10 @@
-import enum
-
 import attr
 import pint
 from attr import NOTHING
 
-from .converters import ensure_units
-from .util import always_iterable
-from .validators import has_compatible_units
 from ._metadata import MetadataKey
+from .converters import ensure_units
+from .validators import has_compatible_units
 
 
 def attrib(
