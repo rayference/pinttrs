@@ -1,31 +1,72 @@
+import codecs
+import os
+
 from setuptools import setup, find_packages
 
+
+def read(rel_path):
+    here = os.path.abspath(os.path.dirname(__file__))
+    with codecs.open(os.path.join(here, rel_path), "r") as fp:
+        return fp.read()
+
+
+def get_meta(rel_path):
+    meta = {}
+
+    for line in read(rel_path).splitlines():
+        for meta_key in [
+            "author",
+            "copyright",
+            "description",
+            "license",
+            "version",
+        ]:
+            if line.startswith("__{0}__".format(meta_key)):
+                delim = '"' if '"' in line else "'"
+                meta[meta_key] = line.split(delim)[1]
+
+    return meta
+
+
+def get_requirements(rel_path):
+    with open(rel_path, "r") as file:
+        return file.read().strip().splitlines()
+
+
+# ------------------------------------------------------------------------------
+
 NAME = "pinttrs"
+META = get_meta(os.path.join("src", "pinttrs", "__init__.py"))
 PACKAGES = find_packages(where="src")
 
+INSTALL_REQUIRES = get_requirements(os.path.join("requirements", "main.txt"))
+EXTRAS_REQUIRE = {
+    "docs": get_requirements(os.path.join("requirements", "docs.txt")),
+    "tests": get_requirements(os.path.join("requirements", "tests.txt")),
+}
 
 if __name__ == "__main__":
     setup(
         name=NAME,
-        # description=find_meta("description"),
-        # license=find_meta("license"),
+        description=META["description"],
+        license=META["license"],
         # url=URL,
         # project_urls=PROJECT_URLS,
-        # version=VERSION,
-        # author=find_meta("author"),
+        version=META["version"],
+        author=META["author"],
         # author_email=find_meta("email"),
-        # maintainer=find_meta("author"),
+        maintainer=META["author"],
         # maintainer_email=find_meta("email"),
         # keywords=KEYWORDS,
         # long_description=LONG,
         # long_description_content_type="text/x-rst",
         packages=PACKAGES,
         package_dir={"": "src"},
-        # python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*",
+        python_requires=">=3.5",
         zip_safe=False,
         # classifiers=CLASSIFIERS,
-        # install_requires=INSTALL_REQUIRES,
-        # extras_require=EXTRAS_REQUIRE,
+        install_requires=INSTALL_REQUIRES,
+        extras_require=EXTRAS_REQUIRE,
         # include_package_data=True,
         # options={"bdist_wheel": {"universal": "1"}},
     )
