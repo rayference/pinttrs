@@ -19,9 +19,10 @@ def get_meta(rel_path):
             "copyright",
             "description",
             "license",
+            "url",
             "version",
         ]:
-            if line.startswith("__{0}__".format(meta_key)):
+            if line.startswith("__{key}__".format(key=meta_key)):
                 delim = '"' if '"' in line else "'"
                 meta[meta_key] = line.split(delim)[1]
 
@@ -50,13 +51,13 @@ if __name__ == "__main__":
         name=NAME,
         description=META["description"],
         license=META["license"],
-        # url=URL,
+        url=META["url"],
         # project_urls=PROJECT_URLS,
         version=META["version"],
         author=META["author"],
-        # author_email=find_meta("email"),
+        author_email=META["email"],
         maintainer=META["author"],
-        # maintainer_email=find_meta("email"),
+        maintainer_email=META["email"],
         # keywords=KEYWORDS,
         # long_description=LONG,
         # long_description_content_type="text/x-rst",

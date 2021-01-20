@@ -6,8 +6,9 @@
 
 The amazing [`attrs`](https://www.attrs.org) library is a game-changer when it 
 comes to writing classes. Its initialisation sequence notably allows for 
-automated conversion and verification of attribute values. This made me design
-a system to apply units automatically and reliably to attributes with Pint.
+automated conversion and verification of attribute values. This package is an 
+attempt at designing a system to apply units automatically and reliably to 
+attributes with [Pint](https://pint.readthedocs.io).
 
 Features:
 
