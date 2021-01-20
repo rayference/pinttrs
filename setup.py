@@ -18,6 +18,7 @@ def get_meta(rel_path):
             "author",
             "copyright",
             "description",
+            "email",
             "license",
             "url",
             "version",
@@ -37,8 +38,9 @@ def get_requirements(rel_path):
 # ------------------------------------------------------------------------------
 
 NAME = "pinttrs"
-META = get_meta(os.path.join("src", "pinttrs", "__init__.py"))
+META = get_meta(os.path.join("src", "pinttr", "__init__.py"))
 PACKAGES = find_packages(where="src")
+LONG = open("README.md", "r", encoding="utf-8").read()
 
 INSTALL_REQUIRES = get_requirements(os.path.join("requirements", "main.txt"))
 EXTRAS_REQUIRE = {
@@ -59,7 +61,7 @@ if __name__ == "__main__":
         maintainer=META["author"],
         maintainer_email=META["email"],
         # keywords=KEYWORDS,
-        # long_description=LONG,
+        long_description=LONG,
         # long_description_content_type="text/x-rst",
         packages=PACKAGES,
         package_dir={"": "src"},
