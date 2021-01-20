@@ -3,7 +3,7 @@ from ._make import attrib
 
 
 # Package metadata
-__version__ = "0.1.0-dev1"
+__version__ = "0.1.0-dev0"
 __author__ = "Vincent Leroy"
 __email__ = "vincent.leroy@rayference.eu"
 __license__ = "MIT"

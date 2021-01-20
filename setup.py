@@ -62,7 +62,7 @@ if __name__ == "__main__":
         maintainer_email=META["email"],
         # keywords=KEYWORDS,
         long_description=LONG,
-        # long_description_content_type="text/x-rst",
+        long_description_content_type="text/markdown",
         packages=PACKAGES,
         package_dir={"": "src"},
         python_requires=">=3.5",
