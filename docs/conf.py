@@ -63,3 +63,10 @@ html_theme = "furo"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
+
+# Logo
+html_theme_options = {
+    "sidebar_hide_name": True,
+    "light_logo": "pinttrs_logo_light.svg",
+    "dark_logo": "pinttrs_logo_dark.svg",
+}

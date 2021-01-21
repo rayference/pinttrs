@@ -1,5 +1,6 @@
 def always_iterable(obj, base_type=(str, bytes)):
-    """Ensure that the object it is passed is iterable.
+    """
+    Ensure that the object it is passed is iterable.
 
     - If ``obj`` is iterable, return an iterator over its items.
     - If ``obj`` is not iterable, return a one-item iterable containing ``obj``.
@@ -29,16 +30,26 @@ def always_iterable(obj, base_type=(str, bytes)):
 
 
 def units_compatible(unit1, unit2):
-    """Check if two units are compatible. Accounts for angle units.
+    """
+    Check if two units are compatible. Accounts for angle units.
 
-    Parameter ``unit1`` (:class:`pint.Unit`):
+    :param unit1:
         First unit to check for compatibility.
 
-    Parameter ``unit2`` (:class:`pint.Unit`):
+    :type unit1:
+        :class:`pint.Unit`
+
+    :param unit2:
         Second unit to check for compatibility.
 
-    Returns → bool
+    :type unit2:
+        :class:`pint.Unit`
+
+    :returns:
         ``True`` if ``unit1`` and ``unit2`` have the same dimensionality,
         ``False`` otherwise.
+
+    :rtype:
+        bool
     """
     return (1.0 * unit1 / unit2).unitless

@@ -30,3 +30,7 @@ The development is supported by [Rayference](https://www.rayference.eu).
 
 Pinttrs is a component of the 
 [Eradiate radiative transfer model](https://www.eradiate.eu).
+
+The Pinttrs logo is based on 
+[Agus Nugroho](https://www.iconfinder.com/nugrohoagus)'s glass icon and parts of 
+the ``attrs`` logo.

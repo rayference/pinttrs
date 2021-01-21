@@ -4,8 +4,11 @@ from .util import units_compatible
 
 
 def has_compatible_units(instance, attribute, value):
-    """Validate if ``value`` has units compatible with ``attribute``. Only
-    works with unit-enabled fields created with :func:`pinttr.ib`."""
+    """
+    Validate if ``value`` has units compatible (in the sense of
+    :func:`.units_compatible`) with ``attribute``.
+    Only works with unit-enabled fields created with :func:`pinttr.ib`.
+    """
 
     compatible_units = attribute.metadata[MetadataKey.UNITS]()
 

@@ -31,6 +31,7 @@ def test_units_compatible():
     """
     # Units with the same dimension are compatible
     assert units_compatible(ureg.m, ureg.km)
+    assert units_compatible(ureg.m, ureg.mile)
     assert units_compatible(ureg.m / ureg.km, ureg.dimensionless)
     assert units_compatible(ureg.Unit("kg * m/s^2"), ureg.Unit("N"))
 
