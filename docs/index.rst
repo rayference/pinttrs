@@ -3,21 +3,20 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Pinttrs's documentation!
-===================================
+Pinttrs
+=======
 
 *Pint meets attrs*
 
 Pinttrs provides tools to bring extra functionality to you ``attrs`` classes using Pint.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
+   :caption: Full contents
 
    rst/usage
    rst/compatible
    rst/api
-
-
 
 Indices and tables
 ==================
