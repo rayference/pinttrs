@@ -23,7 +23,7 @@ def test_ensure_units():
     assert ensure_units(
         ureg.Quantity(100, "m"), ureg.km, convert=True
     ) == ureg.Quantity(0.1, "km")
-    # If a quantity value with incompatible units is passed, and conversion is requested raise
+    # If a quantity value with incompatible units is passed and conversion is requested, raise
     with pytest.raises(DimensionalityError):
         ensure_units(ureg.Quantity(100, "m"), ureg.s, convert=True)
 

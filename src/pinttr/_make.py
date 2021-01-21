@@ -3,7 +3,7 @@ import pint
 from attr import NOTHING
 
 from ._metadata import MetadataKey
-from .converters import ensure_units, to_units
+from .converters import to_units
 from .validators import has_compatible_units
 
 

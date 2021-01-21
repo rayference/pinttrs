@@ -1,14 +1,20 @@
 def always_iterable(obj, base_type=(str, bytes)):
-    """Ensures that the object it is passed is iterable.
+    """Ensure that the object it is passed is iterable.
 
     - If ``obj`` is iterable, return an iterator over its items.
     - If ``obj`` is not iterable, return a one-item iterable containing ``obj``.
-    - If ``obj`` is `None`, return an empty iterable.
+    - If ``obj`` is ``None``, return an empty iterable.
+
+    By default, binary and text strings are not considered iterable.
+    If ``base_type`` is set, objects for which ``isinstance(obj, base_type)``
+    returns ``True`` won't be considered iterable.
+
+    Set ``base_type`` to ``None`` to avoid any special handling and treat
+    objects Python considers iterable as iterable.
 
     .. note::
 
-        Copied from the more-itertools library
-        [https://github.com/more-itertools/more-itertools].
+        Copied from :func:`more_itertools.always_iterable`.
     """
     if obj is None:
         return iter(())

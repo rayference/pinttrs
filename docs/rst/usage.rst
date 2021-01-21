@@ -83,7 +83,7 @@ Default units with contextual overrides
 
 Coming soon.
 
-Object dict-based initialisation with units
+Dict-based object initialisation with units
 -------------------------------------------
 
 Coming soon.

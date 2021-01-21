@@ -49,6 +49,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 intersphinx_mapping = {
     "attrs": ("https://www.attrs.org/en/stable/", None),
     "pint": ("https://pint.readthedocs.io/en/stable/", None),
+    "more-itertools": ("https://more-itertools.readthedocs.io/en/stable/", None)
 }
 
 # -- Options for HTML output -------------------------------------------------
