@@ -12,9 +12,9 @@ Pinttrs provides tools to bring extra functionality to you ``attrs`` classes usi
 
 .. toctree::
    :maxdepth: 1
-   :hidden:
-   :caption: Developer guide
 
+   rst/usage
+   rst/compatible
    rst/api
 
 

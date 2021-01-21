@@ -3,7 +3,7 @@ import pint
 from attr import NOTHING
 
 from ._metadata import MetadataKey
-from .converters import ensure_units
+from .converters import ensure_units, to_units
 from .validators import has_compatible_units
 
 
@@ -25,7 +25,32 @@ def attrib(
     units=NOTHING,
 ):
     """
-    Create a new attribute on a class.
+    Create a new attribute on a class, possibly with units. This function
+    wraps :func:`attr.ib` and retains its behaviour unless otherwise specified.
+
+    :param validator:
+        If set to :class:`~attr.NOTHING` and ``units`` is not ``None``, defaults
+        to :func:`~pinttr.validators.has_compatible_units` (possibly wrapped in
+        :func:`attr.validators.optional` if ``default`` is ``None``).
+        Otherwise retains original behaviour.
+
+    :param converter:
+        If set to :class:`~attr.NOTHING` and ``units`` is not ``None``, defaults
+        to :func:`to_units(units) <pinttr.converters.to_units>`
+        (possibly wrapped in :func:`attr.converters.optional` if ``default`` is
+        ``None``). Otherwise retains original behaviour.
+
+    :param on_setattr:
+        If set to :class:`~attr.NOTHING` and ``units`` is not ``None``,
+        defaults to
+        ``attr.setters.pipe(attr.setters.convert, attr.setters.validate)``.
+        Otherwise retains original behaviour.
+
+    :param units:
+        Default units attached to the defined attribute.
+
+    :type units:
+        :class:`pint.Unit` or callable
     """
 
     # Initialise attr.ib arguments
@@ -36,8 +61,9 @@ def attrib(
         # Set field metadata
         if callable(units) and isinstance(units(), pint.Unit):
             units_callable = units
-        
+
         elif isinstance(units, pint.Unit):
+
             def units_callable():
                 return units
 
@@ -51,14 +77,10 @@ def attrib(
 
         # Set field converter
         if converter is NOTHING:
-
-            def to_units(x):
-                return ensure_units(x, units_callable)
-
             if default is None:
-                converter = attr.converters.optional(to_units)
+                converter = attr.converters.optional(to_units(units_callable))
             else:
-                converter = to_units
+                converter = to_units(units_callable)
 
         # Set field validator
         if validator is NOTHING:
@@ -73,8 +95,12 @@ def attrib(
                 attr.setters.convert, attr.setters.validate
             )
 
-    # If on_setattr hasn't been set because units_compatible is unset, we set it
-    # to a valid value
+    # If one of the following hasn't been set because units is unset, we set it
+    # to the original default value
+    if converter is NOTHING:
+        converter = None
+    if validator is NOTHING:
+        validator = None
     if on_setattr is NOTHING:
         on_setattr = None
 

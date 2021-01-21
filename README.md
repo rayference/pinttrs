@@ -12,7 +12,7 @@ attributes with [Pint](https://pint.readthedocs.io).
 
 Features:
 
-- Automatic attachment of predefined units to unitless values
-- Verification of units compatibility for united values
-- Dynamic fetching of units from a registry
-- Unit-enabled deserialisation of objects
+- [x] Automatic attachment of predefined units to unitless values
+- [x] Verification of units compatibility for unit-ed values
+- [ ] Dynamic fetching of units from a registry
+- [ ] Unit-enabled deserialisation of objects
