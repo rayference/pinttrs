@@ -24,7 +24,7 @@ Pinttrs is distributed under the terms of the
 
 ## About
 
-Pinttrs is written and maintained by [Vincent Leroy](https://github.com/leroyvn>).
+Pinttrs is written and maintained by [Vincent Leroy](https://github.com/leroyvn).
 
 The development is supported by [Rayference](https://www.rayference.eu).
 
