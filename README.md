@@ -13,9 +13,9 @@ attributes with [Pint](https://pint.readthedocs.io).
 ## Features
 
 - [x] Automatic attachment of predefined units to unitless values
-- [x] Verification of units compatibility for unit-ed values
+- [x] Verification of units compatibility for Pint quantity values
+- [x] Interpretation of units in dictionaries
 - [ ] Dynamic fetching of units from a registry
-- [ ] Unit-enabled dict-based initialisation of objects
 
 ## License
 
