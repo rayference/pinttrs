@@ -28,8 +28,8 @@ Dependency management (Conda)
 
 .. admonition:: ... lock Conda dependencies
 
-   The conda-lock utility is used to solve dependencies using Conda and lock them.
-   A convenience make target is defined to automate the process:
+   The conda-lock utility is used to solve dependencies using Conda and lock 
+   them. A convenience make target is defined to automate the process:
 
    .. code-block:: bash
 
@@ -40,6 +40,13 @@ Dependency management (Conda)
    .. code-block:: bash
 
       make conda-lock-all
+
+   If you also want to lock pip dependencies, then use the ``pip-compile`` 
+   target:
+
+   .. code-block:: bash
+
+      make pip-compile
 
 .. admonition:: ... update my environment based on the lock file
 
@@ -61,34 +68,27 @@ Dependency management (Pip)
 
 *I want to ...*
 
-.. admonition:: ... initialise my environment
+.. admonition:: ... initialise a development environment
 
-   Create a new Conda environment using one of the shipped Conda lock file:
-
-   .. code-block:: bash
-
-      conda create --name <YOUR_ENV> --file requirements/environment-<YOUR_PLATFORM>.lock
-
-   Activate your environment, then install Pinttrs in developer mode:
+   Activate the target environment and use the ``pip-init`` make target:
 
    .. code-block:: bash
 
-      python setup.py develop
+      make pip-init
 
-.. admonition:: ... lock Conda dependencies
+.. admonition:: ... lock dependencies
 
-   The conda-lock utility is used to solve dependencies using Conda and lock them.
-   A convenience make target is defined to automate the process:
+   Use the ``pip-lock`` make target:
 
    .. code-block:: bash
 
-      make conda-lock
+      make pip-lock
 
 .. admonition:: ... update my environment based on the lock file
 
    After updating locked dependencies, you can update your development environment
-   using one of the generate lock files:
+   using the ``pip-init`` make target:
 
    .. code-block:: bash
 
-      conda update --file requirements/environment-<YOUR_PLATFORM>.lock
+      make pip-init

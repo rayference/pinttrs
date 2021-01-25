@@ -21,14 +21,14 @@ pip-compile:
 	    requirements/docs.in requirements/dev.in
 
 # Lock dependencies
-pip-update-deps: pip-update-tools pip-compile
+pip-lock: pip-update-tools pip-compile
 
 # Initialise development environment
 pip-init:
 	pip install --upgrade -r requirements/dev.txt
 	python setup.py develop
 
-pip-update: pip-update-deps pip-init
+pip-update: pip-lock pip-init
 
 .PHONY: pip-compile pip-update-tools pip-update-deps pip-init
 
