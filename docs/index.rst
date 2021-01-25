@@ -8,7 +8,8 @@ Pinttrs
 
 *Pint meets attrs*
 
-Pinttrs provides tools to bring extra functionality to you ``attrs`` classes using Pint.
+Pinttrs provides tools to bring extra functionality to your ``attrs`` classes 
+using Pint.
 
 .. toctree::
    :maxdepth: 2
