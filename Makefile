@@ -60,7 +60,10 @@ conda-update: conda-lock-all conda-init
 test:
 	pytest --doctest-glob="*.rst" docs tests
 
-.PHONY: test
+coverage:
+	coverage run --source=src -m pytest --doctest-glob="*.rst" docs tests
+
+.PHONY: test coverage
 
 # -- Documentation -------------------------------------------------------------
 

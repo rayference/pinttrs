@@ -7,6 +7,7 @@ dependencies:
   - attrs
   - pint
   # tests
+  - coverage
   - pytest
   # dev
   - black

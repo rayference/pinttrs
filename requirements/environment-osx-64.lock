@@ -1,5 +1,5 @@
 # platform: osx-64
-# env_hash: 3bef53c2e976804b13b3f195ea90d77861db2bfc89618f671b845967e44f9e19
+# env_hash: 1f0475ab50d2c6ccbed649ed3790e479cea80b7c3c20f6a3aef0714ca42af58a
 @EXPLICIT
 https://conda.anaconda.org/conda-forge/osx-64/ca-certificates-2020.12.5-h033912b_0.tar.bz2#4483d8ea13bd57b52e3539e741501a7d
 https://conda.anaconda.org/conda-forge/osx-64/libcxx-11.0.1-habf9029_0.tar.bz2#51c221f12b7975d60dae27cd8280efac
@@ -49,6 +49,7 @@ https://conda.anaconda.org/conda-forge/osx-64/certifi-2020.12.5-py36h79c6626_1.t
 https://conda.anaconda.org/conda-forge/osx-64/cffi-1.14.4-py36hfe0777f_1.tar.bz2#292b90dba767fca5e0f516252d7e45d6
 https://conda.anaconda.org/conda-forge/osx-64/chardet-4.0.0-py36h79c6626_1.tar.bz2#9d108a47b52b3a9960e95ee4cb4d7bd6
 https://conda.anaconda.org/conda-forge/noarch/click-default-group-1.2.1-py_0.tar.bz2#64a66d3d4db54208496c4e2fa822eeee
+https://conda.anaconda.org/conda-forge/osx-64/coverage-5.3.1-py36h20b66c6_1.tar.bz2#4879f5d966f4aba6cc1131568bc595f6
 https://conda.anaconda.org/conda-forge/osx-64/docutils-0.16-py36h79c6626_3.tar.bz2#603b6a69870cc4bf4ab1323d3312042a
 https://conda.anaconda.org/conda-forge/osx-64/importlib-metadata-3.4.0-py36h79c6626_0.tar.bz2#029ce93aba6ed4dff47996ed3092b016
 https://conda.anaconda.org/conda-forge/osx-64/markupsafe-1.1.1-py36h20b66c6_3.tar.bz2#909cb4bd3736e03d9813f124f86a76f1

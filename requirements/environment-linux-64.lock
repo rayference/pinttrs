@@ -1,5 +1,5 @@
 # platform: linux-64
-# env_hash: 4971627a56b29cd1a5d64eae709389c1c909ff27a377911e8134dd2a6437889e
+# env_hash: 1de41ed66e1455b9c61ae603f2edc6483eb17a547d76ec50b31efbe8c6c58f3c
 @EXPLICIT
 https://conda.anaconda.org/conda-forge/linux-64/_libgcc_mutex-0.1-conda_forge.tar.bz2#d7c89558ba9fa0495403155b64376d81
 https://conda.anaconda.org/conda-forge/linux-64/ca-certificates-2020.12.5-ha878542_0.tar.bz2#7eb5d4ffeee663caa1635cd67071bc1b
@@ -54,6 +54,7 @@ https://conda.anaconda.org/conda-forge/linux-64/certifi-2020.12.5-py36h5fab9bb_1
 https://conda.anaconda.org/conda-forge/linux-64/cffi-1.14.4-py36hc120d54_1.tar.bz2#c49b9df07bcdcfbe22ffb0f8025d474b
 https://conda.anaconda.org/conda-forge/linux-64/chardet-4.0.0-py36h5fab9bb_1.tar.bz2#b63c63a44b8d37acaff014df8a512d92
 https://conda.anaconda.org/conda-forge/noarch/click-default-group-1.2.1-py_0.tar.bz2#64a66d3d4db54208496c4e2fa822eeee
+https://conda.anaconda.org/conda-forge/linux-64/coverage-5.3.1-py36h8f6f2f9_1.tar.bz2#79addfb0eb5cf596e6fde598bf9de1a8
 https://conda.anaconda.org/conda-forge/linux-64/docutils-0.16-py36h5fab9bb_3.tar.bz2#5d0a90c22c5c8a1f573df6b6f2afc5ee
 https://conda.anaconda.org/conda-forge/linux-64/importlib-metadata-3.4.0-py36h5fab9bb_0.tar.bz2#63bfd4deed52c2469758619138ab1e44
 https://conda.anaconda.org/conda-forge/linux-64/markupsafe-1.1.1-py36h8f6f2f9_3.tar.bz2#4471d6eaa07fcc4dd1f2e0e6cc8e54bf

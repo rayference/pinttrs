@@ -1,5 +1,5 @@
 # platform: win-64
-# env_hash: c7af29f6c22281a1e282bc275da43ccec5c5a23aafb9c7f35600ef4a5b7772f6
+# env_hash: febb4ad3788d9de67d208a4d0668335511c99f0de2912d032b63b48409d84fa4
 @EXPLICIT
 https://conda.anaconda.org/conda-forge/win-64/ca-certificates-2020.12.5-h5b45459_0.tar.bz2#f36a2988a9f57cffdc43929ba67a3a2a
 https://conda.anaconda.org/conda-forge/win-64/vs2015_runtime-14.28.29325-h5e1d092_0.tar.bz2#4e4fc486090f90e00edfa9c7730e2771
@@ -44,6 +44,7 @@ https://conda.anaconda.org/conda-forge/win-64/certifi-2020.12.5-py36ha15d459_1.t
 https://conda.anaconda.org/conda-forge/win-64/cffi-1.14.4-py36he58ceb7_1.tar.bz2#369a4a0c6b2aac156c16e0e36cca585e
 https://conda.anaconda.org/conda-forge/win-64/chardet-4.0.0-py36ha15d459_1.tar.bz2#307d6efa6c70e6ae22f57d147c1b270f
 https://conda.anaconda.org/conda-forge/noarch/click-default-group-1.2.1-py_0.tar.bz2#64a66d3d4db54208496c4e2fa822eeee
+https://conda.anaconda.org/conda-forge/win-64/coverage-5.3.1-py36h68aa20f_1.tar.bz2#3094a6e98322a726effe7f917cd22132
 https://conda.anaconda.org/conda-forge/win-64/docutils-0.16-py36ha15d459_3.tar.bz2#288069fe6f712d0b900082d2381f8953
 https://conda.anaconda.org/conda-forge/win-64/importlib-metadata-3.4.0-py36ha15d459_0.tar.bz2#c47e77525bca8accebd59eb457edf2ed
 https://conda.anaconda.org/conda-forge/win-64/markupsafe-1.1.1-py36h68aa20f_3.tar.bz2#581c14f3b9edf45ec3dbef2883c94a97
