@@ -1,18 +1,24 @@
+# -- Dependency management with Pip --------------------------------------------
+
 # Update packaging tools
 pip-update-tools:
 	pip install --upgrade pip-tools pip setuptools
 
 # Lock pip dependencies
 pip-compile:
-	pip-compile --upgrade --build-isolation --generate-hashes --output-file requirements/main.txt \
+	pip-compile --upgrade --build-isolation --generate-hashes \
+	    --output-file requirements/main.txt \
 	    requirements/main.in
-	pip-compile --upgrade --build-isolation --generate-hashes --output-file requirements/docs.txt \
+	pip-compile --upgrade --build-isolation --generate-hashes \
+	    --output-file requirements/docs.txt \
 	    requirements/docs.in
-	pip-compile --upgrade --build-isolation --generate-hashes --output-file requirements/tests.txt \
+	pip-compile --upgrade --build-isolation --generate-hashes \
+	    --output-file requirements/tests.txt \
 	    requirements/main.in requirements/tests.in
-	pip-compile --upgrade --build-isolation --generate-hashes --output-file requirements/dev.txt \
-	    requirements/main.in requirements/tests.in requirements/main.in requirements/docs.in \
-	    requirements/dev.in
+	pip-compile --upgrade --build-isolation --generate-hashes \
+	    --output-file requirements/dev.txt \
+	    requirements/main.in requirements/tests.in \
+	    requirements/docs.in requirements/dev.in
 
 # Lock dependencies
 pip-update-deps: pip-update-tools pip-compile
@@ -23,6 +29,10 @@ pip-init:
 	python setup.py develop
 
 pip-update: pip-update-deps pip-init
+
+.PHONY: pip-compile pip-update-tools pip-update-deps pip-init
+
+# -- Dependency management with Conda ------------------------------------------
 
 # Lock conda dependencies
 conda-lock:
@@ -43,5 +53,18 @@ conda-init:
 
 conda-update: conda-lock-all conda-init
 
-.PHONY: pip-compile pip-update-tools pip-update-deps pip-init
 .PHONY: conda-lock conda-lock-all conda-init conda-update
+
+# -- Testing -------------------------------------------------------------------
+
+test:
+	pytest --doctest-glob="*.rst" docs tests
+
+.PHONY: test
+
+# -- Documentation -------------------------------------------------------------
+
+docs:
+	make -C docs html
+
+.PHONY: docs
