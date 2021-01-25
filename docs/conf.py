@@ -32,7 +32,6 @@ extensions = [
     "sphinx.ext.doctest",  # Insert doctest snippets
     "sphinx.ext.intersphinx",  # Link to other project's documentation (see mapping below)
     "sphinx.ext.viewcode",  # Add a link to the Python source code for classes, functions etc.
-    # "sphinx_autodoc_typehints", # Automatically document param types (less noise in class signature)
 ]
 
 # Add any paths that contain templates here, relative to this directory.

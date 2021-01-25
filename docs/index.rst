@@ -16,6 +16,7 @@ Pinttrs provides tools to bring extra functionality to you ``attrs`` classes usi
 
    rst/usage
    rst/compatible
+   rst/dev
    rst/api
 
 Indices and tables

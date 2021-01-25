@@ -1,0 +1,19 @@
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.6
+  # main
+  - attrs
+  - pint
+  # tests
+  - pytest
+  # dev
+  - black
+  - click
+  - conda-lock
+  - pip-tools
+  - ruamel.yaml
+  # docs
+  - sphinx>=3.1
+  - furo
