@@ -110,4 +110,35 @@ Coming soon.
 Dict-based object initialisation with units
 -------------------------------------------
 
-Coming soon.
+Pinttrs ships a helper function :func:`pinttr.util.interpret_units` which can be 
+used to interpret units in a dictionary with string-valued keys:
+
+.. doctest::
+
+   >>> pinttr.util.interpret_units({"field": 1.0, "field_units": "m"}, ureg)
+   {'field': <Quantity(1.0, 'meter')>}
+
+This is useful to *e.g.* initialise objects using simple JSON fragments. 
+Example:
+
+.. doctest::
+
+   >>> from pinttr.util import interpret_units
+   >>> MyClass(**interpret_units({"field": 1.0, "field_units": "s"}, ureg))
+   MyClass(field=<Quantity(1.0, 'second')>)
+   >>> MyClass(**interpret_units({"field": 1.0, "field_units": "m"}, ureg))
+   Traceback (most recent call last):
+     File "/Users/m4urice/miniconda3/envs/pinttrs/lib/python3.6/doctest.py", line 1330, in __run
+       compileflags, 1), test.globs)
+     File "<doctest default[2]>", line 1, in <module>
+       MyClass(**interpret_units({"field": 1.0, "field_units": "m"}, ureg))
+     File "<attrs generated init builtins.MyClass-3>", line 5, in __init__
+       __attr_validator_field(self, __attr_field, self.field)
+     File "/Users/m4urice/Documents/src/perso/pinttrs/src/pinttr/validators.py", line 20, in has_compatible_units
+       extra_msg=f": incompatible units '{value.units}' "
+   pinttr.exceptions.UnitsError: Cannot convert from 'meter' to 'second': incompatible units 'meter' used to set field 'field' (allowed: 'second').
+
+.. note::
+
+   The same unit registry must be used to define field units and interpret 
+   dictionaries.

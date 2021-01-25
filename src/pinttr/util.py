@@ -1,3 +1,6 @@
+from copy import copy
+
+
 def always_iterable(obj, base_type=(str, bytes)):
     """
     Ensure that the object it is passed is iterable.
@@ -29,6 +32,77 @@ def always_iterable(obj, base_type=(str, bytes)):
         return iter((obj,))
 
 
+def interpret_units(d, ureg, inplace=False):
+    """
+    Interpret units in a dictionary. The dictionary is searched for matching
+    magnitude-units field pairs. For a magnitude field with key ``"x"``, the
+    corresponding unit field is ``"x_units"``. For each pair found, the 
+    magnitude field is attached units and converted to a :class:`pint.Quantity`
+    object. The unit field is then dropped.
+
+    .. admonition:: Example
+
+       .. code-block:: python
+          
+          {
+              "field": 1.0,
+              "field_units": "m"
+          }
+
+       will be interpreted as
+
+       .. code-block:: python
+          
+          {"field": ureg.Quantity(1.0, "m")}
+
+    .. warning:: 
+
+       * Dictionary keys must be strings.
+
+    :param d:
+        Dictionary in which units we be interpreted.
+
+    :type d:
+        :class:`dict`
+
+    :param ureg:
+        Unit registry to use for unit creation.
+
+    :type ureg:
+        :class:`pint.UnitRegistry`
+
+    :param inplace:
+        If ``True``, modify the dictionary in-place; otherwise, return a 
+        modified copy.
+    
+    :type inplace:
+        :class:`bool`
+
+    :returns:
+        A copy of ``d``, where unit fields are interpreted using ``ureg`` to 
+        attach units to the corresponding magnitude field.
+
+    :rtype:
+        :class:`dict`
+
+    """
+    if not inplace:
+        result = copy(d)
+    else:
+        result = d
+
+    for key in list(result.keys()):
+        if key.endswith("_units"):
+            magnitude_key = key[:-6]
+            try:
+                result[magnitude_key] = ureg.Quantity(result[magnitude_key], result[key])
+                del result[key]
+            except KeyError:
+                continue
+
+    return result
+
+
 def units_compatible(unit1, unit2):
     """
     Check if two units are compatible. Accounts for angle units.
@@ -50,6 +124,6 @@ def units_compatible(unit1, unit2):
         ``False`` otherwise.
 
     :rtype:
-        bool
+        :class:`bool`
     """
     return (1.0 * unit1 / unit2).unitless

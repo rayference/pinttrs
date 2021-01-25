@@ -21,6 +21,7 @@ Utilities [``pinttr.util``]
 ---------------------------
 
 .. autofunction:: pinttr.util.always_iterable
+.. autofunction:: pinttr.util.interpret_units
 .. autofunction:: pinttr.util.units_compatible
 
 Exceptions [``pinttr.exceptions``]
