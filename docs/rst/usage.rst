@@ -76,7 +76,31 @@ setting:
 Using callables to dynamically change default units
 ---------------------------------------------------
 
-Coming soon.
+The :func:`pinttr.ib` function's ``units`` parameter also accepts callables. 
+When this happens, the store callable is evaluate each time units are requested,
+*e.g.* by a converter or a validator:
+
+.. doctest::
+
+   >>> @attr.s
+   ... class MyClass:
+   ...     field = pinttr.ib(units=lambda: ureg.m)
+   >>> MyClass(1.0)
+   MyClass(field=<Quantity(1.0, 'meter')>)
+
+Callables can be used to vary default units dynamically at runtime:
+
+.. doctest::
+
+   >>> default_units = ureg.m
+   >>> @attr.s
+   ... class MyClass:
+   ...     field = pinttr.ib(units=lambda: default_units)
+   >>> MyClass(1.0)
+   MyClass(field=<Quantity(1.0, 'meter')>)
+   >>> default_units = ureg.s
+   >>> MyClass(1.0)
+   MyClass(field=<Quantity(1.0, 'second')>)
 
 Default units with contextual overrides
 ---------------------------------------
