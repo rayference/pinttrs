@@ -2,6 +2,8 @@
 
 *Pint meets attrs*
 
+[![Documentation Status](https://readthedocs.org/projects/pinttrs/badge/?version=latest)](https://pinttrs.readthedocs.io/en/latest/?badge=latest)
+
 ## Motivation
 
 The amazing [`attrs`](https://www.attrs.org) library is a game-changer when it 
