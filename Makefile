@@ -77,7 +77,10 @@ docs:
 dist:
 	python setup.py sdist bdist_wheel
 
+dist-clean:
+	rm -rf sdist bdist_wheel
+
 upload-pypi: dist
 	twine upload dist/*
 
-.PHONY: dist
+.PHONY: dist dist-clean

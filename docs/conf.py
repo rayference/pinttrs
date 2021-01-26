@@ -4,23 +4,52 @@
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+import codecs
+import os
+import re
+
+
+def read(*parts):
+    """
+    Build an absolute path from *parts* and and return the contents of the
+    resulting file.  Assume UTF-8 encoding.
+    """
+    here = os.path.abspath(os.path.dirname(__file__))
+    with codecs.open(os.path.join(here, *parts), "rb", "utf-8") as f:
+        return f.read()
+
+
+def find_version(*file_paths):
+    """
+    Build a path from *file_paths* and search for a ``__version__``
+    string inside.
+    """
+    version_file = read(*file_paths)
+    version_match = re.search(
+        r"^__version__ = ['\"]([^'\"]*)['\"]", version_file, re.M
+    )
+    if version_match:
+        return version_match.group(1)
+    raise RuntimeError("Unable to find version string.")
+
+
 # -- Path setup --------------------------------------------------------------
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
-import sys
-sys.path.insert(0, os.path.abspath("../src"))
 
+# sys.path.insert(0, os.path.abspath("../src"))
 
 # -- Project information -----------------------------------------------------
+
 
 project = "Pinttrs"
 copyright = "2021, Vincent Leroy"
 author = "Vincent Leroy"
-
+release = find_version("../src/pinttr/__init__.py")
+version = release.rsplit(u".", 1)[0]
 
 # -- General configuration ---------------------------------------------------
 
@@ -49,7 +78,10 @@ intersphinx_mapping = {
     "python": ("https://docs.python.org/3/", None),
     "attrs": ("https://www.attrs.org/en/stable/", None),
     "pint": ("https://pint.readthedocs.io/en/stable/", None),
-    "more-itertools": ("https://more-itertools.readthedocs.io/en/stable/", None)
+    "more-itertools": (
+        "https://more-itertools.readthedocs.io/en/stable/",
+        None,
+    ),
 }
 
 # -- Options for HTML output -------------------------------------------------

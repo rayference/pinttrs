@@ -6,10 +6,29 @@
 Pinttrs
 =======
 
-*Pint meets attrs*
+Pinttrs v\ |release|.
 
-Pinttrs provides tools to bring extra functionality to your ``attrs`` classes 
-using Pint.
+*Pint meets attrs.*
+
+Pinttrs provides tools to bring extra functionality to your |attrs|_ classes 
+using Pint_.
+
+.. |attrs| replace:: ``attrs``
+.. _attrs: https://www.attrs.org/
+.. _Pint: https://pint.readthedocs.io/
+
+Getting started
+---------------
+
+Install in your virtual environment:
+
+.. code-block:: bash
+
+   python -m pip install pinttrs
+
+The :ref:`usage` section presents Pinttrs's features and how to use them.
+
+--------------------------------------------------------------------------------
 
 .. toctree::
    :maxdepth: 2
@@ -24,5 +43,4 @@ Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
