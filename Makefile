@@ -71,3 +71,13 @@ docs:
 	make -C docs html
 
 .PHONY: docs
+
+# -- Build ---------------------------------------------------------------------
+
+dist:
+	python setup.py sdist bdist_wheel
+
+upload-pypi: dist
+	twine upload dist/*
+
+.PHONY: dist

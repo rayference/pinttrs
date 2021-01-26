@@ -92,3 +92,68 @@ Dependency management (Pip)
    .. code-block:: bash
 
       make pip-init
+
+Distributing to PyPI
+--------------------
+
+*I want to ...*
+
+.. admonition:: ... publish the package to PyPI
+
+   Grab your PyPI credentials and simply execute:
+
+   .. code-block:: bash
+
+      make upload-pypi
+
+   This make target will also execute the ``dist`` target.
+
+Executing tests
+---------------
+
+*I want to ...*
+
+.. admonition:: ... run the whole test suite
+
+   Simply execute
+
+   .. code-block:: bash
+
+      make test
+
+   Tests located in ``tests/`` are written with Pytest and can be executed on 
+   their own with
+
+   .. code-block:: bash
+
+      pytest tests
+
+   Additional tests are located in the documentation and written with doctest.
+   The docs makefile provides a target to easily execute them:
+
+   .. code-block:: bash
+
+      cd docs
+      make doctest
+
+Building the documentation
+--------------------------
+
+*I want to ...*
+
+.. admonition:: ... build the documentation
+
+   Go to the ``docs`` directory and execute the usual Sphinx target:
+
+   .. code-block:: bash
+
+      cd docs
+      make html
+
+   The documentation will be compiled in the ``docs/_build/html`` directory.
+
+   For convenience, a target is also defined in the top-level makefile:
+
+   .. code-block:: bash
+
+      make docs

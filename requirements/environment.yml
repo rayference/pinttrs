@@ -15,6 +15,7 @@ dependencies:
   - conda-lock
   - pip-tools
   - ruamel.yaml
+  - twine
   # docs
   - sphinx>=3.1
   - furo
