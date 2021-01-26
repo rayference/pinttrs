@@ -1,6 +1,8 @@
 API Reference
 =============
 
+.. currentmodule:: pinttr
+
 Main interface
 --------------
 
@@ -27,4 +29,4 @@ Utilities [``pinttr.util``]
 Exceptions [``pinttr.exceptions``]
 ----------------------------------
 
-.. autoclass:: pinttr.exceptions.UnitsError
+.. autoexception:: pinttr.exceptions.UnitsError
