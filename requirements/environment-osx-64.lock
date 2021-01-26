@@ -53,7 +53,7 @@ https://conda.anaconda.org/conda-forge/osx-64/certifi-2020.12.5-py36h79c6626_1.t
 https://conda.anaconda.org/conda-forge/osx-64/cffi-1.14.4-py36hfe0777f_1.tar.bz2#292b90dba767fca5e0f516252d7e45d6
 https://conda.anaconda.org/conda-forge/osx-64/chardet-4.0.0-py36h79c6626_1.tar.bz2#9d108a47b52b3a9960e95ee4cb4d7bd6
 https://conda.anaconda.org/conda-forge/noarch/click-default-group-1.2.1-py_0.tar.bz2#64a66d3d4db54208496c4e2fa822eeee
-https://conda.anaconda.org/conda-forge/osx-64/coverage-5.3.1-py36h20b66c6_1.tar.bz2#4879f5d966f4aba6cc1131568bc595f6
+https://conda.anaconda.org/conda-forge/osx-64/coverage-5.4-py36h20b66c6_0.tar.bz2#bf9bc5f50b3f17373bb60f43795669f5
 https://conda.anaconda.org/conda-forge/osx-64/docutils-0.16-py36h79c6626_3.tar.bz2#603b6a69870cc4bf4ab1323d3312042a
 https://conda.anaconda.org/conda-forge/osx-64/importlib-metadata-3.4.0-py36h79c6626_0.tar.bz2#029ce93aba6ed4dff47996ed3092b016
 https://conda.anaconda.org/conda-forge/osx-64/markupsafe-1.1.1-py36h20b66c6_3.tar.bz2#909cb4bd3736e03d9813f124f86a76f1
@@ -70,7 +70,7 @@ https://conda.anaconda.org/conda-forge/osx-64/cmarkgfm-0.4.2-py36h47cdbd0_3.tar.
 https://conda.anaconda.org/conda-forge/osx-64/cryptography-3.3.1-py36hd858a44_1.tar.bz2#81296d1431521974bf855b0e103f9981
 https://conda.anaconda.org/conda-forge/noarch/importlib_metadata-3.4.0-hd8ed1ab_0.tar.bz2#6d962cade0658bb1040a3e994add14e0
 https://conda.anaconda.org/conda-forge/osx-64/setuptools-49.6.0-py36h79c6626_3.tar.bz2#47c2e464861798d6ce4422f76ce3ea5f
-https://conda.anaconda.org/conda-forge/noarch/bleach-3.2.2-pyh44b312d_0.tar.bz2#b904fbb564f8eaf064f909667d8a8c72
+https://conda.anaconda.org/conda-forge/noarch/bleach-3.2.3-pyh44b312d_0.tar.bz2#60c3560b22ab68eec63b4df0df29a180
 https://conda.anaconda.org/conda-forge/osx-64/importlib_resources-5.1.0-py36h79c6626_0.tar.bz2#8dd5a9c506de0c82c411b9ebb44e7f31
 https://conda.anaconda.org/conda-forge/noarch/jinja2-2.11.2-pyh9f0ad1d_0.tar.bz2#e8a5d614d1a27bdba00059ca062a0551
 https://conda.anaconda.org/conda-forge/osx-64/keyring-22.0.0-py36h79c6626_0.tar.bz2#47ad845c993ce318bcc4ecacf7f0481b

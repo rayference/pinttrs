@@ -11,7 +11,7 @@ pip-compile:
 	    requirements/main.in
 	pip-compile --upgrade --build-isolation --generate-hashes \
 	    --output-file requirements/docs.txt \
-	    requirements/docs.in
+	    requirements/main.in requirements/docs.in
 	pip-compile --upgrade --build-isolation --generate-hashes \
 	    --output-file requirements/tests.txt \
 	    requirements/main.in requirements/tests.in
