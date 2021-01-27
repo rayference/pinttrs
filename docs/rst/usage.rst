@@ -112,12 +112,12 @@ Coming soon.
 Dict-based object initialisation with units
 -------------------------------------------
 
-Pinttrs ships a helper function :func:`pinttr.util.interpret_units` which can be 
+Pinttrs ships a helper function :func:`pinttrinterpret_units` which can be 
 used to interpret units in a dictionary with string-valued keys:
 
 .. doctest::
 
-   >>> pinttr.util.interpret_units({"field": 1.0, "field_units": "m"}, ureg)
+   >>> pinttr.interpret_units({"field": 1.0, "field_units": "m"}, ureg)
    {'field': <Quantity(1.0, 'meter')>}
 
 This is useful to *e.g.* initialise objects using simple JSON fragments. 
@@ -125,7 +125,7 @@ Example:
 
 .. doctest::
 
-   >>> from pinttr.util import interpret_units
+   >>> from pinttr import interpret_units
    >>> MyClass(**interpret_units({"field": 1.0, "field_units": "s"}, ureg))
    MyClass(field=<Quantity(1.0, 'second')>)
    >>> MyClass(**interpret_units({"field": 1.0, "field_units": "m"}, ureg))

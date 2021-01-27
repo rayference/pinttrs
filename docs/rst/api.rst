@@ -10,6 +10,17 @@ Main interface
 
 .. autofunction:: pinttr.ib
 
+Default unit registry
+---------------------
+
+.. autofunction:: pinttr.get_unit_registry
+.. autofunction:: pinttr.set_unit_registry
+
+Dictionary interpretation
+-------------------------
+
+.. autofundction:: pinttr.interpret_units
+
 Converters [``pinttr.converters``]
 ----------------------------------
 
@@ -25,7 +36,6 @@ Utilities [``pinttr.util``]
 ---------------------------
 
 .. autofunction:: pinttr.util.always_iterable
-.. autofunction:: pinttr.util.interpret_units
 .. autofunction:: pinttr.util.units_compatible
 
 Exceptions [``pinttr.exceptions``]
