@@ -1,5 +1,5 @@
 # platform: osx-64
-# env_hash: ae324117a0e2c37d33540f57634710aa616801d57c02e7ab55f8fd7e82c183ff
+# env_hash: abe90306d401c74527f09e443c76ed81fa80b39d532eb92540ac53159e513d7e
 @EXPLICIT
 https://conda.anaconda.org/conda-forge/osx-64/ca-certificates-2020.12.5-h033912b_0.tar.bz2#4483d8ea13bd57b52e3539e741501a7d
 https://conda.anaconda.org/conda-forge/osx-64/libcxx-11.0.1-habf9029_0.tar.bz2#51c221f12b7975d60dae27cd8280efac
@@ -89,6 +89,7 @@ https://conda.anaconda.org/conda-forge/noarch/ensureconda-1.4.1-pyhd8ed1ab_0.tar
 https://conda.anaconda.org/conda-forge/noarch/requests-toolbelt-0.9.1-py_0.tar.bz2#402668adee8fcba9a9c265cdc2a88f5a
 https://conda.anaconda.org/conda-forge/noarch/sphinx-3.4.3-pyhd8ed1ab_0.tar.bz2#159479e039e2739601b295565321db15
 https://conda.anaconda.org/conda-forge/noarch/conda-lock-0.8.0-pyhd8ed1ab_0.tar.bz2#1258c98fb0bb0b9171b8150e259535b8
+https://conda.anaconda.org/conda-forge/noarch/sphinx-copybutton-0.3.1-pyhd8ed1ab_0.tar.bz2#decad13214a2a545944560eccf4a9815
 https://conda.anaconda.org/conda-forge/noarch/sphinx-inline-tabs-2020.10.19b4-pyhd8ed1ab_0.tar.bz2#2943e406dbebee36df4129376ef6e515
 https://conda.anaconda.org/conda-forge/noarch/sphinx-panels-0.5.2-pyhd3deb0d_0.tar.bz2#1a871a63c4be1bd47a7aa48b7417a426
 https://conda.anaconda.org/conda-forge/osx-64/twine-3.3.0-py36h79c6626_0.tar.bz2#c235451abcfa183ab14f4aa85c387037

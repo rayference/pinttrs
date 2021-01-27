@@ -19,4 +19,5 @@ dependencies:
   # docs
   - sphinx>=3.1
   - furo
+  - sphinx-copybutton
   - sphinx-panels
