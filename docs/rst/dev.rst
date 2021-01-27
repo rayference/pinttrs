@@ -8,7 +8,7 @@ Dependency management (Conda)
 
 *I want to ...*
 
-.. admonition:: ... initialise a new development environment
+.. dropdown:: ... initialise a new development environment
 
    Create a new Conda empty environment:
 
@@ -28,7 +28,7 @@ Dependency management (Conda)
    * ``osx-64``
    * ``win-64``
 
-.. admonition:: ... lock Conda dependencies
+.. dropdown:: ... lock Conda dependencies
 
    The conda-lock utility is used to solve dependencies using Conda and lock 
    them. A convenience make target is defined to automate the process:
@@ -50,7 +50,7 @@ Dependency management (Conda)
 
       make pip-compile
 
-.. admonition:: ... update my environment based on the lock file
+.. dropdown:: ... update my environment based on the lock file
 
    After updating locked dependencies, you can update your development environment
    using one of the generate lock files:
@@ -70,7 +70,7 @@ Dependency management (Pip)
 
 *I want to ...*
 
-.. admonition:: ... initialise a development environment
+.. dropdown:: ... initialise a development environment
 
    Activate the target environment and use the ``pip-init`` make target:
 
@@ -78,7 +78,7 @@ Dependency management (Pip)
 
       make pip-init
 
-.. admonition:: ... lock dependencies
+.. dropdown:: ... lock dependencies
 
    Use the ``pip-lock`` make target:
 
@@ -86,7 +86,7 @@ Dependency management (Pip)
 
       make pip-lock
 
-.. admonition:: ... update my environment based on the lock file
+.. dropdown:: ... update my environment based on the lock file
 
    After updating locked dependencies, you can update your development environment
    using the ``pip-init`` make target:
@@ -100,7 +100,7 @@ Distributing to PyPI
 
 *I want to ...*
 
-.. admonition:: ... publish the package to PyPI
+.. dropdown:: ... publish the package to PyPI
 
    Grab your PyPI credentials and simply execute:
 
@@ -115,7 +115,7 @@ Executing tests
 
 *I want to ...*
 
-.. admonition:: ... run the test suite
+.. dropdown:: ... run the test suite
 
    Simply execute
 
@@ -138,7 +138,7 @@ Executing tests
       cd docs
       make doctest
 
-.. admonition:: ... get a coverage report
+.. dropdown:: ... get a coverage report
 
    We have a make target dedicated to that:
 
@@ -154,7 +154,7 @@ Building the documentation
 
 *I want to ...*
 
-.. admonition:: ... build the documentation
+.. dropdown:: ... build the documentation
 
    Go to the ``docs`` directory and execute the usual Sphinx target:
 

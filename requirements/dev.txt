@@ -126,6 +126,7 @@ docutils==0.16 \
     # via
     #   readme-renderer
     #   sphinx
+    #   sphinx-panels
 ensureconda==1.4.1 \
     --hash=sha256:0c52ad9ab8b72b90ffdad0622894e2bd5f80abfc1d06cc3868ba2dfb4eed62ab \
     --hash=sha256:fa370ea24da8e073f612538f67480c15071851f773ee813f5ecda9e136352b1a
@@ -155,10 +156,12 @@ importlib-metadata==3.4.0 \
     #   pluggy
     #   pytest
     #   twine
-importlib-resources==5.1.0 \
-    --hash=sha256:885b8eae589179f661c909d699a546cf10d83692553e34dca1bf5eb06f7f6217 \
-    --hash=sha256:bfdad047bce441405a49cf8eb48ddce5e56c696e185f59147a8b79e75e9e6380
-    # via pint
+importlib-resources==3.0.0 \
+    --hash=sha256:19f745a6eca188b490b1428c8d1d4a0d2368759f32370ea8fb89cad2ab1106c3 \
+    --hash=sha256:d028f66b66c0d5732dae86ba4276999855e162a749c92620a38c1d779ed138a7
+    # via
+    #   pint
+    #   sphinx-panels
 iniconfig==1.1.1 \
     --hash=sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3 \
     --hash=sha256:bc3af051d7d14b2ee5ef9969666def0cd1a000e121eaea580d4a313df4b37f32
@@ -169,9 +172,9 @@ jinja2==2.11.2 \
     # via
     #   conda-lock
     #   sphinx
-keyring==22.0.0 \
-    --hash=sha256:0744732bdf8bf2c1a30e9d1cb75eca5ac706b4f4dc4295356894dd2c8e31068f \
-    --hash=sha256:0bd9124892bdafd8db3c2ba22498dc6cca19b2b19fbcb32464f556889285241d
+keyring==22.0.1 \
+    --hash=sha256:9acb3e1452edbb7544822b12fd25459078769e560fa51f418b6d00afaa6178df \
+    --hash=sha256:9f44660a5d4931bdc14c08a1d01ef30b18a7a8147380710d8c9f9531e1f6c3c0
     # via twine
 markupsafe==1.1.1 \
     --hash=sha256:00bc623926325b26bb9605ae9eae8a215691f33cae5df11ca5424f06f2d1f473 \
@@ -400,12 +403,17 @@ soupsieve==2.1 \
     --hash=sha256:4bb21a6ee4707bf43b61230e80740e71bfe56e55d1f1f50924b087bb2975c851 \
     --hash=sha256:6dc52924dc0bc710a5d16794e6b3480b2c7c08b07729505feab2b2c16661ff6e
     # via beautifulsoup4
+sphinx-panels==0.5.2 \
+    --hash=sha256:2b2e18448b0494e7a232d6c7dfb9aa3982e7aeb92aeea7d1b146e34e9261d2f1 \
+    --hash=sha256:b7b3faa05f37b7318fd14cd85c4effa1ab905dfc8bed236a63978565ea461ae4
+    # via -r requirements/docs.in
 sphinx==3.4.3 \
     --hash=sha256:41cad293f954f7d37f803d97eb184158cfd90f51195131e94875bc07cd08b93c \
     --hash=sha256:c314c857e7cd47c856d2c5adff514ac2e6495f8b8e0f886a8a37e9305dfea0d8
     # via
     #   -r requirements/docs.in
     #   furo
+    #   sphinx-panels
 sphinxcontrib-applehelp==1.0.2 \
     --hash=sha256:806111e5e962be97c29ec4c1e7fe277bfd19e9652fb1a4392105b43e01af885a \
     --hash=sha256:a072735ec80e7675e3f432fcae8610ecf509c5f1869d17e2eecff44389cdbc58
@@ -484,9 +492,9 @@ typing-extensions==3.7.4.3 \
     # via
     #   black
     #   importlib-metadata
-urllib3==1.26.2 \
-    --hash=sha256:19188f96923873c92ccb987120ec4acaa12f0461fa9ce5d3d0772bc965a39e08 \
-    --hash=sha256:d8ff90d979214d7b4f8ce956e80f4028fc6860e4431f731ea4a8c08f23f99473
+urllib3==1.26.3 \
+    --hash=sha256:1b465e494e3e0d8939b50680403e3aedaa2bc434b7d5af64dfd3c958d7f5ae80 \
+    --hash=sha256:de3eedaad74a2683334e282005cd8d7f22f4d55fa690a2a1020a416cb0a47e73
     # via requests
 webencodings==0.5.1 \
     --hash=sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78 \

@@ -1,5 +1,5 @@
 # platform: osx-64
-# env_hash: be2173d65225d933f8769d8fc6fa7d97f3b9d380bcccd61f257b07de773a25a0
+# env_hash: ae324117a0e2c37d33540f57634710aa616801d57c02e7ab55f8fd7e82c183ff
 @EXPLICIT
 https://conda.anaconda.org/conda-forge/osx-64/ca-certificates-2020.12.5-h033912b_0.tar.bz2#4483d8ea13bd57b52e3539e741501a7d
 https://conda.anaconda.org/conda-forge/osx-64/libcxx-11.0.1-habf9029_0.tar.bz2#51c221f12b7975d60dae27cd8280efac
@@ -83,13 +83,14 @@ https://conda.anaconda.org/conda-forge/noarch/pint-0.16.1-py_0.tar.bz2#3a147e648
 https://conda.anaconda.org/conda-forge/noarch/pip-tools-5.5.0-pyhd8ed1ab_0.tar.bz2#8f41a0cc9c5be7a5a7ea01a08ac6d36c
 https://conda.anaconda.org/conda-forge/osx-64/pytest-6.2.1-py36h79c6626_1.tar.bz2#84d1b1e84947d710053abedeb48cc85f
 https://conda.anaconda.org/conda-forge/noarch/readme_renderer-27.0-pyh9f0ad1d_0.tar.bz2#38446dff7f69efd3fab98ab4dc68c0c8
-https://conda.anaconda.org/conda-forge/noarch/urllib3-1.26.2-pyhd8ed1ab_0.tar.bz2#8bb930d172961c9ba9ffd6e10a64b844
+https://conda.anaconda.org/conda-forge/noarch/urllib3-1.26.3-pyhd8ed1ab_0.tar.bz2#25573e57774dd54cfa848e5dd44503ed
 https://conda.anaconda.org/conda-forge/noarch/requests-2.25.1-pyhd3deb0d_0.tar.bz2#ae687aba31a1c400192a86a2e993ffdc
 https://conda.anaconda.org/conda-forge/noarch/ensureconda-1.4.1-pyhd8ed1ab_0.tar.bz2#52a7f7cc9076e2c8a25e15e19ad42821
 https://conda.anaconda.org/conda-forge/noarch/requests-toolbelt-0.9.1-py_0.tar.bz2#402668adee8fcba9a9c265cdc2a88f5a
 https://conda.anaconda.org/conda-forge/noarch/sphinx-3.4.3-pyhd8ed1ab_0.tar.bz2#159479e039e2739601b295565321db15
 https://conda.anaconda.org/conda-forge/noarch/conda-lock-0.8.0-pyhd8ed1ab_0.tar.bz2#1258c98fb0bb0b9171b8150e259535b8
 https://conda.anaconda.org/conda-forge/noarch/sphinx-inline-tabs-2020.10.19b4-pyhd8ed1ab_0.tar.bz2#2943e406dbebee36df4129376ef6e515
+https://conda.anaconda.org/conda-forge/noarch/sphinx-panels-0.5.2-pyhd3deb0d_0.tar.bz2#1a871a63c4be1bd47a7aa48b7417a426
 https://conda.anaconda.org/conda-forge/osx-64/twine-3.3.0-py36h79c6626_0.tar.bz2#c235451abcfa183ab14f4aa85c387037
 https://conda.anaconda.org/conda-forge/noarch/furo-2020.12.30b24-pyhd8ed1ab_1.tar.bz2#50a55d9ce1c95d140a40ce28ed757e22
 https://conda.anaconda.org/conda-forge/noarch/markdown-it-py-0.6.1-pyhd8ed1ab_0.tar.bz2#72163f06d1368364478f23a6b5ae2c82

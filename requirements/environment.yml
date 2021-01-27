@@ -19,3 +19,4 @@ dependencies:
   # docs
   - sphinx>=3.1
   - furo
+  - sphinx-panels
