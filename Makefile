@@ -62,6 +62,7 @@ test:
 
 coverage:
 	coverage run --source=src -m pytest --doctest-glob="*.rst" docs tests
+	coverage html
 
 .PHONY: test coverage
 

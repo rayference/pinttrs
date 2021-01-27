@@ -115,7 +115,7 @@ Executing tests
 
 *I want to ...*
 
-.. admonition:: ... run the whole test suite
+.. admonition:: ... run the test suite
 
    Simply execute
 
@@ -137,6 +137,17 @@ Executing tests
 
       cd docs
       make doctest
+
+.. admonition:: ... get a coverage report
+
+   We have a make target dedicated to that:
+
+   .. code-block:: bash
+
+      make coverage
+
+   This command will generate a HTML coverage report in the ``htmlcov``
+   directory.
 
 Building the documentation
 --------------------------

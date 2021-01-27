@@ -79,8 +79,8 @@ Using callables to dynamically change default units
 ---------------------------------------------------
 
 The :func:`pinttr.ib` function's ``units`` parameter also accepts callables. 
-When this happens, the store callable is evaluate each time units are requested,
-*e.g.* by a converter or a validator:
+When this happens, the stored callable is evaluated each time units are 
+requested, *e.g.* by a converter or a validator:
 
 .. doctest::
 
