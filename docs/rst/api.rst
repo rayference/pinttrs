@@ -19,7 +19,7 @@ Default unit registry
 Dictionary interpretation
 -------------------------
 
-.. autofundction:: pinttr.interpret_units
+.. autofunction:: pinttr.interpret_units
 
 Converters [``pinttr.converters``]
 ----------------------------------

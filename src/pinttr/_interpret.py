@@ -28,7 +28,7 @@ def interpret_units(d, ureg=None, inplace=False):
 
     .. warning::
 
-       * Dictionary keys must be strings.
+       Dictionary keys must be strings.
 
     :param d:
         Dictionary in which units will be interpreted.
@@ -42,7 +42,7 @@ def interpret_units(d, ureg=None, inplace=False):
         :func:`pinttr.set_unit_registry`.
 
     :type ureg:
-        :class:`pint.UnitRegistry`
+        :class:`pint.UnitRegistry` or ``None``
 
     :param inplace:
         If ``True``, modify the dictionary in-place; otherwise, return a

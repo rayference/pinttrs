@@ -32,7 +32,7 @@ is the main difference and allows for the attachment of units to a field:
 
 Scalar values are automatically wrapped in Pint units. If a Pint quantity is
 passed as an attribute value, its units will be checked. If they prove to be
-compatible in the sense of Pinttrs, the value will be assigned to the attribute
+:ref:`compatible in the sense of Pinttrs <compatible>`, the value will be assigned to the attribute
 without modification:
 
 .. doctest::
@@ -104,15 +104,10 @@ Callables can be used to vary default units dynamically at runtime:
    >>> MyClass(1.0)
    MyClass(field=<Quantity(1.0, 'second')>)
 
-Default units with contextual overrides
----------------------------------------
-
-Coming soon.
-
 Dict-based object initialisation with units
 -------------------------------------------
 
-Pinttrs ships a helper function :func:`pinttrinterpret_units` which can be 
+Pinttrs ships a helper function :func:`pinttr.interpret_units` which can be 
 used to interpret units in a dictionary with string-valued keys:
 
 .. doctest::
@@ -144,3 +139,8 @@ Example:
 
    The same unit registry must be used to define field units and interpret 
    dictionaries.
+
+Default units with contextual override
+--------------------------------------
+
+Coming soon.

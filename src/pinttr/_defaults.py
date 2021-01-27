@@ -6,6 +6,15 @@ unit_registry = pint.UnitRegistry()
 def set_unit_registry(ureg):
     """
     Set unit registry. By default, Pinttrs has its own registry.
+
+    :param ureg:
+        Unit registry.
+
+    :type ureg:
+        :class:`pint.UnitRegistry`
+
+    :raises:
+        :class:`TypeError` if ``ureg`` is not a :class:`pint.UnitRegistry`.
     """
     global unit_registry
     if not isinstance(ureg, pint.UnitRegistry):
