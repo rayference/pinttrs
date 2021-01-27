@@ -23,6 +23,8 @@ def test_always_iterable():
     assert is_iterable(always_iterable(None))
     # Iterable remains iterable
     assert is_iterable(always_iterable([1, 1]))
+    # String is packed in an iterable
+    assert list(always_iterable("abc")) == ["abc"]
 
 
 def test_units_compatible():
