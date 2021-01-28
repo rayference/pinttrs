@@ -116,13 +116,20 @@ Publishing
 
 .. dropdown:: ... publish the package to PyPI
 
-   Grab your PyPI credentials and simply execute:
+   1. Checkout the commit corresponding to the source you want to package.
+   2. [Optional] If you want your build directories to be clean, then execute:
 
-   .. code-block:: bash
+      .. code-block:: bash
 
-      make upload-pypi
+         make dist-clean
 
-   This make target will also execute the ``dist`` target.
+   2. Grab your PyPI credentials and simply execute:
+
+      .. code-block:: bash
+
+         make upload-pypi
+
+      .. note:: This make target will also execute the ``dist`` target.
 
 Executing tests
 ---------------
