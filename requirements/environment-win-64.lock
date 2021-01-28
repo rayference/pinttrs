@@ -1,5 +1,5 @@
 # platform: win-64
-# env_hash: a25fd2b2ddc8d7d90528bcb71d21ee2cd476b111337492aaad29c3a93477a613
+# env_hash: 345fa0951c2d2ff502e814f252180d15896542cb61629d7ee80806c79f181d62
 @EXPLICIT
 https://conda.anaconda.org/conda-forge/win-64/ca-certificates-2020.12.5-h5b45459_0.tar.bz2#f36a2988a9f57cffdc43929ba67a3a2a
 https://conda.anaconda.org/conda-forge/win-64/vs2015_runtime-14.28.29325-h5e1d092_0.tar.bz2#4e4fc486090f90e00edfa9c7730e2771
@@ -71,15 +71,15 @@ https://conda.anaconda.org/conda-forge/win-64/setuptools-49.6.0-py36ha15d459_3.t
 https://conda.anaconda.org/conda-forge/noarch/bleach-3.2.3-pyh44b312d_0.tar.bz2#60c3560b22ab68eec63b4df0df29a180
 https://conda.anaconda.org/conda-forge/win-64/importlib_resources-5.1.0-py36ha15d459_0.tar.bz2#9c78df3a4109c086c05b6a5ab2636c7e
 https://conda.anaconda.org/conda-forge/noarch/jinja2-2.11.2-pyh9f0ad1d_0.tar.bz2#e8a5d614d1a27bdba00059ca062a0551
-https://conda.anaconda.org/conda-forge/win-64/keyring-22.0.0-py36ha15d459_0.tar.bz2#21bd707937bf06830352743ec375e97e
-https://conda.anaconda.org/conda-forge/noarch/pip-21.0-pyhd8ed1ab_0.tar.bz2#dfb99734911ef619b4d4be1748534c8c
+https://conda.anaconda.org/conda-forge/win-64/keyring-22.0.1-py36ha15d459_0.tar.bz2#f1d27a8485b11864a0f73edfa3d9074c
+https://conda.anaconda.org/conda-forge/noarch/pip-21.0-pyhd8ed1ab_1.tar.bz2#9b839c336a17b875485b6ed76489d979
 https://conda.anaconda.org/conda-forge/win-64/pluggy-0.13.1-py36ha15d459_4.tar.bz2#d7271328700290b5c56739ff23082d93
 https://conda.anaconda.org/conda-forge/noarch/pygments-2.7.4-pyhd8ed1ab_0.tar.bz2#d162b2e135758c51410bacfa6f5ef5bb
 https://conda.anaconda.org/conda-forge/noarch/pyopenssl-20.0.1-pyhd8ed1ab_0.tar.bz2#92371c25994d0f5d28a01c1fb75ebf86
 https://conda.anaconda.org/conda-forge/win-64/ruamel.yaml-0.16.12-py36h68aa20f_2.tar.bz2#dc34044e35c171787477e04de080a5ab
 https://conda.anaconda.org/conda-forge/noarch/pint-0.16.1-py_0.tar.bz2#3a147e648229168687fa22d309faa6fb
 https://conda.anaconda.org/conda-forge/noarch/pip-tools-5.5.0-pyhd8ed1ab_0.tar.bz2#8f41a0cc9c5be7a5a7ea01a08ac6d36c
-https://conda.anaconda.org/conda-forge/win-64/pytest-6.2.1-py36ha15d459_1.tar.bz2#96140a7fee6bcc041820ce5d504baa11
+https://conda.anaconda.org/conda-forge/win-64/pytest-6.2.2-py36ha15d459_0.tar.bz2#e9386c6bf2cc4410c4111fb60c16be4a
 https://conda.anaconda.org/conda-forge/noarch/readme_renderer-27.0-pyh9f0ad1d_0.tar.bz2#38446dff7f69efd3fab98ab4dc68c0c8
 https://conda.anaconda.org/conda-forge/noarch/urllib3-1.26.3-pyhd8ed1ab_0.tar.bz2#25573e57774dd54cfa848e5dd44503ed
 https://conda.anaconda.org/conda-forge/noarch/requests-2.25.1-pyhd3deb0d_0.tar.bz2#ae687aba31a1c400192a86a2e993ffdc
@@ -89,7 +89,6 @@ https://conda.anaconda.org/conda-forge/noarch/sphinx-3.4.3-pyhd8ed1ab_0.tar.bz2#
 https://conda.anaconda.org/conda-forge/noarch/conda-lock-0.8.0-pyhd8ed1ab_0.tar.bz2#1258c98fb0bb0b9171b8150e259535b8
 https://conda.anaconda.org/conda-forge/noarch/sphinx-copybutton-0.3.1-pyhd8ed1ab_0.tar.bz2#decad13214a2a545944560eccf4a9815
 https://conda.anaconda.org/conda-forge/noarch/sphinx-inline-tabs-2020.10.19b4-pyhd8ed1ab_0.tar.bz2#2943e406dbebee36df4129376ef6e515
-https://conda.anaconda.org/conda-forge/noarch/sphinx-panels-0.5.2-pyhd3deb0d_0.tar.bz2#1a871a63c4be1bd47a7aa48b7417a426
 https://conda.anaconda.org/conda-forge/win-64/twine-3.3.0-py36ha15d459_0.tar.bz2#953088e7fefb84afc6b56211761b199f
 https://conda.anaconda.org/conda-forge/noarch/furo-2020.12.30b24-pyhd8ed1ab_1.tar.bz2#50a55d9ce1c95d140a40ce28ed757e22
 https://conda.anaconda.org/conda-forge/noarch/markdown-it-py-0.6.1-pyhd8ed1ab_0.tar.bz2#72163f06d1368364478f23a6b5ae2c82

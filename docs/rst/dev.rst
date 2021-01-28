@@ -8,7 +8,7 @@ Dependency management (Conda)
 
 *I want to ...*
 
-.. dropdown:: ... initialise a new development environment
+.. admonition:: ... initialise a new development environment
 
    Create a new Conda empty environment:
 
@@ -28,7 +28,7 @@ Dependency management (Conda)
    * ``osx-64``
    * ``win-64``
 
-.. dropdown:: ... lock Conda dependencies
+.. admonition:: ... lock Conda dependencies
 
    The conda-lock utility is used to solve dependencies using Conda and lock 
    them. A convenience make target is defined to automate the process:
@@ -50,7 +50,7 @@ Dependency management (Conda)
 
       make pip-compile
 
-.. dropdown:: ... update my environment based on the lock file
+.. admonition:: ... update my environment based on the lock file
 
    After updating locked dependencies, you can update your development environment
    using one of the generate lock files:
@@ -70,7 +70,7 @@ Dependency management (Pip)
 
 *I want to ...*
 
-.. dropdown:: ... initialise a development environment
+.. admonition:: ... initialise a development environment
 
    Activate the target environment and use the ``pip-init`` make target:
 
@@ -78,7 +78,7 @@ Dependency management (Pip)
 
       make pip-init
 
-.. dropdown:: ... lock dependencies
+.. admonition:: ... lock dependencies
 
    Use the ``pip-lock`` make target:
 
@@ -86,7 +86,7 @@ Dependency management (Pip)
 
       make pip-lock
 
-.. dropdown:: ... update my environment based on the lock file
+.. admonition:: ... update my environment based on the lock file
 
    After updating locked dependencies, you can update your development environment
    using the ``pip-init`` make target:
@@ -100,7 +100,7 @@ Publishing
 
 *I want to ...*
 
-.. dropdown:: ... create a release on GitHub
+.. admonition:: ... create a release on GitHub
 
    1. Make sure that the `GitHub CLI <https://cli.github.com/>`_ is installed on
       your machine.
@@ -114,7 +114,7 @@ Publishing
       Feel free to add more options to the command if relevant.
    4. Bump the version number to the next relevant value.
 
-.. dropdown:: ... publish the package to PyPI
+.. admonition:: ... publish the package to PyPI
 
    1. Checkout the commit corresponding to the source you want to package.
    2. [Optional] If you want your build directories to be clean, then execute:
@@ -136,7 +136,7 @@ Executing tests
 
 *I want to ...*
 
-.. dropdown:: ... run the test suite
+.. admonition:: ... run the test suite
 
    Simply execute
 
@@ -159,7 +159,7 @@ Executing tests
       cd docs
       make doctest
 
-.. dropdown:: ... get a coverage report
+.. admonition:: ... get a coverage report
 
    We have a make target dedicated to that:
 
@@ -175,7 +175,7 @@ Building the documentation
 
 *I want to ...*
 
-.. dropdown:: ... build the documentation
+.. admonition:: ... build the documentation
 
    Go to the ``docs`` directory and execute the usual Sphinx target:
 

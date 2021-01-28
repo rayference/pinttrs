@@ -61,7 +61,6 @@ extensions = [
     "sphinx.ext.doctest",  # Insert doctest snippets
     "sphinx.ext.intersphinx",  # Link to other project's documentation (see mapping below)
     "sphinx.ext.viewcode",  # Add a link to the Python source code for classes, functions etc.
-    "sphinx_panels",  # Bootstrap panels and other goodies
     "sphinx_copybutton",  # Copy button in code blocks
 ]
 
