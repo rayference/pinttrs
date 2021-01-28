@@ -4,7 +4,7 @@ from ._interpret import interpret_units
 from ._make import attrib
 
 # Package metadata
-__version__ = "0.1.0-dev2"
+__version__ = "0.1.0-dev3"
 __copyright__ = "Copyright (c) 2021 Vincent Leroy"
 
 # Other definitions
