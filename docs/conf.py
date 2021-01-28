@@ -101,7 +101,7 @@ html_static_path = ["_static"]
 # Logo
 html_theme_options = {
     "navigation_with_keys": True,
-    "sidebar_hide_name": False,
+    "sidebar_hide_name": True,
     "light_logo": "pinttrs_logo_dark.svg",
     "dark_logo": "pinttrs_logo_light.svg",
 }
