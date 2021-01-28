@@ -8,8 +8,7 @@ Dependency management (Conda)
 
 *I want to ...*
 
-.. admonition:: ... initialise a new development environment
-
+**... initialise a new development environment**
    Create a new Conda empty environment:
 
    .. code-block:: bash
@@ -28,16 +27,20 @@ Dependency management (Conda)
    * ``osx-64``
    * ``win-64``
 
-.. admonition:: ... lock Conda dependencies
+   .. warning:: 
+   
+      Selecting the wrong platform or running without activating the appropriate
+      virtual environment may have unintended side effects.
 
+**... lock Conda dependencies**
    The conda-lock utility is used to solve dependencies using Conda and lock 
    them. A convenience make target is defined to automate the process:
-
+   
    .. code-block:: bash
 
       make conda-lock PLATFORM=<YOUR_PLATFORM>
 
-   or (to update for all platforms):
+   To update for all platforms:
 
    .. code-block:: bash
 
@@ -50,8 +53,7 @@ Dependency management (Conda)
 
       make pip-compile
 
-.. admonition:: ... update my environment based on the lock file
-
+**... update my environment based on the lock file**
    After updating locked dependencies, you can update your development environment
    using one of the generate lock files:
 
@@ -70,24 +72,21 @@ Dependency management (Pip)
 
 *I want to ...*
 
-.. admonition:: ... initialise a development environment
-
+**... initialise a development environment**
    Activate the target environment and use the ``pip-init`` make target:
 
    .. code-block:: bash
 
       make pip-init
 
-.. admonition:: ... lock dependencies
-
+**... lock dependencies**
    Use the ``pip-lock`` make target:
 
    .. code-block:: bash
 
       make pip-lock
 
-.. admonition:: ... update my environment based on the lock file
-
+**... update my environment based on the lock file**
    After updating locked dependencies, you can update your development environment
    using the ``pip-init`` make target:
 
@@ -100,8 +99,7 @@ Publishing
 
 *I want to ...*
 
-.. admonition:: ... create a release on GitHub
-
+**... create a release on GitHub**
    1. Make sure that the `GitHub CLI <https://cli.github.com/>`_ is installed on
       your machine.
    2. Ensure that the version number is set to the appropriate value.
@@ -114,8 +112,7 @@ Publishing
       Feel free to add more options to the command if relevant.
    4. Bump the version number to the next relevant value.
 
-.. admonition:: ... publish the package to PyPI
-
+**... publish the package to PyPI**
    1. Checkout the commit corresponding to the source you want to package.
    2. [Optional] If you want your build directories to be clean, then execute:
 
@@ -136,8 +133,7 @@ Executing tests
 
 *I want to ...*
 
-.. admonition:: ... run the test suite
-
+**... run the test suite**
    Simply execute
 
    .. code-block:: bash
@@ -159,8 +155,7 @@ Executing tests
       cd docs
       make doctest
 
-.. admonition:: ... get a coverage report
-
+**... get a coverage report**
    We have a make target dedicated to that:
 
    .. code-block:: bash
@@ -175,8 +170,7 @@ Building the documentation
 
 *I want to ...*
 
-.. admonition:: ... build the documentation
-
+**... build the documentation**
    Go to the ``docs`` directory and execute the usual Sphinx target:
 
    .. code-block:: bash
