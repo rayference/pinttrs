@@ -95,8 +95,8 @@ Dependency management (Pip)
 
       make pip-init
 
-Distributing to PyPI
---------------------
+Publishing
+----------
 
 *I want to ...*
 
