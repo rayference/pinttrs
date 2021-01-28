@@ -1,4 +1,5 @@
 from . import converters, exceptions, util, validators
+from ._context import UnitContext, UnitGenerator
 from ._defaults import get_unit_registry, set_unit_registry
 from ._interpret import interpret_units
 from ._make import attrib
@@ -18,5 +19,7 @@ __all__ = [
     "interpret_units",
     "set_unit_registry",
     "util",
+    "UnitContext",
+    "UnitGenerator",
     "validators",
 ]

@@ -10,6 +10,16 @@ Main interface
 
 .. autofunction:: pinttr.ib
 
+Contextual unit registry
+------------------------
+
+.. autoclass:: pinttr.UnitContext
+   :members:
+   
+.. autoclass:: pinttr.UnitGenerator
+   :members:
+   :special-members: __call__
+
 Default unit registry
 ---------------------
 
@@ -25,6 +35,7 @@ Converters [``pinttr.converters``]
 ----------------------------------
 
 .. autofunction:: pinttr.converters.ensure_units
+.. autofunction:: pinttr.converters.identity
 .. autofunction:: pinttr.converters.to_units
 
 Validators [``pinttr.validators``]

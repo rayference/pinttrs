@@ -48,6 +48,13 @@ def ensure_units(value, default_units, convert=False):
         return value * units
 
 
+def identity(value):
+    """
+    Do nothing and return the value it is passed.
+    """
+    return value
+
+
 def to_units(units):
     """
     Create a callable ``f(x)`` returning
