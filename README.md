@@ -17,7 +17,7 @@ attributes with [Pint](https://pint.readthedocs.io).
 - [x] Attach automatically units to unitless values passed to initialise an attribute
 - [x] Verify unit compatibility when assigning a value to an attribute
 - [x] Interpret units in dictionaries with a simple syntax
-- [ ] Use contextual unit sets to vary unitless value interpretation dynamically
+- [x] Define unit context to vary unitless value interpretation dynamically
 
 ## License
 
