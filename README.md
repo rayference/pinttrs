@@ -14,10 +14,10 @@ attributes with [Pint](https://pint.readthedocs.io).
 
 ## Features
 
-- [x] Automatic attachment of predefined units to unitless values
-- [x] Verification of units compatibility for Pint quantity values
-- [x] Interpretation of units in dictionaries
-- [ ] Dynamic fetching of units from a registry
+- [x] Attach automatically units to unitless values passed to initialise an attribute
+- [x] Verify unit compatibility when assigning a value to an attribute
+- [x] Interpret units in dictionaries with a simple syntax
+- [ ] Use contextual unit sets to vary unitless value interpretation dynamically
 
 ## License
 
