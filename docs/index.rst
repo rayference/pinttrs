@@ -26,6 +26,12 @@ Install in your virtual environment:
 
    python -m pip install pinttrs
 
+Using Conda:
+
+.. code-block:: bash
+
+   conda install -c leroyv pinttrs -c conda-forge
+
 The :ref:`usage` section presents Pinttrs's features and how to use them.
 
 --------------------------------------------------------------------------------
