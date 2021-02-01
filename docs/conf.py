@@ -58,6 +58,7 @@ version = release.rsplit(u".", 1)[0]
 # ones.
 extensions = [
     "sphinx.ext.autodoc",  # Core Sphinx library for auto html doc generation from docstrings
+    "sphinx_autodoc_typehints",  # Use type hints in autodoc
     "sphinx.ext.doctest",  # Insert doctest snippets
     "sphinx.ext.intersphinx",  # Link to other project's documentation (see mapping below)
     "sphinx.ext.viewcode",  # Add a link to the Python source code for classes, functions etc.

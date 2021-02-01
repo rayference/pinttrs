@@ -1,9 +1,16 @@
 from copy import copy
+from typing import Any, Dict, Union
+
+import pint
 
 from ._defaults import get_unit_registry
 
 
-def interpret_units(d, ureg=None, inplace=False):
+def interpret_units(
+        d: Dict[str, Any],
+        ureg: Union[pint.UnitRegistry, None] = None,
+        inplace: bool = False,
+) -> Dict[str, Any]:
     """
     Interpret units in a dictionary. The dictionary is searched for matching
     magnitude-units field pairs. For a magnitude field with key ``"x"``, the
@@ -26,37 +33,16 @@ def interpret_units(d, ureg=None, inplace=False):
 
           {"field": ureg.Quantity(1.0, "m")}
 
-    .. warning::
+    .. warning:: Dictionary keys must be strings.
 
-       Dictionary keys must be strings.
-
-    :param d:
-        Dictionary in which units will be interpreted.
-
-    :type d:
-        :class:`dict`
-
-    :param ureg:
-        Unit registry to use for unit creation. If set to ``None``, Pinttrs's
-        registered unit registry is used. See also
+    :param d: Dictionary in which units will be interpreted.
+    :param ureg: Unit registry to use for unit creation. If set to ``None``,
+        Pinttrs's registered unit registry is used. See also
         :func:`pinttr.set_unit_registry`.
-
-    :type ureg:
-        :class:`pint.UnitRegistry` or ``None``
-
-    :param inplace:
-        If ``True``, modify the dictionary in-place; otherwise, return a
-        modified copy.
-
-    :type inplace:
-        :class:`bool`
-
-    :returns:
-        A copy of ``d``, where unit fields are interpreted using ``ureg`` to
-        attach units to the corresponding magnitude field.
-
-    :rtype:
-        :class:`dict`
+    :param inplace: If ``True``, modify the dictionary in-place; otherwise,
+        return a modified copy.
+    :returns: A copy of ``d``, where unit fields are interpreted using ``ureg``
+        to attach units to the corresponding magnitude field.
     """
     if ureg is None:
         ureg = get_unit_registry()

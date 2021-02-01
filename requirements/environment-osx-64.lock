@@ -1,5 +1,5 @@
 # platform: osx-64
-# env_hash: 2c1e66136ed214ad594dee3e06c843fd32ec38734d5d16ab98b73a3cf3c62069
+# env_hash: 2ab43a78e693027f004a84ce604139d9eb8de3245261141f5c41cd59110fc7b5
 @EXPLICIT
 https://conda.anaconda.org/conda-forge/osx-64/ca-certificates-2020.12.5-h033912b_0.tar.bz2#4483d8ea13bd57b52e3539e741501a7d
 https://conda.anaconda.org/conda-forge/osx-64/libcxx-11.0.1-habf9029_0.tar.bz2#51c221f12b7975d60dae27cd8280efac
@@ -72,9 +72,9 @@ https://conda.anaconda.org/conda-forge/noarch/importlib_metadata-3.4.0-hd8ed1ab_
 https://conda.anaconda.org/conda-forge/osx-64/setuptools-49.6.0-py36h79c6626_3.tar.bz2#47c2e464861798d6ce4422f76ce3ea5f
 https://conda.anaconda.org/conda-forge/noarch/bleach-3.2.3-pyh44b312d_0.tar.bz2#60c3560b22ab68eec63b4df0df29a180
 https://conda.anaconda.org/conda-forge/osx-64/importlib_resources-5.1.0-py36h79c6626_0.tar.bz2#8dd5a9c506de0c82c411b9ebb44e7f31
-https://conda.anaconda.org/conda-forge/noarch/jinja2-2.11.2-pyh9f0ad1d_0.tar.bz2#e8a5d614d1a27bdba00059ca062a0551
+https://conda.anaconda.org/conda-forge/noarch/jinja2-2.11.3-pyh44b312d_0.tar.bz2#1d4c3605d85a3655b1595e0694138eb6
 https://conda.anaconda.org/conda-forge/osx-64/keyring-22.0.1-py36h79c6626_0.tar.bz2#76c3e1d5376ff678ce3b40d71390886e
-https://conda.anaconda.org/conda-forge/noarch/pip-21.0-pyhd8ed1ab_1.tar.bz2#9b839c336a17b875485b6ed76489d979
+https://conda.anaconda.org/conda-forge/noarch/pip-21.0.1-pyhd8ed1ab_0.tar.bz2#849477e10d78cbc283c78fd53bfbb567
 https://conda.anaconda.org/conda-forge/osx-64/pluggy-0.13.1-py36h79c6626_4.tar.bz2#ddab5fdb94e1349e994046b3aa761497
 https://conda.anaconda.org/conda-forge/noarch/pygments-2.7.4-pyhd8ed1ab_0.tar.bz2#d162b2e135758c51410bacfa6f5ef5bb
 https://conda.anaconda.org/conda-forge/noarch/pyopenssl-20.0.1-pyhd8ed1ab_0.tar.bz2#92371c25994d0f5d28a01c1fb75ebf86
@@ -89,6 +89,7 @@ https://conda.anaconda.org/conda-forge/noarch/ensureconda-1.4.1-pyhd8ed1ab_0.tar
 https://conda.anaconda.org/conda-forge/noarch/requests-toolbelt-0.9.1-py_0.tar.bz2#402668adee8fcba9a9c265cdc2a88f5a
 https://conda.anaconda.org/conda-forge/noarch/sphinx-3.4.3-pyhd8ed1ab_0.tar.bz2#159479e039e2739601b295565321db15
 https://conda.anaconda.org/conda-forge/noarch/conda-lock-0.8.0-pyhd8ed1ab_0.tar.bz2#1258c98fb0bb0b9171b8150e259535b8
+https://conda.anaconda.org/conda-forge/noarch/sphinx-autodoc-typehints-1.11.1-py_0.tar.bz2#c55b995a94ad51b4b71596573794ec1d
 https://conda.anaconda.org/conda-forge/noarch/sphinx-copybutton-0.3.1-pyhd8ed1ab_0.tar.bz2#decad13214a2a545944560eccf4a9815
 https://conda.anaconda.org/conda-forge/noarch/sphinx-inline-tabs-2020.10.19b4-pyhd8ed1ab_0.tar.bz2#2943e406dbebee36df4129376ef6e515
 https://conda.anaconda.org/conda-forge/osx-64/twine-3.3.0-py36h79c6626_0.tar.bz2#c235451abcfa183ab14f4aa85c387037

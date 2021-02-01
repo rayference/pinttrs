@@ -1,5 +1,6 @@
 from contextlib import ExitStack, contextmanager
 from copy import copy
+from typing import Callable, Dict, Hashable, Union
 
 import attr
 import pint
@@ -19,32 +20,29 @@ class UnitGenerator:
 
     :Attributes / constructor arguments:
 
-        **units** (:class:`pint.Unit` or callable) – Stored units or generator.
+        **units** (:class:`pint.Unit` or :class:`.Callable`) –
+        Stored units or generator.
     """
 
-    units = attr.ib()
+    units: Union[pint.Unit, Callable] = attr.ib()
 
-    def __call__(self):
+    def __call__(self) -> pint.Unit:
         """
         :returns: If ``units`` is a :class:`pint.Unit`, it is returned;
             if ``units`` is a callable, the result of its evaluation will be
             returned.
-
-        :rtype: :class:`pint.Unit`
         """
         if callable(self.units):
             return self.units()
         return self.units
 
     @contextmanager
-    def override(self, units):
+    def override(self, units: Union[pint.Unit, Callable]) -> None:
         """
         Temporarily override the value of ``units``. The initial value of
         ``units`` is restored upon leaving context.
 
         :param units: Temporary replacement for ``units``.
-
-        :type units: :class:`pint.Unit` or callable
         """
         units_old = copy(self.units)
 
@@ -72,25 +70,25 @@ class UnitContext:
 
     :Attributes / constructor arguments:
 
-        * **registry** (dict[Hashable, :class:`.UnitGenerator`]) – Unit
-          generator registry. Keys can be any hashable type, but :class:`str`
-          or :class:`~enum.Enum` are recommended.
+        * **registry** (Dict[Hashable, :class:`.UnitGenerator`]) –
+          Unit generator registry. Keys can be any hashable type, but
+          :class:`str` or :class:`~enum.Enum` are recommended.
 
           .. note:: The initialisation sequence will make repeated calls to
              :meth:`register` and will consequently apply the same key and value
              conversion rules.
 
-        * **interpret_str** (:class:`bool`) – If ``True``, attempt
-          string-to-units interpretation when specifying unit generators as
-          :class:`str`.
+        * **interpret_str** (:class:`bool`) –
+          If ``True``, attempt string-to-units interpretation when specifying
+          unit generators as :class:`str`.
 
-        * **key_converter** (callable) – Converter used for keys. Defaults to
-          :func:`.identity`.
+        * **key_converter** (:class:`.Callable`) –
+          Converter used for keys. Defaults to :func:`.identity`.
     """
 
-    registry = attr.ib(default={})
-    interpret_str = attr.ib(default=False)
-    key_converter = attr.ib(default=identity)
+    registry: Dict[Hashable, UnitGenerator] = attr.ib(default={})
+    interpret_str: bool = attr.ib(default=False)
+    key_converter: Callable = attr.ib(default=identity)
 
     def __attrs_post_init__(self):
         # Convert keys when relevant
@@ -139,7 +137,9 @@ class UnitContext:
                 f"found: {key}: {type(value)}"
             )
 
-    def register(self, key, value):
+    def register(
+            self, key: Hashable, value: Union[UnitGenerator, pint.Unit, str]
+    ) -> None:
         """
         Add or update an entry in the registry. Conversion rules are applied as
         follows:
@@ -153,42 +153,29 @@ class UnitContext:
         :func:`.get_unit_registry`.
 
         :param key: Key to the registered entry.
-
-        :type key: Hashable
-
         :param value: Object to register.
-
-        :type value: :class:`UnitGenerator` or :class:`pint.Unit` or
-            :class:`str`
         """
         self.registry[key] = value
         self._convert_key(key)
         self._convert_value(key)
 
-    def update(self, d):
+    def update(self, d: Dict) -> None:
         """
         Update the registry with a dictionary.
 
         :param d: Dictionary used to apply :meth:`register` for each of its
             key-value pairs.
-
-        :type d: :class:`dict`
         """
         for key, value in d.items():
             self.register(key, value)
 
-    def get(self, key):
+    def get(self, key: Hashable) -> pint.Unit:
         """
         Evaluate :class:`UnitGenerator` instance registered as ``key``.
 
-        :param key: Key to the :class:`UnitGenerator` to evaluate. The 
+        :param key: Key to the :class:`UnitGenerator` to evaluate. The
             ``key_converter`` is applied.
-
-        :type key: Hashable
-
         :returns: Evaluated units.
-
-        :rtype: :class:`pint.Unit`
         """
         key = self.key_converter(key)
 
@@ -197,47 +184,40 @@ class UnitContext:
         except KeyError:
             raise
 
-    def get_all(self):
+    def get_all(self) -> Dict[Hashable, pint.Unit]:
         """
         Evaluate all registered :class:`UnitGenerator` instance.
 
         :returns: Evaluated units as a dictionary.
-
-        :rtype: dict[Hashable, :class:`pint.Unit`]
         """
         return {key: self.get(key) for key in self.registry.keys()}
 
-    def deferred(self, key):
+    def deferred(self, key: Hashable) -> UnitGenerator:
         """
         Return the :class:`UnitGenerator` registered with a given key.
 
         :param key: Key to the :class:`UnitGenerator` to return. The
             ``key_converter`` is applied.
-
-        :type key: Hashable
-
         :returns: Unit generator.
-
-        :rtype: :class:`UnitGenerator`
         """
         key = self.key_converter(key)
         return self.registry[key]
 
     @contextmanager
-    def override(self, *args, **kwargs):
+    def override(self, *args, **kwargs) -> None:
         """
         Temporarily override the underlying unit generators. This method
         acts as a convenience proxy for :meth:`UnitGenerator.override`.
 
         Override specifications can take multiple forms:
 
-        * an arbitrary number of dictionaries can be passed as positional 
+        * an arbitrary number of dictionaries can be passed as positional
           arguments;
         * key-value pairs may also be specified as keyword arguments.
 
-        Both approaches can be mixed. 
-        
-        .. note:: When using the keyword argument specification, passed values 
+        Both approaches can be mixed.
+
+        .. note:: When using the keyword argument specification, passed values
            will systematically be strings. Consequently, either
 
            * registry keys must be strings;

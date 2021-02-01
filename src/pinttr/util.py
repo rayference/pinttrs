@@ -1,4 +1,4 @@
-from copy import copy
+import pint
 
 
 def always_iterable(obj, base_type=(str, bytes)):
@@ -32,27 +32,13 @@ def always_iterable(obj, base_type=(str, bytes)):
         return iter((obj,))
 
 
-def units_compatible(unit1, unit2):
+def units_compatible(unit1: pint.Unit, unit2: pint.Unit) -> bool:
     """
     Check if two units are compatible. Accounts for angle units.
 
-    :param unit1:
-        First unit to check for compatibility.
-
-    :type unit1:
-        :class:`pint.Unit`
-
-    :param unit2:
-        Second unit to check for compatibility.
-
-    :type unit2:
-        :class:`pint.Unit`
-
-    :returns:
-        ``True`` if ``unit1`` and ``unit2`` have the same dimensionality,
+    :param unit1: First unit to check for compatibility.
+    :param unit2: Second unit to check for compatibility.
+    :returns: ``True`` if ``unit1`` and ``unit2`` have the same dimensionality,
         ``False`` otherwise.
-
-    :rtype:
-        :class:`bool`
     """
     return (1.0 * unit1 / unit2).unitless

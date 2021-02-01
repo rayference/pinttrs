@@ -1,32 +1,23 @@
+from typing import Any, Callable, Union
+
 import pint
 
 
-def ensure_units(value, default_units, convert=False):
+def ensure_units(
+    value: Any,
+    default_units: Union[pint.Unit, Callable[[], pint.Unit]],
+    convert: bool = False,
+) -> pint.Quantity:
     """Ensure that a value is wrapped in a Pint quantity container.
 
-    :param value:
-        Value to ensure the wrapping of.
-
-    :param default_units:
-        Units to use to initialise the :class:`pint.Quantity` if value is not
-        a :class:`pint.Quantity`. A callable can be passed; in this case,
-        the applied units will be ``default_units()``.
-
-    :type default_units:
-        :class:`pint.Unit` or callable
-
-    :param convert:
-        If ``True``, ``value`` will also be converted to ``default_units`` if
-        it is a :class:`pint.Quantity`.
-
-    :type convert:
-        bool
-
+    :param value: Value to ensure the wrapping of.
+    :param default_units: Units to use to initialise the :class:`pint.Quantity`
+        if ``value`` is not a :class:`pint.Quantity`. A callable can be passed;
+        in this case, the applied units will be ``default_units()``.
+    :param convert: If ``True``, ``value`` will also be converted to
+        ``default_units`` if it is a :class:`pint.Quantity`.
     :returns:
         Converted ``value``.
-
-    :rtype:
-         :class:`pint.Quantity`
     """
     if callable(default_units):
         units = default_units()
@@ -48,26 +39,23 @@ def ensure_units(value, default_units, convert=False):
         return value * units
 
 
-def identity(value):
+def identity(value: Any) -> Any:
     """
     Do nothing and return the value it is passed.
+
+    :param value: Value to apply converter to.
     """
     return value
 
 
-def to_units(units):
+def to_units(
+    units: Union[pint.Unit, Callable[[], pint.Unit]]
+) -> Callable[[Any], pint.Quantity]:
     """
     Create a callable ``f(x)`` returning
-    :func:`ensure_units(x, units) <ensure_units>`.
+    :func:`ensure_units(x, units, convert=False) <ensure_units>`.
 
-    :param units:
-        Units to ensure conversion to.
-
-    :type units:
-        :class:`pint.Unit` or callable
-
-    :rtype:
-        callable
+    :param units: Units to ensure conversion to.
     """
 
     def f(x):
