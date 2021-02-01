@@ -1,5 +1,5 @@
 # platform: osx-64
-# env_hash: 2ab43a78e693027f004a84ce604139d9eb8de3245261141f5c41cd59110fc7b5
+# env_hash: 04631d1998bd961bd87c39f2fe73805cb71433c64c5b4b94a503124ed777a697
 @EXPLICIT
 https://conda.anaconda.org/conda-forge/osx-64/ca-certificates-2020.12.5-h033912b_0.tar.bz2#4483d8ea13bd57b52e3539e741501a7d
 https://conda.anaconda.org/conda-forge/osx-64/libcxx-11.0.1-habf9029_0.tar.bz2#51c221f12b7975d60dae27cd8280efac
@@ -84,6 +84,7 @@ https://conda.anaconda.org/conda-forge/noarch/pip-tools-5.5.0-pyhd8ed1ab_0.tar.b
 https://conda.anaconda.org/conda-forge/osx-64/pytest-6.2.2-py36h79c6626_0.tar.bz2#87b32aa179d5f3597ce0ab5752881d13
 https://conda.anaconda.org/conda-forge/noarch/readme_renderer-27.0-pyh9f0ad1d_0.tar.bz2#38446dff7f69efd3fab98ab4dc68c0c8
 https://conda.anaconda.org/conda-forge/noarch/urllib3-1.26.3-pyhd8ed1ab_0.tar.bz2#25573e57774dd54cfa848e5dd44503ed
+https://conda.anaconda.org/conda-forge/noarch/pytest-cov-2.11.1-pyh44b312d_0.tar.bz2#67e256d6c8a3082d3f29f8cefce17bbf
 https://conda.anaconda.org/conda-forge/noarch/requests-2.25.1-pyhd3deb0d_0.tar.bz2#ae687aba31a1c400192a86a2e993ffdc
 https://conda.anaconda.org/conda-forge/noarch/ensureconda-1.4.1-pyhd8ed1ab_0.tar.bz2#52a7f7cc9076e2c8a25e15e19ad42821
 https://conda.anaconda.org/conda-forge/noarch/requests-toolbelt-0.9.1-py_0.tar.bz2#402668adee8fcba9a9c265cdc2a88f5a

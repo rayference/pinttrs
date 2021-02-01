@@ -156,11 +156,12 @@ Executing tests
       make doctest
 
 **... get a coverage report**
-   We have a make target dedicated to that:
+   Pytest automatically runs a coverage pass. After running the ``test`` target,
+   you can create a HTML coverage report with the command:
 
    .. code-block:: bash
 
-      make coverage
+      coverage html
 
    This command will generate a HTML coverage report in the ``htmlcov``
    directory.

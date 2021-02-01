@@ -7,8 +7,8 @@ dependencies:
   - attrs
   - pint
   # tests
-  - coverage
   - pytest
+  - pytest-cov
   # dev
   - black
   - click
