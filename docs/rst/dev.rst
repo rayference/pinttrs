@@ -19,18 +19,10 @@ Dependency management (Conda)
 
    .. code-block:: bash
 
-      make conda-init PLATFORM=<YOUR_PLATFORM>
+      make conda-init
 
-   where ``YOUR_PLATFORM`` is one of:
-
-   * ``linux-64``
-   * ``osx-64``
-   * ``win-64``
-
-   .. warning:: 
-   
-      Selecting the wrong platform or running without activating the appropriate
-      virtual environment may have unintended side effects.
+   The appropriate Conda lock file should be selected based on the platform
+   detected by the Makefile.
 
 **... lock Conda dependencies**
    The conda-lock utility is used to solve dependencies using Conda and lock 
@@ -38,7 +30,7 @@ Dependency management (Conda)
    
    .. code-block:: bash
 
-      make conda-lock PLATFORM=<YOUR_PLATFORM>
+      make conda-lock
 
    To update for all platforms:
 
@@ -59,13 +51,13 @@ Dependency management (Conda)
 
    .. code-block:: bash
 
-      make conda-init PLATFORM=<YOUR_PLATFORM>
+      make conda-init
 
    If you want to automatically add a lock file update as well:
 
    .. code-block:: bash
 
-      make conda-update PLATFORM=<YOUR_PLATFORM>
+      make conda-update
 
 Dependency management (Pip)
 ---------------------------

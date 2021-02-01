@@ -1,3 +1,20 @@
+ifeq ($(OS), Windows_NT)
+	PLATFORM := win-64
+else
+	uname := $(shell sh -c 'uname 2>/dev/null || echo unknown')
+	ifeq ($(uname), Darwin)
+		PLATFORM := osx-64
+	else ifeq ($(uname), Linux)
+		PLATFORM := linux-64
+	else
+		@echo "Unsupported platform"
+		exit 1
+	endif
+endif
+
+all:
+	@echo "Detected platform: $(PLATFORM)"
+
 # -- Dependency management with Pip --------------------------------------------
 
 # Update packaging tools
