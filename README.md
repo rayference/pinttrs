@@ -4,7 +4,7 @@
 
 [![Documentation Status](https://readthedocs.org/projects/pinttrs/badge/?version=latest)](https://pinttrs.readthedocs.io/en/latest/?badge=latest)
 [![PyPI version](https://badge.fury.io/py/pinttrs.svg)](https://badge.fury.io/py/pinttrs)
-[![Conda version](https://anaconda.org/leroyv/pinttrs/badges/version.svg)](https://anaconda.org/leroyv/pinttrs/badges/version.svg)
+[![Conda version](https://anaconda.org/leroyv/pinttrs/badges/version.svg)](https://anaconda.org/leroyv/pinttrs)
 
 ## Motivation
 
