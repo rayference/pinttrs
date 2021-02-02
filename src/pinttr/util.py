@@ -36,9 +36,14 @@ def units_compatible(unit1: pint.Unit, unit2: pint.Unit) -> bool:
     """
     Check if two units are compatible. Accounts for angle units.
 
-    :param unit1: First unit to check for compatibility.
-    :param unit2: Second unit to check for compatibility.
-    :returns: ``True`` if ``unit1`` and ``unit2`` have the same dimensionality,
+    :param unit1:
+        First unit to check for compatibility.
+
+    :param unit2:
+        Second unit to check for compatibility.
+
+    :returns:
+        ``True`` if ``unit1`` and ``unit2`` have the same dimensionality,
         ``False`` otherwise.
     """
     return (1.0 * unit1 / unit2).unitless

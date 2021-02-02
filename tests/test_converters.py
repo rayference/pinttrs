@@ -27,9 +27,7 @@ def test_ensure_units():
     with pytest.raises(DimensionalityError):
         ensure_units(ureg.Quantity(100, "m"), ureg.s, convert=True)
 
-    # If we pass a callable value, it is evaluated
-    def f():
-        return ureg.km
-
-    assert ensure_units(100, f) == ureg.Quantity(100, "km")
-    assert ensure_units(100, lambda: ureg.s) == ureg.Quantity(100, "s")
+    # If we pass a unit generator, it is evaluated
+    u = UnitGenerator(ureg.km)
+    assert ensure_units(100, u) == ureg.Quantity(100, "km")
+    assert ensure_units(100, UnitGenerator(ureg.s)) == ureg.Quantity(100, "s")

@@ -18,21 +18,22 @@ def test_attrib_metadata():
     field_no_quantity = pinttr.ib(default=ureg.Quantity(0, "m"))
     assert MetadataKey.UNITS not in field_no_quantity.metadata
 
-    # Units are wrapped into callables and registered as field metadata
+    # Units are wrapped into generators and registered as field metadata
     field_distance = pinttr.ib(units=ureg.m)
     assert field_distance.metadata[MetadataKey.UNITS]() == ureg.m
 
     field_angle = pinttr.ib(units=ureg.deg)
     assert field_angle.metadata[MetadataKey.UNITS]() == ureg.deg
 
-    # Units defined using callables are directly registered as metadata
-    dynamic_units = ureg.m
-    field_distance = pinttr.ib(units=lambda: dynamic_units)
+    # Units specified with generators  are directly registered as metadata
+    ugen = pinttr.UnitGenerator(ureg.m)
+    field_distance = pinttr.ib(units=ugen)
     assert field_distance.metadata[MetadataKey.UNITS]() == ureg.m
 
-    # Runtime query of units can be achieved
-    dynamic_units = ureg.s
-    assert field_distance.metadata[MetadataKey.UNITS]() == ureg.s
+    # Units registered with a generator can be overridden
+    with ugen.override(ureg.s):
+        assert field_distance.metadata[MetadataKey.UNITS]() == ureg.s
+    assert field_distance.metadata[MetadataKey.UNITS]() == ureg.m
 
     # If 'units' argument is not a pint.Unit or a callable returning a pint.Unit, raise
     with pytest.raises(TypeError):
@@ -43,34 +44,34 @@ def test_attrib_converter_validator():
     """
     Unit tests for :func:`pinttrs._make.attrib` (converter and validator).
     """
-    dynamic_units = ureg.m
+    ugen = pinttr.UnitGenerator(ureg.m)
 
     # If no converter is defined, automatic unit conversion and validation is added
     @attr.s
     class MyClass:
-        field = pinttr.ib(default=None, units=lambda: dynamic_units)
+        field = pinttr.ib(default=None, units=ugen)
 
     # Default set to None makes converter optional
     assert MyClass().field is None
     # Automatic unit conversion is performed
     assert MyClass(1.0).field == 1.0 * ureg.m
-    # If a callable was used to fetch units at runtime, updating the conversion units is possible
-    dynamic_units = ureg.km
+    # If a generator was used to fetch units at runtime, updating the conversion units is possible
+    ugen.units = ureg.km
     assert MyClass(1.0).field == 1.0 * ureg.km
     # We can even change dimensionality
-    dynamic_units = ureg.s
+    ugen.units = ureg.s
     assert MyClass(1.0).field == 1.0 * ureg.s
 
     # If we use a pint.Quantity to init our field, it should pass if units are compatible
-    dynamic_units = ureg.m
+    ugen.units = ureg.m
     assert MyClass(1.0 * ureg.m).field == 1.0 * ureg.m
     # And it should raise if units are not compatible
-    dynamic_units = ureg.s
+    ugen.units = ureg.s
     with pytest.raises(UnitsError):
         MyClass(1.0 * ureg.m).field
 
     # With defaults, we should also have automatic conversion and validation upon setting field
-    dynamic_units = ureg.m
+    ugen.units = ureg.m
     a = MyClass(1.0)
     assert a.field == 1.0 * ureg.m
     a.field = 1.0 * ureg.km

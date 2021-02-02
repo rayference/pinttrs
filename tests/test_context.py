@@ -1,7 +1,8 @@
 import enum
 
 import pinttr
-from pinttr._context import UnitContext, UnitGenerator
+from pinttr import UnitContext
+from pinttr import UnitGenerator
 
 ureg = pinttr.get_unit_registry()
 
@@ -10,49 +11,6 @@ class PhysicalQuantity(enum.Enum):
     LENGTH = "length"
     SPEED = "speed"
     TIME = "time"
-
-
-def test_unit_generator():
-    # Calling it returns its registered units
-    g_length = UnitGenerator(ureg.m)
-    assert g_length() == ureg.m
-
-    # Changing its internal state updates returned units
-    g_length.units = ureg.km
-    assert g_length() == ureg.km
-
-    # We can nest them
-    g_length.units = ureg.m
-    g_time = UnitGenerator(ureg.s)
-    g_speed = UnitGenerator(lambda: g_length() / g_time())
-    assert g_speed() == ureg.m / ureg.s
-
-    # Nested generators also update dynamically
-    g_length.units = ureg.km
-    assert g_speed() == ureg.km / ureg.s
-
-    # Override temporarily updates the internal units
-    g_length.units = ureg.m
-    with g_length.override(ureg.km):
-        assert g_length() == ureg.km
-        assert g_speed() == ureg.km / ureg.s
-    assert g_length() == ureg.m
-    assert g_speed() == ureg.m / ureg.s
-
-    # Also works with strings
-    g_length.units = ureg.m
-    with g_length.override("km"):
-        assert g_length() == ureg.km
-        assert g_speed() == ureg.km / ureg.s
-    assert g_length() == ureg.m
-    assert g_speed() == ureg.m / ureg.s
-
-    # Also works with callables
-    with g_length.override(ureg.km), g_speed.override(ureg.mile / ureg.hour):
-        assert g_speed() == ureg.mile / ureg.hour
-        assert g_length() == ureg.km
-    assert g_speed() == ureg.m / ureg.s
-    assert g_length() == ureg.m
 
 
 def test_unit_context_init():

@@ -30,10 +30,13 @@ is the main difference and allows for the attachment of units to a field:
    >>> MyClass(1.0)
    MyClass(field=<Quantity(1.0, 'kilometer')>)
 
+.. note:: If ``units`` is unset, :func:`pinttr.ib` behaves exactly like
+   :func:`attr.ib`.
+
 Scalar values are automatically wrapped in Pint units. If a Pint quantity is
 passed as an attribute value, its units will be checked. If they prove to be
-:ref:`compatible in the sense of Pinttrs <compatible>`, the value will be assigned to the attribute
-without modification:
+:ref:`compatible in the sense of Pinttrs <compatible>`, the value will be
+assigned to the attribute without modification:
 
 .. doctest::
 
@@ -75,34 +78,77 @@ setting:
    >>> o
    MyClass(field=<Quantity(1.0, 'kilometer')>)
 
-Using callables to dynamically change default units
----------------------------------------------------
+Using unit generators to dynamically change default units
+---------------------------------------------------------
 
-The :func:`pinttr.ib` function's ``units`` parameter also accepts callables. 
-When this happens, the stored callable is evaluated each time units are 
-requested, *e.g.* by a converter or a validator:
+Pinttrs provides facilities to dynamically vary default units applied when
+passing a unitless value to a field to which units are attached. The central
+component of this workflow is the :class:`UnitGenerator` class. This small class
+stores Pint units and returns them when called:
 
 .. doctest::
 
+   >>> ugen = pinttr.UnitGenerator(ureg.m)
+   >>> ugen()
+   <Unit('meter')>
+
+Stored units can then be dynamically modified:
+
+.. doctest::
+
+   >>> ugen.units = ureg.s
+   >>> ugen()
+   <Unit('second')>
+
+The :meth:`.UnitGenerator.override` context manager can also be used to modify
+stored units temporarily:
+
+.. doctest::
+
+   >>> with ugen.override(ureg.m):
+   ...     ugen()
+   <Unit('meter')>
+   >>> ugen()
+   <Unit('second')>
+
+The :func:`pinttr.ib` function's ``units`` parameter also accepts unit
+generators. When this happens, the stored generator is evaluated each time units
+are requested, *e.g.* by a converter or a validator:
+
+.. doctest::
+
+   >>> ugen = pinttr.UnitGenerator(ureg.m)
    >>> @attr.s
    ... class MyClass:
-   ...     field = pinttr.ib(units=lambda: ureg.m)
+   ...     field = pinttr.ib(units=ugen)
    >>> MyClass(1.0)
    MyClass(field=<Quantity(1.0, 'meter')>)
+
+.. note:: Under the hood, units are always stored as unit generators.
 
 Callables can be used to vary default units dynamically at runtime:
 
 .. doctest::
 
-   >>> default_units = ureg.m
+   >>> ugen = pinttr.UnitGenerator(ureg.m)
    >>> @attr.s
    ... class MyClass:
-   ...     field = pinttr.ib(units=lambda: default_units)
+   ...     field = pinttr.ib(units=ugen)
    >>> MyClass(1.0)
    MyClass(field=<Quantity(1.0, 'meter')>)
-   >>> default_units = ureg.s
-   >>> MyClass(1.0)
+   >>> with ugen.override(ureg.s):
+   ...     MyClass(1.0)
    MyClass(field=<Quantity(1.0, 'second')>)
+
+Using unit contexts to manage multiple units dynamically
+--------------------------------------------------------
+
+*Coming soon.*
+
+Advanced: Composing unit generators
+-----------------------------------
+
+*Coming soon.*
 
 Dict-based object initialisation with units
 -------------------------------------------
@@ -121,9 +167,13 @@ Example:
 .. doctest::
 
    >>> from pinttr import interpret_units
-   >>> MyClass(**interpret_units({"field": 1.0, "field_units": "s"}, ureg))
-   MyClass(field=<Quantity(1.0, 'second')>)
+   >>> ugen = pinttr.UnitGenerator(ureg.m)
+   >>> @attr.s
+   ... class MyClass:
+   ...     field = pinttr.ib(units=ugen)
    >>> MyClass(**interpret_units({"field": 1.0, "field_units": "m"}, ureg))
+   MyClass(field=<Quantity(1.0, 'meter')>)
+   >>> MyClass(**interpret_units({"field": 1.0, "field_units": "s"}, ureg))
    Traceback (most recent call last):
      File "/Users/m4urice/miniconda3/envs/pinttrs/lib/python3.6/doctest.py", line 1330, in __run
        compileflags, 1), test.globs)
@@ -133,14 +183,9 @@ Example:
        __attr_validator_field(self, __attr_field, self.field)
      File "/Users/m4urice/Documents/src/perso/pinttrs/src/pinttr/validators.py", line 20, in has_compatible_units
        extra_msg=f": incompatible units '{value.units}' "
-   pinttr.exceptions.UnitsError: Cannot convert from 'meter' to 'second': incompatible units 'meter' used to set field 'field' (allowed: 'second').
+   pinttr.exceptions.UnitsError: Cannot convert from 'second' to 'meter': incompatible units 'second' used to set field 'field' (allowed: 'meter').
 
 .. note::
 
    The same unit registry must be used to define field units and interpret 
    dictionaries.
-
-Default units with contextual override
---------------------------------------
-
-Coming soon.

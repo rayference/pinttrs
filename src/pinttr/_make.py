@@ -1,7 +1,10 @@
+from typing import Callable, Optional, Union
+
 import attr
 import pint
 from attr import NOTHING
 
+from ._generator import UnitGenerator
 from ._metadata import MetadataKey
 from .converters import to_units
 from .validators import has_compatible_units
@@ -22,7 +25,7 @@ def attrib(
     eq=None,
     order=None,
     on_setattr=NOTHING,
-    units=NOTHING,
+    units: Union[None, pint.Unit, UnitGenerator] = None,
 ):
     """
     Create a new attribute on a class, possibly with units. This function
@@ -47,40 +50,35 @@ def attrib(
         Otherwise retains original behaviour.
 
     :param units:
-        Default units attached to the defined attribute.
-
-    :type units:
-        :class:`pint.Unit` or callable
+        Default units attached to the defined attribute. Accepts a
+        :class:`UnitGenerator` instance.
     """
 
     # Initialise attr.ib arguments
     metadata = dict() if not metadata else metadata
 
     # Process declared compatible units
-    if units is not NOTHING:
+    if units is not None:
         # Set field metadata
-        if callable(units) and isinstance(units(), pint.Unit):
-            units_callable = units
+        if isinstance(units, UnitGenerator):
+            unit_generator = units
 
         elif isinstance(units, pint.Unit):
-
-            def units_callable():
-                return units
+            unit_generator = UnitGenerator(units)
 
         else:
             raise TypeError(
-                "Argument 'units' must be a pint.Units or a callable returning "
-                "a pint.Units."
+                "Argument 'units' must be a pint.Units or a UnitGenerator"
             )
 
-        metadata[MetadataKey.UNITS] = units_callable
+        metadata[MetadataKey.UNITS] = unit_generator
 
         # Set field converter
         if converter is NOTHING:
             if default is None:
-                converter = attr.converters.optional(to_units(units_callable))
+                converter = attr.converters.optional(to_units(unit_generator))
             else:
-                converter = to_units(units_callable)
+                converter = to_units(unit_generator)
 
         # Set field validator
         if validator is NOTHING:
