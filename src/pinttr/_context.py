@@ -28,9 +28,9 @@ class UnitGenerator:
 
     def __call__(self) -> pint.Unit:
         """
-        :returns: If ``units`` is a :class:`pint.Unit`, it is returned;
-            if ``units`` is a callable, the result of its evaluation will be
-            returned.
+        :returns: 
+            If ``units`` is a :class:`pint.Unit`, it is returned; if ``units`` 
+            is a callable, the result of its evaluation will be returned.
         """
         if callable(self.units):
             return self.units()
@@ -42,7 +42,8 @@ class UnitGenerator:
         Temporarily override the value of ``units``. The initial value of
         ``units`` is restored upon leaving context.
 
-        :param units: Temporary replacement for ``units``.
+        :param units: 
+            Temporary replacement for ``units``.
         """
         units_old = copy(self.units)
 
@@ -114,7 +115,8 @@ class UnitContext:
         converted to :class:`pint.Unit` objects using the default registry
         returned by :func:`.get_unit_registry`.
 
-        :param key: Key to the value to which conversion is to be applied.
+        :param key: 
+            Key to the value to which conversion is to be applied.
         """
         key = self.key_converter(key)
         value = self.registry[key]
@@ -152,8 +154,10 @@ class UnitContext:
         :class:`pint.Unit` using the unit registry returned by
         :func:`.get_unit_registry`.
 
-        :param key: Key to the registered entry.
-        :param value: Object to register.
+        :param key: 
+            Key to the registered entry.
+        :param value: 
+            Object to register.
         """
         self.registry[key] = value
         self._convert_key(key)
@@ -163,8 +167,9 @@ class UnitContext:
         """
         Update the registry with a dictionary.
 
-        :param d: Dictionary used to apply :meth:`register` for each of its
-            key-value pairs.
+        :param d: 
+            Dictionary used to apply :meth:`register` for each of its key-value 
+            pairs.
         """
         for key, value in d.items():
             self.register(key, value)
@@ -173,9 +178,12 @@ class UnitContext:
         """
         Evaluate :class:`UnitGenerator` instance registered as ``key``.
 
-        :param key: Key to the :class:`UnitGenerator` to evaluate. The
-            ``key_converter`` is applied.
-        :returns: Evaluated units.
+        :param key: 
+            Key to the :class:`UnitGenerator` to evaluate. The ``key_converter`` 
+            is applied.
+
+        :returns: 
+            Evaluated units.
         """
         key = self.key_converter(key)
 
@@ -188,7 +196,8 @@ class UnitContext:
         """
         Evaluate all registered :class:`UnitGenerator` instance.
 
-        :returns: Evaluated units as a dictionary.
+        :returns: 
+            Evaluated units as a dictionary.
         """
         return {key: self.get(key) for key in self.registry.keys()}
 
@@ -196,9 +205,12 @@ class UnitContext:
         """
         Return the :class:`UnitGenerator` registered with a given key.
 
-        :param key: Key to the :class:`UnitGenerator` to return. The
-            ``key_converter`` is applied.
-        :returns: Unit generator.
+        :param key: 
+            Key to the :class:`UnitGenerator` to return. The ``key_converter`` 
+            is applied.
+
+        :returns: 
+            Unit generator.
         """
         key = self.key_converter(key)
         return self.registry[key]
@@ -206,8 +218,8 @@ class UnitContext:
     @contextmanager
     def override(self, *args, **kwargs) -> None:
         """
-        Temporarily override the underlying unit generators. This method
-        acts as a convenience proxy for :meth:`UnitGenerator.override`.
+        Temporarily override underlying unit generators. This method acts as a 
+        convenience proxy for :meth:`UnitGenerator.override`.
 
         Override specifications can take multiple forms:
 
