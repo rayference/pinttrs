@@ -78,13 +78,13 @@ setting:
    >>> o
    MyClass(field=<Quantity(1.0, 'kilometer')>)
 
-Using unit generators to dynamically change default units
----------------------------------------------------------
+Unit generators
+---------------
 
 Pinttrs provides facilities to dynamically vary default units applied when
 passing a unitless value to a field to which units are attached. The central
-component of this workflow is the :class:`UnitGenerator` class. This small class
-stores Pint units and returns them when called:
+component of this workflow is the :class:`.UnitGenerator` class. This small
+class stores Pint units and returns them when called:
 
 .. doctest::
 
@@ -97,17 +97,6 @@ Stored units can then be dynamically modified:
 .. doctest::
 
    >>> ugen.units = ureg.s
-   >>> ugen()
-   <Unit('second')>
-
-The :meth:`.UnitGenerator.override` context manager can also be used to modify
-stored units temporarily:
-
-.. doctest::
-
-   >>> with ugen.override(ureg.m):
-   ...     ugen()
-   <Unit('meter')>
    >>> ugen()
    <Unit('second')>
 
@@ -124,9 +113,34 @@ are requested, *e.g.* by a converter or a validator:
    >>> MyClass(1.0)
    MyClass(field=<Quantity(1.0, 'meter')>)
 
-.. note:: Under the hood, units are always stored as unit generators.
+.. note:: Under the hood, units attached to attributes with :func:`pinttr.ib`
+   are always stored as unit generators.
 
-Callables can be used to vary default units dynamically at runtime:
+Temporary override
+^^^^^^^^^^^^^^^^^^
+
+The :meth:`.UnitGenerator.override` context manager can also be used to modify
+stored units temporarily:
+
+.. doctest::
+
+   >>> ugen.units = ureg.m
+   >>> with ugen.override(ureg.s):
+   ...     ugen()
+   <Unit('second')>
+   >>> ugen()
+   <Unit('meter')>
+
+Override values can be specified using strings, which are interpreted based on
+the registry associated to the currently stored units:
+
+.. doctest::
+
+   >>> with ugen.override("m"):
+   ...     ugen()
+   <Unit('meter')>
+
+Override can be used to vary dynamically default units attached to an attribute:
 
 .. doctest::
 
@@ -140,18 +154,199 @@ Callables can be used to vary default units dynamically at runtime:
    ...     MyClass(1.0)
    MyClass(field=<Quantity(1.0, 'second')>)
 
-Using unit contexts to manage multiple units dynamically
---------------------------------------------------------
+Composed unit generators
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-*Coming soon.*
+Unit generators can be composed to construct composed dynamic units. To that
+end, the :class:`.UnitGenerator` constructor accepts a callable, which can be
+a regular function, a callable class or even a lambda (even another generator
+can be used, but this is of limited utility). For instance:
 
-Advanced: Composing unit generators
------------------------------------
+.. doctest::
 
-*Coming soon.*
+   >>> ugen_length = pinttr.UnitGenerator(ureg.m)
+   >>> ugen_time = pinttr.UnitGenerator(ureg.s)
+   >>> ugen_speed = pinttr.UnitGenerator(lambda: ugen_length() / ugen_time())
+   >>> ugen_speed()
+   <Unit('meter / second')>
 
-Dict-based object initialisation with units
--------------------------------------------
+Overrides will then propagate to the composed generator:
+
+.. doctest::
+
+   >>> with ugen_length.override("km"), ugen_time.override("hour"):
+   ...     ugen_speed()
+   <Unit('kilometer / hour')>
+
+Unit contexts
+-------------
+
+Unit contexts, implemented by the :class:`.UnitContext` class, provide a
+simple interface to manage a structured collection of unit generators. Their
+primary application is to vary the interpretation of units applied to scalar
+values assigned to unit-attached fields.
+
+Let's first define a unit context. :class:`.UnitContext` encapsulates a
+dictionary of :class:`.UnitGenerator` values. The simplest definition uses
+string-keyed dictionaries:
+
+.. doctest::
+
+   >>> uctx = pinttr.UnitContext({"length": pinttr.UnitGenerator(ureg.m)})
+
+Additional units can be registered after context object creation using the
+:meth:`~.UnitContext.register` method:
+
+.. doctest::
+
+   >>> uctx.register("time", pinttr.UnitGenerator(ureg.s))
+   >>> uctx.get_all()
+   {'length': <Unit('meter')>, 'time': <Unit('second')>}
+
+The unit context can be queried for units using the :meth:`~.UnitContext.get`
+method:
+
+.. doctest::
+
+   >>> uctx.get("length")
+   <Unit('meter')>
+
+It is also possible to access the underlying generator with the
+:meth:`~.UnitContext.deferred` method:
+
+.. doctest::
+
+   >>> uctx.deferred("length")
+   UnitGenerator(units=<Unit('meter')>)
+
+The returned unit generator can be used to attach units to an attribute:
+
+.. doctest::
+
+   >>> @attr.s
+   ... class MyClass:
+   ...     field = pinttr.ib(units=uctx.deferred("length"))
+   >>> MyClass(1.0)
+   MyClass(field=<Quantity(1.0, 'meter')>)
+
+When initialising a context or registering additional units to it, units can be
+directly passed and will be turned into generators automatically:
+
+.. doctest::
+
+   >>> uctx = pinttr.UnitContext({"length": ureg.m})
+   >>> uctx.deferred("length")
+   UnitGenerator(units=<Unit('meter')>)
+   >>> uctx.register("time", ureg.s)
+   >>> uctx.deferred("time")
+   UnitGenerator(units=<Unit('second')>)
+
+Temporary override
+^^^^^^^^^^^^^^^^^^
+
+The :meth:`~.UnitContext.override` context manager provides a convenient way to
+override one or several of the registered units with a dictionary:
+
+.. doctest::
+
+   >>> with uctx.override({"length": ureg.mile, "time": ureg.hour}):
+   ...     ureg.Quantity(1.0, "km/hour").to(uctx.get("length") / uctx.get("time"))
+   <Quantity(0.621371192, 'mile / hour')>
+
+The :meth:`~.UnitContext.override` method also offers a keyword argument
+interface, usable when keys are strings or when a key converter handling strings
+is defined (see `Non-string context keys`_):
+
+.. doctest::
+
+   >>> with uctx.override(length=ureg.mile, time=ureg.hour):
+   ...     ureg.Quantity(1.0, "km/hour").to(uctx.get("length") / uctx.get("time"))
+   <Quantity(0.621371192, 'mile / hour')>
+
+Just like :class:`.UnitGenerator`, :class:`.UnitContext` can be overridden using
+string-based unit specifications:
+
+.. doctest::
+
+   >>> with uctx.override(length="mile", time="hour"):
+   ...     ureg.Quantity(1.0, "km/hour").to(uctx.get("length") / uctx.get("time"))
+   <Quantity(0.621371192, 'mile / hour')>
+
+Non-string context keys
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Sometimes, it is desirable to not use strings as context registry keys. A
+typical replacement can be an enumeration, *e.g.* with string values:
+
+.. doctest::
+
+   >>> import enum
+   >>> class PhysicalQuantity(enum.Enum):
+   ...     LENGTH = "length"
+   ...     SPEED = "speed"
+   ...     TIME = "time"
+
+Using a string-valued enumeration is of particular interest, because the enum's
+constructor will act like a converter:
+
+.. doctest::
+
+   >>> PhysicalQuantity(PhysicalQuantity.LENGTH)
+   <PhysicalQuantity.LENGTH: 'length'>
+   >>> PhysicalQuantity("length")
+   <PhysicalQuantity.LENGTH: 'length'>
+
+In order to preserve optimal convenience, :class:`.UnitContext` offers the
+possibility to declare a key converter. In our example, we would like to still
+be able to access units and generators using strings (this would also make the
+keyword argument of :meth:`~.UnitContext.override` still usable). Our
+enumeration's constructor performs this string-to-enum conversion, so we can
+declare it as the key converter:
+
+.. doctest::
+
+   >>> uctx = pinttr.UnitContext(key_converter=PhysicalQuantity)
+
+We can then use strings or enum members indifferently to access context
+contents:
+
+   >>> uctx.register(PhysicalQuantity.LENGTH, ureg.m)
+   >>> uctx.register("time", ureg.s)
+   >>> uctx.deferred(PhysicalQuantity.TIME)
+   UnitGenerator(units=<Unit('second')>)
+   >>> uctx.register(PhysicalQuantity.SPEED, pinttr.UnitGenerator(
+   ...     lambda: uctx.get(PhysicalQuantity.LENGTH) /
+   ...             uctx.get(PhysicalQuantity.TIME)
+   ... ))
+   >>> with uctx.override(length=ureg.km, time=ureg.hour):
+   ...    uctx.get("speed")
+   <Unit('kilometer / hour')>
+
+Specifying units with strings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+:class:`.UnitContext` can interpret string values to Pint units and construct
+generators from them. The unit registry returned by :func:`.get_unit_registry`
+will be used for interpretation. Example:
+
+.. doctest::
+
+   >>> uctx = pinttr.UnitContext({"length": "m", "time": "s"}, interpret_str=True)
+   >>> uctx.get_all()
+   {'length': <Unit('meter')>, 'time': <Unit('second')>}
+
+.. warning:: Interpreting units base on Pinttrs's default registry can have
+   unintended consequences. Be careful when using this feature!
+
+   .. doctest::
+
+      >>> uctx.get("length") / ureg.m
+      Traceback (most recent call last):
+          ...
+      ValueError: Cannot operate with Unit and Unit of different registries.
+
+Interpreting units in dicts
+---------------------------
 
 Pinttrs ships a helper function :func:`pinttr.interpret_units` which can be 
 used to interpret units in a dictionary with string-valued keys:
@@ -175,14 +370,7 @@ Example:
    MyClass(field=<Quantity(1.0, 'meter')>)
    >>> MyClass(**interpret_units({"field": 1.0, "field_units": "s"}, ureg))
    Traceback (most recent call last):
-     File "/Users/m4urice/miniconda3/envs/pinttrs/lib/python3.6/doctest.py", line 1330, in __run
-       compileflags, 1), test.globs)
-     File "<doctest default[2]>", line 1, in <module>
-       MyClass(**interpret_units({"field": 1.0, "field_units": "m"}, ureg))
-     File "<attrs generated init builtins.MyClass-3>", line 5, in __init__
-       __attr_validator_field(self, __attr_field, self.field)
-     File "/Users/m4urice/Documents/src/perso/pinttrs/src/pinttr/validators.py", line 20, in has_compatible_units
-       extra_msg=f": incompatible units '{value.units}' "
+       ...
    pinttr.exceptions.UnitsError: Cannot convert from 'second' to 'meter': incompatible units 'second' used to set field 'field' (allowed: 'meter').
 
 .. note::
