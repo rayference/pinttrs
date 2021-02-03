@@ -51,9 +51,10 @@ class UnitContext:
 
     def _convert_key(self, key):
         """
-        Apply conversion rule ``key_converter`` to a registered key.
+        Apply in-place conversion rule ``key_converter`` to a registered key.
 
-        :param key: Key to which conversion is to be applied.
+        :param key:
+            Key to which conversion is to be applied.
         """
         self.registry[self.key_converter(key)] = self.registry.pop(key)
 

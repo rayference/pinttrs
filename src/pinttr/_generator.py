@@ -35,13 +35,14 @@ class UnitGenerator:
         return self.units
 
     @contextmanager
-    def override(self, units: Union[pint.Unit, Callable]) -> None:
+    def override(self, units: Union[pint.Unit, Callable, str]) -> None:
         """
         Temporarily override the value of ``units``. The initial value of
         ``units`` is restored upon leaving context.
 
         :param units:
-            Temporary replacement for ``units``.
+            Temporary replacement for ``units``. String values are interpreted
+            based on the unit registry of currently stored units.
         """
         units_old = copy(self.units)
 
