@@ -23,6 +23,7 @@ class UnitContext:
         * **registry** (Dict[Hashable, :class:`.UnitGenerator`]) –
           Unit generator registry. Keys can be any hashable type, but
           :class:`str` or :class:`~enum.Enum` are recommended.
+          Defaults to an empty dictionary.
 
           .. note:: The initialisation sequence will make repeated calls to
              :meth:`register` and will consequently apply the same key and value
@@ -36,7 +37,7 @@ class UnitContext:
           Converter used for keys. Defaults to :func:`.identity`.
     """
 
-    registry: Dict[Hashable, UnitGenerator] = attr.ib(default={})
+    registry: Dict[Hashable, UnitGenerator] = attr.ib(factory=dict)
     interpret_str: bool = attr.ib(default=False)
     key_converter: Callable = attr.ib(default=identity)
 
