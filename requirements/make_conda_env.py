@@ -13,7 +13,7 @@ from ruamel.yaml.comments import CommentedSeq as CS
     "--sections",
     default="main,tests,dev,docs",
     help="Dependency sections to include in the produced environment.yml file. "
-         "Default: 'main,tests,dev,docs'",
+    "Default: 'main,tests,dev,docs'",
 )
 @click.option("-i", "--input-dir", default=".", help="Path to input directory.")
 @click.option("-o", "--output", default=None, help="Path to output file.")

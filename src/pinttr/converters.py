@@ -6,9 +6,9 @@ from ._generator import UnitGenerator
 
 
 def ensure_units(
-        value: Any,
-        default_units: Union[pint.Unit, UnitGenerator],
-        convert: bool = False,
+    value: Any,
+    default_units: Union[pint.Unit, UnitGenerator],
+    convert: bool = False,
 ) -> pint.Quantity:
     """Ensure that a value is wrapped in a Pint quantity container.
 
@@ -47,7 +47,7 @@ def ensure_units(
 
 
 def to_units(
-        units: Union[pint.Unit, UnitGenerator]
+    units: Union[pint.Unit, UnitGenerator]
 ) -> Callable[[Any], pint.Quantity]:
     """
     Create a callable ``f(x)`` returning

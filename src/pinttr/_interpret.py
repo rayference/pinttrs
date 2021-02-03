@@ -7,9 +7,9 @@ from ._defaults import get_unit_registry
 
 
 def interpret_units(
-        d: Dict[str, Any],
-        ureg: Union[pint.UnitRegistry, None] = None,
-        inplace: bool = False,
+    d: Dict[str, Any],
+    ureg: Union[pint.UnitRegistry, None] = None,
+    inplace: bool = False,
 ) -> Dict[str, Any]:
     """
     Interpret units in a dictionary. The dictionary is searched for matching

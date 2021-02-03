@@ -33,15 +33,18 @@ def test_unit_context_init():
     assert unit_context.registry == {"length": UnitGenerator(ureg.m)}
 
     # Init from Enum: UnitGenerator map
-    unit_context = UnitContext({"length": UnitGenerator(ureg.m)}, key_converter=PhysicalQuantity)
-    assert unit_context.registry == {PhysicalQuantity.LENGTH: UnitGenerator(ureg.m)}
+    unit_context = UnitContext(
+        {"length": UnitGenerator(ureg.m)}, key_converter=PhysicalQuantity
+    )
+    assert unit_context.registry == {
+        PhysicalQuantity.LENGTH: UnitGenerator(ureg.m)
+    }
 
 
 def test_unit_context_getters():
     # Unit generators are evaluated
     unit_context = UnitContext(
-        {"length": ureg.m, "time": ureg.s},
-        key_converter=PhysicalQuantity
+        {"length": ureg.m, "time": ureg.s}, key_converter=PhysicalQuantity
     )
     assert unit_context.get("length") == ureg.m
     assert unit_context.get("time") == ureg.s
@@ -49,7 +52,9 @@ def test_unit_context_getters():
     # More complex unit generators are also evaluated
     unit_context.register(
         "speed",
-        UnitGenerator(lambda: unit_context.get("length") / unit_context.get("time"))
+        UnitGenerator(
+            lambda: unit_context.get("length") / unit_context.get("time")
+        ),
     )
     assert unit_context.get("speed") == ureg.m / ureg.s
 
@@ -63,18 +68,20 @@ def test_unit_context_getters():
 
 def test_unit_context_override():
     unit_context = UnitContext(key_converter=PhysicalQuantity)
-    unit_context.update({
-        "length": ureg.m,
-        "time": ureg.s,
-        "speed": UnitGenerator(lambda: unit_context.get("length") /
-                                       unit_context.get("time"))
-    })
+    unit_context.update(
+        {
+            "length": ureg.m,
+            "time": ureg.s,
+            "speed": UnitGenerator(
+                lambda: unit_context.get("length") / unit_context.get("time")
+            ),
+        }
+    )
 
     # Override with dict propagates to stored generators
-    with unit_context.override({
-        PhysicalQuantity.LENGTH: ureg.km,
-        PhysicalQuantity.TIME: ureg.h
-    }):
+    with unit_context.override(
+        {PhysicalQuantity.LENGTH: ureg.km, PhysicalQuantity.TIME: ureg.h}
+    ):
         assert unit_context.get("length") == ureg.km
         assert unit_context.get("time") == ureg.h
         assert unit_context.get("speed") == ureg.Unit("km/h")
