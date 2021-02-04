@@ -64,3 +64,4 @@ The :ref:`usage` section presents Pinttrs's features and how to use them.
    rst/dev
    rst/api
    rst/changes
+   GitHub repository <https://github.com/leroyvn/pinttrs>
