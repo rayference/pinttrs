@@ -92,7 +92,7 @@ dist:
 	python setup.py sdist bdist_wheel
 
 dist-clean:
-	rm -rf sdist bdist_wheel
+	rm -rf build dist sdist bdist_wheel
 
 upload-pypi: dist
 	twine upload dist/*
