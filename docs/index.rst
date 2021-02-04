@@ -20,7 +20,7 @@ Pinttrs v\ |release|.
 .. image:: https://img.shields.io/badge/code%20style-black-black?style=flat-square
    :target: https://github.com/psf/black
 
-.. image:: https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat-square&labelColor=ef8336
+.. image:: https://img.shields.io/badge/%20imports-isort-blue?style=flat-square&labelColor=orange
    :target: https://pycqa.github.io/isort
 
 *Pint meets attrs.*
