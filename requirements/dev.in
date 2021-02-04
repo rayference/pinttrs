@@ -1,6 +1,7 @@
 black
 click
 conda-lock
+isort
 pip-tools
 ruamel.yaml
 twine
