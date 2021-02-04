@@ -14,8 +14,8 @@ Pinttrs v\ |release|.
 .. image:: https://img.shields.io/pypi/v/pinttrs?color=blue&style=flat-square
    :target: https://pypi.org/project/pinttrs
 
-.. image:: https://img.shields.io/conda/v/leroyv/pinttrs?color=blue&style=flat-square
-   :target: https://anaconda.org/leroyv/pinttrs
+.. image:: https://img.shields.io/conda/v/eradiate/pinttrs?color=blue&style=flat-square
+   :target: https://anaconda.org/eradiate/pinttrs
 
 .. image:: https://img.shields.io/badge/code%20style-black-black?style=flat-square
    :target: https://github.com/psf/black
@@ -45,7 +45,7 @@ Using Conda:
 
 .. code-block:: bash
 
-   conda install -c leroyv pinttrs -c conda-forge
+   conda install -c eradiate pinttrs -c conda-forge
 
 The :ref:`usage` section presents Pinttrs's features and how to use them.
 
