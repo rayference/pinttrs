@@ -3,6 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+:hide-toc:
+
 Pinttrs
 =======
 
@@ -49,20 +51,16 @@ Using Conda:
 
 The :ref:`usage` section presents Pinttrs's features and how to use them.
 
---------------------------------------------------------------------------------
-
 .. toctree::
-   :maxdepth: 2
-   :caption: Full contents
+   :hidden:
 
    rst/usage
    rst/compatible
+
+.. toctree::
+   :caption: Development
+   :hidden:
+
    rst/dev
    rst/api
    rst/changes
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`
