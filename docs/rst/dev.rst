@@ -91,6 +91,17 @@ Publishing
 
 *I want to ...*
 
+**... bump the version number**
+   We use `bump2version <https://github.com/c4urself/bump2version>`_ for that.
+   It should be included in the development environment.
+
+   .. code:: bash
+
+      bump2version <major|minor|patch>
+
+   The ``--new-version`` option overrides the target version value (useful for
+   development releases).
+
 **... create a release on GitHub**
    1. Make sure that the `GitHub CLI <https://cli.github.com/>`_ is installed on
       your machine.
@@ -102,7 +113,7 @@ Publishing
          gh release create v$(python3 -c "import pinttr; print(pinttr.__version__)")
 
       Feel free to add more options to the command if relevant.
-   4. Bump the version number to the next relevant value.
+   4. [Optional] Bump the version number to the next relevant value.
 
 **... publish the package to PyPI**
    1. Checkout the commit corresponding to the source you want to package.

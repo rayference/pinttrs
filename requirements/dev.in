@@ -1,3 +1,4 @@
+bump2version
 black
 click
 conda-lock
