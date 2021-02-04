@@ -131,6 +131,9 @@ Publishing
 
       .. note:: This make target will also execute the ``dist`` target.
 
+**... publish the package to Anaconda Cloud**
+   We don't yet provide a conda-build recipe yet.
+
 Executing tests
 ---------------
 

@@ -35,9 +35,7 @@ using Pint_.
 Getting started
 ---------------
 
-Install from PyPI in your virtual environment
-
-..
+Install from PyPI in your virtual environment:
 
 .. code-block:: bash
 

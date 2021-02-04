@@ -10,11 +10,15 @@ dependencies:
   - pytest
   - pytest-cov
   # dev
+  - bump2version
   - black
   - click
   - conda-lock
+  - isort
+  - pip
   - pip-tools
   - ruamel.yaml
+  - setuptools
   - twine
   # docs
   - sphinx>=3.1
