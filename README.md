@@ -2,9 +2,12 @@
 
 *Pint meets attrs*
 
-[![Documentation Status](https://readthedocs.org/projects/pinttrs/badge/?version=latest)](https://pinttrs.readthedocs.io/en/latest/?badge=latest)
-[![PyPI version](https://badge.fury.io/py/pinttrs.svg)](https://badge.fury.io/py/pinttrs)
-[![Conda version](https://anaconda.org/leroyv/pinttrs/badges/version.svg)](https://anaconda.org/leroyv/pinttrs)
+[![Documentation Status](https://img.shields.io/readthedocs/pinttrs?style=flat-square)](https://pinttrs.readthedocs.io/latest)
+[![PyPI version](https://img.shields.io/pypi/v/pinttrs?color=blue&style=flat-square)](https://pypi.org/project/pinttrs)
+[![Conda version](https://img.shields.io/conda/v/leroyv/pinttrs?color=blue&style=flat-square)](https://anaconda.org/leroyv/pinttrs)
+
+[![Code style: black](https://img.shields.io/badge/code%20style-black-black?style=flat-square)](https://github.com/psf/black)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-blue?style=flat-square&labelColor=orange)](https://pycqa.github.io/isort/)
 
 ## Motivation
 
@@ -16,10 +19,12 @@ attributes with [Pint](https://pint.readthedocs.io).
 
 ## Features
 
-- [x] Attach automatically units to unitless values passed to initialise an attribute
-- [x] Verify unit compatibility when assigning a value to an attribute
-- [x] Interpret units in dictionaries with a simple syntax
-- [x] Define unit context to vary unitless value interpretation dynamically
+- Attach automatically units to unitless values passed to initialise an attribute
+- Verify unit compatibility when assigning a value to an attribute
+- Interpret units in dictionaries with a simple syntax
+- Define unit context to vary unitless value interpretation dynamically
+
+Check the [documentation](https://pinttrs.readthedocs.io) for more detail. 
 
 ## License
 

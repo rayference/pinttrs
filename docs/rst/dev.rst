@@ -183,14 +183,9 @@ Building the documentation
 Roadmap
 -------
 
-**For v1.0.0**
-    * Add unit context tutorial.
-    * Add changelog.
-
 **For later**
     * Automate version number management.
-    * Use unit generators everywhere instead of generic callables.
     * Automate testing with CI (including coverage stats).
     * Improve coverage to 100%.
-    * Automate packaging and publish to conda-forge instead of my personal
-      channel on Anaconda Cloud.
+    * Automate packaging and publish to conda-forge instead of a private channel
+      on Anaconda Cloud.
