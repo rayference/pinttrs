@@ -31,3 +31,7 @@ def test_ensure_units():
     u = UnitGenerator(ureg.km)
     assert ensure_units(100, u) == ureg.Quantity(100, "km")
     assert ensure_units(100, UnitGenerator(ureg.s)) == ureg.Quantity(100, "s")
+
+    # If we don't use a pint.Unit or a UnitGenerator to specify units, raise
+    with pytest.raises(TypeError):
+        ensure_units(100, "km")

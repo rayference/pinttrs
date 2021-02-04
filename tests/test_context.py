@@ -1,5 +1,7 @@
 import enum
 
+import pytest
+
 import pinttr
 from pinttr import UnitContext
 from pinttr import UnitGenerator
@@ -32,6 +34,10 @@ def test_unit_context_init():
     unit_context = UnitContext({"length": "m"}, interpret_str=True)
     assert unit_context.registry == {"length": UnitGenerator(ureg.m)}
 
+    # Init from str: str map: fails if interpret_str is not True
+    with pytest.raises(TypeError):
+        UnitContext({"length": "m"})
+
     # Init from Enum: UnitGenerator map
     unit_context = UnitContext(
         {"length": UnitGenerator(ureg.m)}, key_converter=PhysicalQuantity
@@ -39,6 +45,10 @@ def test_unit_context_init():
     assert unit_context.registry == {
         PhysicalQuantity.LENGTH: UnitGenerator(ureg.m)
     }
+
+    # Init fails if dict values are not str, pint.Unit or UnitGenerator
+    with pytest.raises(TypeError):
+        UnitContext({"length": 1.0})
 
 
 def test_unit_context_getters():
@@ -48,6 +58,10 @@ def test_unit_context_getters():
     )
     assert unit_context.get("length") == ureg.m
     assert unit_context.get("time") == ureg.s
+
+    # Raise if key is unregistered
+    with pytest.raises(KeyError):
+        unit_context.get("speed")  # Still, the key must pass conversion
 
     # More complex unit generators are also evaluated
     unit_context.register(
@@ -97,3 +111,8 @@ def test_unit_context_override():
     assert unit_context.get("length") == ureg.m
     assert unit_context.get("time") == ureg.s
     assert unit_context.get("speed") == ureg.Unit("m/s")
+
+    # Override with something else than a dict or kwargs fails
+    with pytest.raises(TypeError):
+        with unit_context.override(1.0):
+            pass
