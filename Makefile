@@ -15,6 +15,14 @@ endif
 all:
 	@echo "Detected platform: $(PLATFORM)"
 
+# -- Dependency management commons ---------------------------------------------
+
+# Update .in files
+update-req-files:
+	python requirements/update_in_files.py --quiet
+
+.PHONY: update-req-files
+
 # -- Dependency management with Pip --------------------------------------------
 
 # Update packaging tools
@@ -22,7 +30,7 @@ pip-update-tools:
 	pip install --upgrade pip-tools pip setuptools
 
 # Lock pip dependencies
-pip-compile:
+pip-compile: update-req-files
 	pip-compile --upgrade --build-isolation --generate-hashes \
 	    --output-file requirements/main.txt \
 	    requirements/main.in
@@ -52,7 +60,7 @@ pip-update: pip-lock pip-init
 # -- Dependency management with Conda ------------------------------------------
 
 # Lock conda dependencies
-conda-lock:
+conda-lock: update-req-files
 	python requirements/make_conda_env.py -o requirements/environment.yml --quiet
 	conda-lock --file requirements/environment.yml \
 	    --filename-template "requirements/environment-{platform}.lock" \

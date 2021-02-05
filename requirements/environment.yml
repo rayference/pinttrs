@@ -10,8 +10,8 @@ dependencies:
   - pytest
   - pytest-cov
   # dev
-  - bump2version
   - black
+  - bump2version
   - click
   - conda-lock
   - isort
