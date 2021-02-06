@@ -30,7 +30,7 @@ pip-update-in-files:
 pip-compile: pip-update-in-files
 	@for LAYER in dev main docs tests; do \
 		echo "Compiling requirements/$${LAYER}.in to requirements/$${LAYER}.txt"; \
-		pip-compile --upgrade --build-isolation --generate-hashes \
+		pip-compile --upgrade --build-isolation --generate-hashes --allow-unsafe \
 			--output-file requirements/$${LAYER}.txt \
 			requirements/$${LAYER}.in; \
 	done
