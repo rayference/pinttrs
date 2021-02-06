@@ -5,6 +5,7 @@ from copy import deepcopy
 import click
 from ruamel.yaml import YAML
 from ruamel.yaml.comments import CommentedSeq as CS
+from setuptools.config import read_configuration
 
 
 @click.command()
@@ -15,10 +16,12 @@ from ruamel.yaml.comments import CommentedSeq as CS
     help="Dependency sections to include in the produced environment.yml file. "
     "Default: 'main,tests,dev,docs'",
 )
-@click.option("-i", "--input-dir", default=".", help="Path to input directory.")
+@click.option(
+    "-i", "--input", default="setup.cfg", help="Path to setup.cfg file."
+)
 @click.option("-o", "--output", default=None, help="Path to output file.")
 @click.option("-q", "--quiet", is_flag=True, help="Suppress terminal output.")
-def cli(sections, input_dir, output, quiet):
+def cli(sections, input, output, quiet):
     # Set YAML parameters
     yaml = YAML(typ="rt")  # Round-trip mode allows for comment insertion
     indent_offset = 2
@@ -29,19 +32,33 @@ def cli(sections, input_dir, output, quiet):
         env_yml = yaml.load(f.read())
 
     # Extract dependency section contents
+    if not quiet:
+        print(f"Reading dependencies from {input}")
+
+    setup_config = read_configuration(input)
     sections = [x.strip() for x in sections.split(",")]
-    section_indices = {}
-    dep_list = deepcopy(env_yml["dependencies"]) if "dependencies" in env_yml else []
+    section_indices = dict()
+    dep_list = (
+        deepcopy(env_yml["dependencies"]) if "dependencies" in env_yml else []
+    )
     i = len(dep_list)
 
     for section in sections:
         section_indices[section] = i
-        with open(os.path.join("requirements", f"{section}.in")) as f:
-            for line in f.readlines():
-                line = line.strip()
-                if line:
-                    dep_list.append(line.strip())
-                    i += 1
+
+        try:
+            packages = (
+                setup_config["options"]["install_requires"]
+                if section == "main"
+                else setup_config["options"]["extras_require"][section]
+            )
+        except KeyError:
+            raise RuntimeError(f"Cannot fetch dependencies from {input}")
+
+        for package in packages:
+            if package not in dep_list:  # Do not duplicate
+                dep_list.append(package)
+                i += 1
 
     # Format dependency list
     lst = CS(dep_list)
