@@ -198,8 +198,6 @@ Roadmap
 -------
 
 **For later**
-    * Automate version number management.
     * Automate testing with CI (including coverage stats).
-    * Improve coverage to 100%.
     * Automate packaging and publish to conda-forge instead of a private channel
       on Anaconda Cloud.
