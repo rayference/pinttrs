@@ -15,35 +15,25 @@ endif
 all:
 	@echo "Detected platform: $(PLATFORM)"
 
-# -- Dependency management commons ---------------------------------------------
-
-# Update .in files
-update-req-files:
-	python requirements/update_in_files.py --quiet
-
-.PHONY: update-req-files
-
 # -- Dependency management with Pip --------------------------------------------
 
 # Update packaging tools
 pip-update-tools:
 	pip install --upgrade pip-tools pip setuptools
 
-# Lock pip dependencies
-pip-compile: update-req-files
-	pip-compile --upgrade --build-isolation --generate-hashes \
-	    --output-file requirements/main.txt \
-	    requirements/main.in
-	pip-compile --upgrade --build-isolation --generate-hashes \
-	    --output-file requirements/docs.txt \
-	    requirements/main.in requirements/docs.in
-	pip-compile --upgrade --build-isolation --generate-hashes \
-	    --output-file requirements/tests.txt \
-	    requirements/main.in requirements/tests.in
-	pip-compile --upgrade --build-isolation --generate-hashes \
-	    --output-file requirements/dev.txt \
-	    requirements/main.in requirements/tests.in \
-	    requirements/docs.in requirements/dev.in
+# Update .in files
+pip-update-in-files:
+	python requirements/make_pip_in_files.py --quiet
+
+# Lock pip dependencies (dev must be compiled first because it constrains the
+# others)
+pip-compile: pip-update-in-files
+	@for LAYER in dev main docs tests; do \
+		echo "Compiling requirements/$${LAYER}.in to requirements/$${LAYER}.txt"; \
+		pip-compile --upgrade --build-isolation --generate-hashes \
+			--output-file requirements/$${LAYER}.txt \
+			requirements/$${LAYER}.in; \
+	done
 
 # Lock dependencies
 pip-lock: pip-update-tools pip-compile
@@ -55,12 +45,12 @@ pip-init:
 
 pip-update: pip-lock pip-init
 
-.PHONY: pip-compile pip-update-tools pip-update-deps pip-init
+.PHONY: pip-compile pip-update-tools pip-update-deps pip-init pip-update-in-files
 
 # -- Dependency management with Conda ------------------------------------------
 
 # Lock conda dependencies
-conda-lock: update-req-files
+conda-lock:
 	python requirements/make_conda_env.py -o requirements/environment.yml --quiet
 	conda-lock --file requirements/environment.yml \
 	    --filename-template "requirements/environment-{platform}.lock" \
@@ -100,7 +90,7 @@ dist:
 	python setup.py sdist bdist_wheel
 
 dist-clean:
-	rm -rf build dist sdist bdist_wheel
+	rm -rf build dist
 
 upload-pypi: dist
 	twine upload dist/*

@@ -1,3 +1,5 @@
+-r main.in
+-c dev.txt
 sphinx>=3.1
 furo
 sphinx-copybutton
