@@ -18,6 +18,9 @@ def interpret_units(
     magnitude field is attached units and converted to a :class:`pint.Quantity`
     object. The unit field is then dropped.
 
+    If the magnitude field is already a Pint quantity, it will be converted to
+    specified units (and conversion will fail if units are incompatible).
+
     .. admonition:: Example
 
        .. code-block:: python
@@ -35,14 +38,24 @@ def interpret_units(
 
     .. warning:: Dictionary keys must be strings.
 
-    :param d: Dictionary in which units will be interpreted.
-    :param ureg: Unit registry to use for unit creation. If set to ``None``,
+    :param d:
+        Dictionary in which units will be interpreted.
+
+    :param ureg:
+        Unit registry to use for unit creation. If set to ``None``,
         Pinttrs's registered unit registry is used. See also
         :func:`pinttr.set_unit_registry`.
-    :param inplace: If ``True``, modify the dictionary in-place; otherwise,
+
+    :param inplace:
+        If ``True``, modify the dictionary in-place; otherwise,
         return a modified copy.
-    :returns: A copy of ``d``, where unit fields are interpreted using ``ureg``
+
+    :returns:
+        A copy of ``d``, where unit fields are interpreted using ``ureg``
         to attach units to the corresponding magnitude field.
+
+    .. versionchanged:: 1.1.0
+       Support for converting quantity magnitude fields
     """
     if ureg is None:
         ureg = get_unit_registry()
@@ -55,12 +68,20 @@ def interpret_units(
     for key in list(result.keys()):
         if key.endswith("_units"):
             magnitude_key = key[:-6]
+
             try:
-                result[magnitude_key] = ureg.Quantity(
-                    result[magnitude_key], result[key]
-                )
-                del result[key]
+                magnitude = result[magnitude_key]
             except KeyError:
                 continue
+
+            units = result[key]
+
+            # If magnitude value is a quantity, convert to requested units
+            # (and thus check for unit compatibility)
+            if isinstance(magnitude, pint.Quantity):
+                magnitude = magnitude.m_as(units)
+
+            result[magnitude_key] = ureg.Quantity(magnitude, result[key])
+            del result[key]
 
     return result

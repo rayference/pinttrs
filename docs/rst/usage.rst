@@ -377,3 +377,15 @@ Example:
 
    The same unit registry must be used to define field units and interpret 
    dictionaries.
+
+If the magnitude entry is already a Pint quantity, conversion to passed units
+will be performed (and will fail if incompatible units are detected):
+
+.. doctest::
+
+   >>> pinttr.interpret_units({"field": 1.0 * ureg.m, "field_units": "km"}, ureg)
+   {'field': <Quantity(0.001, 'kilometer')>}
+   >>> pinttr.interpret_units({"field": 1.0 * ureg.s, "field_units": "m"}, ureg)
+   Traceback (most recent call last):
+       ...
+   pint.errors.DimensionalityError: Cannot convert from 'second' ([time]) to 'meter' ([length])

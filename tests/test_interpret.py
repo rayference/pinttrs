@@ -1,4 +1,5 @@
 import pint
+import pytest
 
 import pinttr
 from pinttr import interpret_units
@@ -13,7 +14,7 @@ def test_interpret_units():
 
     # fmt: off
     # Normal operation: units are applied and the '_units' field is removed
-    assert interpret_units({"a": 1.0,"a_units": "m"}) == {"a": 1.0 * ureg.m}
+    assert interpret_units({"a": 1.0, "a_units": "m"}) == {"a": 1.0 * ureg.m}
     # Also works if the key of the magnitude field is an empty string
     assert interpret_units({"": 1.0, "_units": "m"}) == {"": 1.0 * ureg.m}
     # Also works if the magnitude field key is '_units'
@@ -35,3 +36,12 @@ def test_interpret_units():
     # If inplace is True, the dict is modified
     interpret_units(d, inplace=True)
     assert d == {"a": 1.0 * ureg.m}
+
+    # Corner cases
+    # -- If magnitude entry is already a Pint quantity, conversion is performed ...
+    d = interpret_units({"a": 1.0 * ureg.m, "a_units": "km"})
+    assert d == {"a": 1.0 * ureg.m}
+    assert d["a"].units == ureg.km
+    # -- ... and will fail if incompatible units are used
+    with pytest.raises(pint.DimensionalityError):
+        interpret_units({"a": 1.0 * ureg.s, "a_units": "m"})
