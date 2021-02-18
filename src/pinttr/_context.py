@@ -1,5 +1,5 @@
 from contextlib import ExitStack, contextmanager
-from typing import Callable, Dict, Hashable, Union
+from typing import Callable, Dict, Hashable, Optional, Union
 
 import attr
 import pint
@@ -33,12 +33,20 @@ class UnitContext:
           If ``True``, attempt string-to-units interpretation when specifying
           unit generators as :class:`str`.
 
-        * **key_converter** (:class:`.Callable`) –
+        * **ureg** (Optional[:class:`~pint.UnitRegistry`]) –
+          Unit registry used for string-to-units interpretation. If ``None``,
+          the default registry is used (see :func:`.get_unit_registry`).
+
+        * **key_converter** (Callable) –
           Converter used for keys. Defaults to :func:`.identity`.
+
+    .. versionchanged:: 1.1.0
+       Added ``ureg``.
     """
 
     registry: Dict[Hashable, UnitGenerator] = attr.ib(factory=dict)
     interpret_str: bool = attr.ib(default=False)
+    ureg: Optional[pint.UnitRegistry] = attr.ib(default=None)
     key_converter: Callable = attr.ib(default=identity)
 
     def __attrs_post_init__(self):
@@ -63,8 +71,9 @@ class UnitContext:
         Apply conversion rules to a registered value. Registry values specified
         as :class:`pint.Unit` will be converted to :class:`UnitGenerator`
         instances. If string-to-units interpretation is activated, units will be
-        converted to :class:`pint.Unit` objects using the default registry
-        returned by :func:`.get_unit_registry`.
+        converted to :class:`pint.Unit` objects using ``self.ureg`` if it is
+        set, or the default registry returned by :func:`.get_unit_registry`
+        otherwise.
 
         :param key:
             Key to the value to which conversion is to be applied.
@@ -75,7 +84,11 @@ class UnitContext:
         # Interpret units specified as string if necessary
         if isinstance(value, str):
             if self.interpret_str:
-                value = get_unit_registry().Unit(value)
+                value = (
+                    self.ureg.Unit(value)
+                    if self.ureg is not None
+                    else get_unit_registry().Unit(value)
+                )
             else:
                 raise TypeError("String-to-units interpretation is disabled")
 

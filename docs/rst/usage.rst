@@ -326,8 +326,9 @@ Specifying units with strings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :class:`.UnitContext` can interpret string values to Pint units and construct
-generators from them. The unit registry returned by :func:`.get_unit_registry`
-will be used for interpretation. Example:
+generators from them. The unit registry used is set by the ``ureg`` constructor
+argument. If it is unset, the unit registry returned by
+:func:`.get_unit_registry` will be used for interpretation. Example:
 
 .. doctest::
 

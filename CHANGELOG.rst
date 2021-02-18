@@ -14,6 +14,8 @@ Developer-side changes
 - Raised test coverage to 100%.
 - Upgraded dependency pinning system for cleaner environment setup and update.
 - `pinttr.interpret_units()`: Support for `pint.Quantity` magnitude values.
+- `pinttr.UnitContext`: Added custom unit registry for string-to-units
+  interpretation.
 
 1.0.0 (2021-02-04)
 ------------------

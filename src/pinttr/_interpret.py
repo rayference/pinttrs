@@ -55,7 +55,7 @@ def interpret_units(
         to attach units to the corresponding magnitude field.
 
     .. versionchanged:: 1.1.0
-       Support for converting quantity magnitude fields
+       Support for converting quantity magnitude fields.
     """
     if ureg is None:
         ureg = get_unit_registry()
