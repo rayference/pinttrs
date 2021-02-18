@@ -103,17 +103,19 @@ Publishing
    development releases).
 
 **... create a release on GitHub**
+
    1. Make sure that the `GitHub CLI <https://cli.github.com/>`_ is installed on
       your machine.
    2. Ensure that the version number is set to the appropriate value.
-   3. Create the release:
+   3. Check the changelog.
+   4. Create the release:
 
       .. code:: bash
 
          gh release create v$(python3 -c "import pinttr; print(pinttr.__version__)")
 
       Feel free to add more options to the command if relevant.
-   4. [Optional] Bump the version number to the next relevant value.
+   5. [Optional] Bump the version number to the next relevant value.
 
 **... publish the package to PyPI**
    1. Checkout the commit corresponding to the source you want to package.
