@@ -97,10 +97,10 @@ Publishing
 
    .. code:: bash
 
-      bump2version <major|minor|patch>
+      bump2version <year|minor|micro|release|build>
 
-   The ``--new-version`` option overrides the target version value (useful for
-   development releases).
+   The ``--new-version`` option overrides the target version value (can be
+   useful for development releases).
 
 **... create a release on GitHub**
    1. Make sure that the `GitHub CLI <https://cli.github.com/>`_ is installed on
