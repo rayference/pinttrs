@@ -1,12 +1,22 @@
 Changelog
 =========
 
-.. image:: https://img.shields.io/badge/semver-2.0.0-blue
-   :target: https://semver.org/spec/v2.0.0.html
+.. image:: https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue
+   :target: https://calver.org/
 
 ..
   Upcoming release
   ----------------
+
+  21.1.0 (2021-03-08)
+  -------------------
+
+  * ``pinttr.converters.ensure_units()``: Moved to ``pinttr.util``.
+
+  Developer-side changes
+  ^^^^^^^^^^^^^^^^^^^^^^
+
+  * Switched to calendar versioning (schema: YY.MINOR.MICRO).
 
 1.1.0 (2021-02-18)
 ------------------

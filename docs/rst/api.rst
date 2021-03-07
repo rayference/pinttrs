@@ -34,7 +34,6 @@ Dictionary interpretation
 Converters [``pinttr.converters``]
 ----------------------------------
 
-.. autofunction:: pinttr.converters.ensure_units
 .. autofunction:: pinttr.converters.to_units
 
 Validators [``pinttr.validators``]
@@ -46,6 +45,7 @@ Utilities [``pinttr.util``]
 ---------------------------
 
 .. autofunction:: pinttr.util.always_iterable
+.. autofunction:: pinttr.converters.ensure_units
 .. autofunction:: pinttr.util.units_compatible
 
 Exceptions [``pinttr.exceptions``]
