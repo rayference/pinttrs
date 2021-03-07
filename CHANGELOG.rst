@@ -8,15 +8,15 @@ Changelog
   Upcoming release
   ----------------
 
-  21.1.0 (2021-03-08)
-  -------------------
+21.1.0 (2021-03-08)
+-------------------
 
-  * ``pinttr.converters.ensure_units()``: Moved to ``pinttr.util``.
+* ``pinttr.converters.ensure_units()``: Moved to ``pinttr.util``.
 
-  Developer-side changes
-  ^^^^^^^^^^^^^^^^^^^^^^
+Developer-side changes
+^^^^^^^^^^^^^^^^^^^^^^
 
-  * Switched to calendar versioning (schema: YY.MINOR.MICRO).
+* Switched to calendar versioning (schema: YY.MINOR.MICRO).
 
 1.1.0 (2021-02-18)
 ------------------
