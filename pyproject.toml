@@ -3,5 +3,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.black]
-line-length = 80
+line-length = 88
 
+[tool.isort]
+profile = "black"
