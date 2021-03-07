@@ -103,7 +103,6 @@ Publishing
    development releases).
 
 **... create a release on GitHub**
-
    1. Make sure that the `GitHub CLI <https://cli.github.com/>`_ is installed on
       your machine.
    2. Ensure that the version number is set to the appropriate value.
