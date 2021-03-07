@@ -52,3 +52,4 @@ Exceptions [``pinttr.exceptions``]
 ----------------------------------
 
 .. autoexception:: pinttr.exceptions.UnitsError
+   :show-inheritance:
