@@ -50,10 +50,7 @@ If units are incompatible, the built-in validator will fail and raise a
 
    >>> MyClass(1.0 * ureg.s)
    Traceback (most recent call last):
-     File "<stdin>", line 1, in <module>
-     File "<attrs generated init __main__.MyClass>", line 5, in __init__
-     File "/home/m4urice/Documents/src/pinttrs/src/pinttr/validators.py", line 14, in has_compatible_units
-       raise UnitsError(
+       ...
    pinttr.exceptions.UnitsError: Cannot convert from 'second' to 'kilometer': incompatible units 'second' used to set field 'field' (allowed: 'kilometer').
 
 By default, the created attribute also applies conversion and validation upon
@@ -66,10 +63,7 @@ setting:
    MyClass(field=<Quantity(1.0, 'kilometer')>)
    >>> o.field = 1.0 * ureg.s
    Traceback (most recent call last):
-     File "<stdin>", line 1, in <module>
-     File "<attrs generated init __main__.MyClass>", line 5, in __init__
-     File "/home/m4urice/Documents/src/pinttrs/src/pinttr/validators.py", line 14, in has_compatible_units
-       raise UnitsError(
+       ...
    pinttr.exceptions.UnitsError: Cannot convert from 'second' to 'kilometer': incompatible units 'second' used to set field 'field' (allowed: 'kilometer').
    >>> o.field = 1.0 * ureg.m
    >>> o
@@ -349,7 +343,7 @@ argument. If it is unset, the unit registry returned by
 Interpreting units in dicts
 ---------------------------
 
-Pinttrs ships a helper function :func:`pinttr.interpret_units` which can be 
+Pinttrs ships a helper function :func:`pinttr.interpret_units` which can be
 used to interpret units in a dictionary with string-valued keys:
 
 .. doctest::
@@ -357,7 +351,7 @@ used to interpret units in a dictionary with string-valued keys:
    >>> pinttr.interpret_units({"field": 1.0, "field_units": "m"}, ureg)
    {'field': <Quantity(1.0, 'meter')>}
 
-This is useful to *e.g.* initialise objects using simple JSON fragments. 
+This is useful to *e.g.* initialise objects using simple JSON fragments.
 Example:
 
 .. doctest::
@@ -376,7 +370,7 @@ Example:
 
 .. note::
 
-   The same unit registry must be used to define field units and interpret 
+   The same unit registry must be used to define field units and interpret
    dictionaries.
 
 If the magnitude entry is already a Pint quantity, conversion to passed units
