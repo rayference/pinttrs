@@ -34,6 +34,22 @@ using Pint_.
 .. _attrs: https://www.attrs.org/
 .. _Pint: https://pint.readthedocs.io/
 
+Motivation
+----------
+
+The amazing attrs_ library is a game-changer when it comes to writing classes.
+Its initialisation sequence notably allows for automated conversion and
+verification of attribute values. This package is an attempt at designing a
+system to apply units automatically and reliably to attributes with Pint_.
+
+Features
+--------
+
+- :ref:`Attach automatically units to unitless values passed to initialise an attribute <usage-attach_units>`
+- :ref:`Verify unit compatibility when assigning a value to an attribute <usage-attach_units-validators_converters>`
+- :ref:`Interpret units in dictionaries with a simple syntax <usage-interpret_dicts>`
+- :ref:`Define unit context to vary unitless value interpretation dynamically <usage-unit_contexts>`
+
 Getting started
 ---------------
 
@@ -50,6 +66,26 @@ Using Conda:
    conda install -c eradiate pinttrs -c conda-forge
 
 The :ref:`usage` section presents Pinttrs's features and how to use them.
+
+License
+-------
+
+Pinttrs is distributed under the terms of the
+`MIT license <https://choosealicense.com/licenses/mit/>`_.
+
+About
+-----
+
+Pinttrs is written and maintained by `Vincent Leroy <https://github.com/leroyvn>`_.
+
+The development is supported by `Rayference <https://www.rayference.eu>`_.
+
+Pinttrs is a component of the
+`Eradiate radiative transfer model <https://www.eradiate.eu>`_.
+
+The Pinttrs logo is based on
+`Agus Nugroho <https://www.iconfinder.com/nugrohoagus>`_'s glass icon and parts of
+the ``attrs`` logo.
 
 .. toctree::
    :hidden:

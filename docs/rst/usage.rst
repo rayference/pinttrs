@@ -3,6 +3,8 @@
 Usage
 =====
 
+.. _usage-attach_units:
+
 Attaching units to attributes
 -----------------------------
 
@@ -71,6 +73,16 @@ setting:
    >>> o.field = 1.0
    >>> o
    MyClass(field=<Quantity(1.0, 'kilometer')>)
+
+.. _usage-attach_units-validators_converters:
+
+Validators and converters
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Under the hood, Pinttrs's attribute conversion system leverages simple validators
+and converters which can be used manually to further customise the behaviour of
+attributes. See relevant API sections for further information:
+:ref:`api-converters`, :ref:`api-validators`.
 
 Unit generators
 ---------------
@@ -171,6 +183,8 @@ Overrides will then propagate to the composed generator:
    >>> with ugen_length.override("km"), ugen_time.override("hour"):
    ...     ugen_speed()
    <Unit('kilometer / hour')>
+
+.. _usage-unit_contexts:
 
 Unit contexts
 -------------
@@ -339,6 +353,8 @@ argument. If it is unset, the unit registry returned by
       Traceback (most recent call last):
           ...
       ValueError: Cannot operate with Unit and Unit of different registries.
+
+.. _usage-interpret_dicts:
 
 Interpreting units in dicts
 ---------------------------
