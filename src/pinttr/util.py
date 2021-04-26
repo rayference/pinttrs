@@ -55,6 +55,9 @@ def ensure_units(
 
     :returns:
         Converted ``value``.
+
+    .. versionchanged:: 21.1.0
+       Relocated from ``pinttr.converters`` to ``pinttr.util``.
     """
     if callable(default_units):
         units = default_units()

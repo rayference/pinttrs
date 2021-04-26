@@ -231,8 +231,7 @@ class UnitContext:
         :returns:
             Evaluated units.
 
-        .. versionchanged:: 21.2.0
-           Added method.
+        .. versionadded:: 21.2.0
         """
         return self.get(key)
 
@@ -246,7 +245,6 @@ class UnitContext:
         :param value:
             Object to register.
 
-        .. versionchanged:: 21.2.0
-           Added method.
+        .. versionadded:: 21.2.0
         """
         self.register(key, value)
