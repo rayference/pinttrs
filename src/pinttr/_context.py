@@ -219,3 +219,9 @@ class UnitContext:
                 yield
             finally:
                 pass
+
+    def __getitem__(self, item: Hashable) -> pint.Unit:
+        return self.get(item)
+
+    def __setitem__(self, key: Hashable, value: Union[UnitGenerator, pint.Unit, str]) -> None:
+        self.register(key, value)

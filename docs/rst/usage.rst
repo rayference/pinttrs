@@ -219,6 +219,18 @@ method:
    >>> uctx.get("length")
    <Unit('meter')>
 
+.. note:: The :meth:`~.UnitContext.get` and :meth:`~.UnitContext.register` methods
+   are aliased with square brackets:
+
+   .. doctest::
+
+      >>> uctx["time"] = ureg.ms
+      >>> uctx["time"]
+      <Unit('millisecond')>
+      >>> uctx["time"] = pinttr.UnitGenerator(ureg.s)
+      >>> uctx["time"]
+      <Unit('second')>
+
 It is also possible to access the underlying generator with the
 :meth:`~.UnitContext.deferred` method:
 

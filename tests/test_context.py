@@ -59,6 +59,10 @@ def test_unit_context_getters():
     assert unit_context.get("length") == ureg.m
     assert unit_context.get("time") == ureg.s
 
+    # Square brackets can be used to access the getter
+    assert unit_context["length"] == unit_context.get("length")
+    assert unit_context["time"] == unit_context.get("time")
+
     # Raise if key is unregistered
     with pytest.raises(KeyError):
         unit_context.get("speed")  # Still, the key must pass conversion
@@ -78,6 +82,10 @@ def test_unit_context_getters():
         PhysicalQuantity.TIME: ureg.s,
         PhysicalQuantity.SPEED: ureg.m / ureg.s,
     }
+
+    # Square brackets can be used as an alias to register()
+    unit_context["length"] = ureg.km
+    assert unit_context.get("length") == ureg.km
 
 
 def test_unit_context_override():

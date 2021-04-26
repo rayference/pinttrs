@@ -8,6 +8,8 @@ Changelog
   Upcoming release
   ----------------
 
+  * ``pinttr.UnitContext``: Added indexing syntax.
+
 21.1.0 (2021-03-08)
 -------------------
 
