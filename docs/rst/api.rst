@@ -23,6 +23,7 @@ Dynamic unit management
 
 .. autoclass:: pinttr.UnitContext
    :members:
+   :special-members: __getitem__, __setitem__
 
 .. _api-unit_registry:
 

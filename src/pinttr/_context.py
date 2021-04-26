@@ -220,8 +220,33 @@ class UnitContext:
             finally:
                 pass
 
-    def __getitem__(self, item: Hashable) -> pint.Unit:
-        return self.get(item)
+    def __getitem__(self, key: Hashable) -> pint.Unit:
+        """
+        Alias to :meth:`.get`.
+
+        :param key:
+            Key to the :class:`UnitGenerator` to evaluate. The ``key_converter``
+            is applied.
+
+        :returns:
+            Evaluated units.
+
+        .. versionchanged:: 21.2.0
+           Added method.
+        """
+        return self.get(key)
 
     def __setitem__(self, key: Hashable, value: Union[UnitGenerator, pint.Unit, str]) -> None:
+        """
+        Alias to :meth:`register`.
+
+        :param key:
+            Key to the registered entry.
+
+        :param value:
+            Object to register.
+
+        .. versionchanged:: 21.2.0
+           Added method.
+        """
         self.register(key, value)
