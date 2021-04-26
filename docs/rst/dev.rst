@@ -95,12 +95,25 @@ Publishing
    We use `bump2version <https://github.com/c4urself/bump2version>`_ for that.
    It should be included in the development environment.
 
+   .. warning:: Always try version bump commands in dry run mode!
+
    .. code:: bash
 
       bump2version <year|minor|micro|release|build>
 
-   The ``--new-version`` option overrides the target version value (can be
-   useful for development releases).
+   Update from YY.MINOR.MICRO-<release><build> to YY.MINOR.MICRO:
+
+   .. code:: bash
+
+      bump2version release
+
+   Update from YY.MINOR.MICRO-<release><build> to YY.MINOR.MICRO-<release><build+1>:
+
+   .. code:: bash
+
+      bump2version build
+
+   .. note:: The ``--new-version`` option overrides the target version value.
 
 **... create a release on GitHub**
    1. Make sure that the `GitHub CLI <https://cli.github.com/>`_ is installed on
