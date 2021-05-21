@@ -8,10 +8,10 @@ Changelog
   Upcoming release
   ----------------
 
-  21.2.0
-  ------
+21.2.0 (2021-04-26)
+-------------------
 
-  * ``pinttr.UnitContext``: Added square bracket syntax.
+* ``pinttr.UnitContext``: Added square bracket syntax.
 
 21.1.0 (2021-03-08)
 -------------------
