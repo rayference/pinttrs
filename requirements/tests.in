@@ -1,4 +1,0 @@
--r main.in
--c dev.txt
-pytest
-pytest-cov

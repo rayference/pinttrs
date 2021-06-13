@@ -25,9 +25,9 @@ Dependency management (Conda)
    detected by the Makefile.
 
 **... lock Conda dependencies**
-   The conda-lock utility is used to solve dependencies using Conda and lock 
+   The conda-lock utility is used to solve dependencies using Conda and lock
    them. A convenience make target is defined to automate the process:
-   
+
    .. code-block:: bash
 
       make conda-lock
@@ -38,7 +38,7 @@ Dependency management (Conda)
 
       make conda-lock-all
 
-   If you also want to lock pip dependencies, then use the ``pip-compile`` 
+   If you also want to lock pip dependencies, then use the ``pip-compile``
    target:
 
    .. code-block:: bash
@@ -160,7 +160,7 @@ Executing tests
 
       make test
 
-   Tests located in ``tests/`` are written with Pytest and can be executed on 
+   Tests located in ``tests/`` are written with Pytest and can be executed on
    their own with
 
    .. code-block:: bash

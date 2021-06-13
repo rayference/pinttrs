@@ -1,6 +1,53 @@
+# -- Poetry --------------------------------------------------------------------
+
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry_core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "pinttrs"
+version = "21.2.0"
+description = "Pint meets attrs"
+authors = ["Vincent Leroy <vincent.leroy@rayference.eu>"]
+maintainers = ["Vincent Leroy <vincent.leroy@rayference.eu>"]
+readme = "README.md"
+license = "MIT"
+homepage = "https://github.com/leroyvn/pinttrs"
+documentation  = "https://pinttrs.readthedocs.io"
+packages = [
+    { include = "pinttr", from = "src" },
+]
+
+# -- Dependencies --------------------------------------------------------------
+
+[tool.poetry.dependencies]
+python = ">=3.6,<4"
+attrs = "*"
+pint = ">=0.16"
+
+[tool.poetry.dev-dependencies]
+# test
+pytest = "^3.4"
+pytest-cov = "*"
+# dev
+black = "*"
+isort = ">5"
+conda-lock = "^0.9"
+bump2version = "*"
+# docs
+sphinx = ">=3.1"
+furo = "*"
+sphinx-copybutton = "*"
+sphinx-autodoc-typehints = "*"
+
+[tool.conda-lock]
+channels = ["conda-forge"]
+
+[tool.conda-lock.dependencies]
+setuptools = "*"  # Required to install package in dev mode
+poetry = "*"  # Required to manage dependencies
+
+# -- Formatters ----------------------------------------------------------------
 
 [tool.black]
 line-length = 88
