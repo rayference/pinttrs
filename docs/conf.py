@@ -44,7 +44,7 @@ def find_version(*file_paths):
 
 
 project = "Pinttrs"
-copyright = "2021, Vincent Leroy"
+copyright = "2021, Rayference"
 author = "Vincent Leroy"
 release = find_version("../src/pinttr/__init__.py")
 version = release.rsplit(u".", 1)[0]
