@@ -3,6 +3,49 @@
 Developer guide
 ===============
 
+
+Dependency management (Poetry)
+------------------------------
+
+*I want to ...*
+
+**... initialise a development environment**
+   Use `Poetry's environment initialisation command <https://python-poetry.org/docs/cli/#install>`_:
+
+   .. code-block:: bash
+
+      poetry install
+
+   See Poetry docs if you want more control on the installation process.
+
+**... lock dependencies**
+   Use `Poetry's dependency lock command <https://python-poetry.org/docs/cli/#lock>`_:
+
+   .. code-block:: bash
+
+      poetry lock
+
+   .. note:: When updating dependencies, both Conda and Poetry lock files should
+      be updated. The ``lock`` make target serves that purpose:
+
+      .. code-block:: bash
+
+         make lock
+
+**... update my environment based on the lock file**
+   After updating locked dependencies, you can update your development environment
+   using `Poetry's dependency lock command <https://python-poetry.org/docs/cli/#lock>`_:
+
+   .. code-block:: bash
+
+      poetry lock
+
+   If you want to automatically add a lock file update as well:
+
+   .. code-block:: bash
+
+      poetry update
+
 Dependency management (Conda)
 -----------------------------
 
@@ -24,7 +67,7 @@ Dependency management (Conda)
    The appropriate Conda lock file should be selected based on the platform
    detected by the Makefile.
 
-**... lock Conda dependencies**
+**... lock dependencies**
    The conda-lock utility is used to solve dependencies using Conda and lock
    them. A convenience make target is defined to automate the process:
 
@@ -38,12 +81,12 @@ Dependency management (Conda)
 
       make conda-lock-all
 
-   If you also want to lock pip dependencies, then use the ``pip-compile``
-   target:
+   .. note:: When updating dependencies, both Conda and Poetry lock files should
+      be updated. The ``lock`` make target serves that purpose:
 
-   .. code-block:: bash
+      .. code-block:: bash
 
-      make pip-compile
+         make lock
 
 **... update my environment based on the lock file**
    After updating locked dependencies, you can update your development environment
@@ -58,33 +101,6 @@ Dependency management (Conda)
    .. code-block:: bash
 
       make conda-update
-
-Dependency management (Pip)
----------------------------
-
-*I want to ...*
-
-**... initialise a development environment**
-   Activate the target environment and use the ``pip-init`` make target:
-
-   .. code-block:: bash
-
-      make pip-init
-
-**... lock dependencies**
-   Use the ``pip-lock`` make target:
-
-   .. code-block:: bash
-
-      make pip-lock
-
-**... update my environment based on the lock file**
-   After updating locked dependencies, you can update your development environment
-   using the ``pip-init`` make target:
-
-   .. code-block:: bash
-
-      make pip-init
 
 Publishing
 ----------
