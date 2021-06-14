@@ -15,6 +15,14 @@ endif
 all:
 	@echo "Detected platform: $(PLATFORM)"
 
+# -- Dependency management with Poetry -----------------------------------------
+
+# Lock Poetry dependencies
+poetry-lock:
+	poetry lock
+
+.PHONY: poetry-lock
+
 # -- Dependency management with Conda ------------------------------------------
 
 # Lock conda dependencies
@@ -33,8 +41,7 @@ conda-init:
 	python setup.py develop --no-deps
 
 # Shortcut for poetry and conda lock
-lock: conda-lock-all
-	poetry lock
+lock: conda-lock-all poetry-lock
 
 conda-update: conda-lock-all conda-init lock
 
