@@ -142,7 +142,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "conda-lock"
-version = "0.9.1"
+version = "0.10.0"
 description = "Lockfiles for conda"
 category = "dev"
 optional = false
@@ -208,18 +208,18 @@ python-versions = "*"
 
 [[package]]
 name = "furo"
-version = "2020.12.9b21"
+version = "2021.6.18b36"
 description = "A clean customisable Sphinx documentation theme."
 category = "dev"
 optional = false
-python-versions = ">=3.5"
+python-versions = ">=3.6"
 
 [package.dependencies]
 beautifulsoup4 = "*"
-sphinx = ">3.0"
+sphinx = ">=3.0,<5.0"
 
 [package.extras]
-doc = ["myst-parser", "sphinx-inline-tabs"]
+doc = ["myst-parser", "sphinx-copybutton", "sphinx-inline-tabs", "docutils (!=0.17)"]
 test = ["pytest", "pytest-cov", "pytest-xdist"]
 
 [[package]]
@@ -676,7 +676,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.6,<4"
-content-hash = "0d7a86d45cfb1faccb15a183ffe9193c3cd885d94a382b2ea3741c9d4893fe8c"
+content-hash = "98ff91b8a77f52134cd7da7c99964522e53c81a222717a4225f2b36a15de24a1"
 
 [metadata.files]
 alabaster = [
@@ -731,8 +731,8 @@ colorama = [
     {file = "colorama-0.4.4.tar.gz", hash = "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"},
 ]
 conda-lock = [
-    {file = "conda_lock-0.9.1-py3-none-any.whl", hash = "sha256:8113d527875e0cd475cffe246011b5e648d0601b439794f7b848f4dd013cda4d"},
-    {file = "conda_lock-0.9.1.tar.gz", hash = "sha256:3b4ec14957c0c1d2331949219fd19c190462652dfb17ba669e3c3e790281b9cb"},
+    {file = "conda_lock-0.10.0-py3-none-any.whl", hash = "sha256:4a8c07ff82e554420d8e01843fdefea110732335b8ca26fe54682ccaf0c2e840"},
+    {file = "conda_lock-0.10.0.tar.gz", hash = "sha256:cc947c9fe98d67eb6cb0a77190515f552933c3c7658c2837e117ca792a5feec3"},
 ]
 coverage = [
     {file = "coverage-5.5-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:b6d534e4b2ab35c9f93f46229363e17f63c53ad01330df9f2d6bd1187e5eaacf"},
@@ -805,8 +805,8 @@ filelock = [
     {file = "filelock-3.0.12.tar.gz", hash = "sha256:18d82244ee114f543149c66a6e0c14e9c4f8a1044b5cdaadd0f82159d6a6ff59"},
 ]
 furo = [
-    {file = "furo-2020.12.9b21-py3-none-any.whl", hash = "sha256:c6e667fd35dfe026bd101b23ef3d5cfcd4dac3a72d0b542ec5dfcc7ae4dda7cc"},
-    {file = "furo-2020.12.9b21.tar.gz", hash = "sha256:e8384004939074eaad7d4bf0562acf54bd8603c9bc6dc8d93a87dac307272a52"},
+    {file = "furo-2021.6.18b36-py3-none-any.whl", hash = "sha256:a4c00634afeb5896a34d141a5dffb62f20c5eca7831b78269823a8cd8b09a5e4"},
+    {file = "furo-2021.6.18b36.tar.gz", hash = "sha256:46a30bc597a9067088d39d730e7d9bf6c1a1d71967e4af062f796769f66b3bdb"},
 ]
 idna = [
     {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},

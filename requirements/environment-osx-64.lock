@@ -1,5 +1,5 @@
 # platform: osx-64
-# env_hash: 13c4a44cdf5633a4cee6e2b05406b52f380f57934616866f8e0322b890d742ed
+# env_hash: 4445e1dc5a09b1be98ece8b71186137fd546eb5011affb2e313ce4c41462d691
 @EXPLICIT
 https://conda.anaconda.org/conda-forge/osx-64/ca-certificates-2021.5.30-h033912b_0.tar.bz2#2377a0c58b5ffe92d70b7bdcd833e8ff
 https://conda.anaconda.org/conda-forge/osx-64/libcxx-11.1.0-habf9029_0.tar.bz2#a88609e545f948a404419c65cd96fa1a
@@ -103,7 +103,7 @@ https://conda.anaconda.org/conda-forge/noarch/ensureconda-1.4.1-pyhd8ed1ab_0.tar
 https://conda.anaconda.org/conda-forge/noarch/requests-toolbelt-0.9.1-py_0.tar.bz2#402668adee8fcba9a9c265cdc2a88f5a
 https://conda.anaconda.org/conda-forge/noarch/sphinx-3.5.4-pyh44b312d_0.tar.bz2#0ebc444f001f73c4f6de01057b0be392
 https://conda.anaconda.org/conda-forge/noarch/conda-lock-0.10.0-pyhd8ed1ab_0.tar.bz2#33053e3a6e0697b26771c51132e5e471
-https://conda.anaconda.org/conda-forge/noarch/myst-parser-0.14.0-pyhd8ed1ab_0.tar.bz2#a3c98a24fd865ebdae41a143c1e1c155
+https://conda.anaconda.org/conda-forge/noarch/myst-parser-0.15.1-pyhd8ed1ab_0.tar.bz2#78e5b86c7b844536ef8aaf33c777473b
 https://conda.anaconda.org/conda-forge/osx-64/poetry-1.1.6-py36h79c6626_0.tar.bz2#e85cbe6429b4f71ea427d6214777d176
 https://conda.anaconda.org/conda-forge/noarch/sphinx-autodoc-typehints-1.12.0-pyhd8ed1ab_0.tar.bz2#2c5fe910a7f04e1fcd2cab84628e4a32
 https://conda.anaconda.org/conda-forge/noarch/sphinx-copybutton-0.3.3-pyhd8ed1ab_0.tar.bz2#b066335fac136c776b7a441e35c1fcb2
