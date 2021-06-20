@@ -42,9 +42,7 @@ def test_unit_context_init():
     unit_context = UnitContext(
         {"length": UnitGenerator(ureg.m)}, key_converter=PhysicalQuantity
     )
-    assert unit_context.registry == {
-        PhysicalQuantity.LENGTH: UnitGenerator(ureg.m)
-    }
+    assert unit_context.registry == {PhysicalQuantity.LENGTH: UnitGenerator(ureg.m)}
 
     # Init fails if dict values are not str, pint.Unit or UnitGenerator
     with pytest.raises(TypeError):
@@ -70,9 +68,7 @@ def test_unit_context_getters():
     # More complex unit generators are also evaluated
     unit_context.register(
         "speed",
-        UnitGenerator(
-            lambda: unit_context.get("length") / unit_context.get("time")
-        ),
+        UnitGenerator(lambda: unit_context.get("length") / unit_context.get("time")),
     )
     assert unit_context.get("speed") == ureg.m / ureg.s
 
@@ -124,3 +120,22 @@ def test_unit_context_override():
     with pytest.raises(TypeError):
         with unit_context.override(1.0):
             pass
+
+
+def test_unit_context_deferred():
+    unit_context = UnitContext(key_converter=PhysicalQuantity)
+    unit_context.update(
+        {
+            "length": ureg.m,
+            "time": ureg.s,
+            "speed": UnitGenerator(
+                lambda: unit_context.get("length") / unit_context.get("time")
+            ),
+        }
+    )
+
+    # deferred() returns a fully functioning UnitGenerator
+    ugen = unit_context.deferred("speed")
+    assert isinstance(ugen, UnitGenerator)
+    with unit_context.override(length="km", time="s"):
+        assert ugen() == ureg("km/s")
