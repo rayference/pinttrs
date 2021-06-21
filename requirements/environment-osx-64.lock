@@ -1,5 +1,5 @@
 # platform: osx-64
-# env_hash: a3e26631df2744b90fa483990ee563da6cbd6554a8cdec5a9e0fc52dffb39285
+# env_hash: 79979964e0e418250d25e164ad3ee566cd6c7dfb47b42b50bbff3e25eb49aae0
 @EXPLICIT
 https://conda.anaconda.org/conda-forge/osx-64/ca-certificates-2021.5.30-h033912b_0.tar.bz2#2377a0c58b5ffe92d70b7bdcd833e8ff
 https://conda.anaconda.org/conda-forge/osx-64/libcxx-11.1.0-habf9029_0.tar.bz2#a88609e545f948a404419c65cd96fa1a

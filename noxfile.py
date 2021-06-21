@@ -24,3 +24,10 @@ def test_conda(session):
     session.conda_install("attrs", "pint", "pytest", "pytest-cov", "setuptools")
     session.run("python", "setup.py", "develop", "--no-deps")
     pytest(session)
+
+
+@nox_poetry.session(python="3.6")
+def coverage(session):
+    session.install("coverage[toml]", "codecov")
+    session.run("coverage", "xml", "--fail-under=0")
+    session.run("codecov", *session.posargs)
