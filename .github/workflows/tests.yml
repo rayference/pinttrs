@@ -15,4 +15,4 @@ jobs:
           architecture: x64
       - run: pip install nox==2021.6.12 nox-poetry
       - run: pip install poetry==1.1.6
-      - run: nox -s test_poetry
+      - run: nox -s test_poetry-${{ matrix.python-version }}
