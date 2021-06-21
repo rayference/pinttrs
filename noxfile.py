@@ -3,7 +3,7 @@ import nox_poetry
 
 
 def pytest(session):
-    args = session.posargs or ["--cov=src", "--doctest-glob='*.rst'", "docs", "tests"]
+    args = session.posargs or ["--cov", "--doctest-glob='*.rst'", "docs", "tests"]
     session.run("pytest", *args)
 
 

@@ -50,7 +50,7 @@ conda-update: conda-lock-all conda-init lock
 # -- Testing -------------------------------------------------------------------
 
 test:
-	pytest --cov=src --doctest-glob="*.rst" docs tests
+	pytest --cov --doctest-glob="*.rst" docs tests
 
 .PHONY: test
 

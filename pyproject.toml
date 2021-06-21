@@ -47,6 +47,18 @@ channels = ["conda-forge"]
 setuptools = "*"  # Required to install package in dev mode
 poetry = "*"  # Required to manage dependencies
 
+# -- Coverage ------------------------------------------------------------------
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["pinttr"]
+
+[tool.coverage.report]
+show_missing = true
+
 # -- Formatters ----------------------------------------------------------------
 
 [tool.black]
