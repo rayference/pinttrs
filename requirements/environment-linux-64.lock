@@ -1,5 +1,5 @@
 # platform: linux-64
-# env_hash: d6059045c988b4f38d905093cf7951b1ac2202284ce10cf70c4857262868f2cd
+# env_hash: b0b0e20cfbe4812fcc1c4d659f36a978cdc5ba24f17bfe1c65368068f3e9cae9
 @EXPLICIT
 https://conda.anaconda.org/conda-forge/linux-64/_libgcc_mutex-0.1-conda_forge.tar.bz2#d7c89558ba9fa0495403155b64376d81
 https://conda.anaconda.org/conda-forge/linux-64/ca-certificates-2021.5.30-ha878542_0.tar.bz2#6a777890e94194dc94a29a76d2a7e721
@@ -100,7 +100,7 @@ https://conda.anaconda.org/conda-forge/linux-64/setuptools-49.6.0-py36h5fab9bb_3
 https://conda.anaconda.org/conda-forge/linux-64/virtualenv-20.4.7-py36h5fab9bb_0.tar.bz2#329ecf0bd164adb3b3c6e3415c9567a0
 https://conda.anaconda.org/conda-forge/noarch/black-21.5b2-pyhd8ed1ab_0.tar.bz2#919be0b3435cbe8e803c6bd738231f69
 https://conda.anaconda.org/conda-forge/noarch/click-default-group-1.2.2-pyhd8ed1ab_1.tar.bz2#72a46ffc25701c173932fd55cf0965d3
-https://conda.anaconda.org/conda-forge/noarch/isort-5.8.0-pyhd8ed1ab_0.tar.bz2#c7535f0f6618cba5a5f1070c0edf8e2b
+https://conda.anaconda.org/conda-forge/noarch/isort-5.9.1-pyhd8ed1ab_0.tar.bz2#3a32c80ce9da25cf4d113abc8b5b5ae1
 https://conda.anaconda.org/conda-forge/noarch/jsonschema-3.2.0-pyhd8ed1ab_3.tar.bz2#66125e28711d8ffc04a207a2b170316d
 https://conda.anaconda.org/conda-forge/noarch/pint-0.17-pyhd8ed1ab_0.tar.bz2#7a334c0cd901ae380ab30285ad2a4b8a
 https://conda.anaconda.org/conda-forge/linux-64/pluggy-0.13.1-py36h5fab9bb_4.tar.bz2#8b1835b504fd37558160c30103651403
@@ -114,6 +114,7 @@ https://conda.anaconda.org/conda-forge/noarch/urllib3-1.26.5-pyhd8ed1ab_0.tar.bz
 https://conda.anaconda.org/conda-forge/linux-64/pytest-cov-2.5.1-py36_0.tar.bz2#5ec25fc2921b41b2707f095f6dc6acd7
 https://conda.anaconda.org/conda-forge/noarch/requests-2.25.1-pyhd3deb0d_0.tar.bz2#ae687aba31a1c400192a86a2e993ffdc
 https://conda.anaconda.org/conda-forge/noarch/cachecontrol-0.12.6-py_0.tar.bz2#f847758d76d4d532caedadcd2180cab6
+https://conda.anaconda.org/conda-forge/noarch/codecov-2.1.11-pyhd3deb0d_0.tar.bz2#9c661c2c14b4667827218402e6624ad5
 https://conda.anaconda.org/conda-forge/noarch/ensureconda-1.4.1-pyhd8ed1ab_0.tar.bz2#52a7f7cc9076e2c8a25e15e19ad42821
 https://conda.anaconda.org/conda-forge/noarch/requests-toolbelt-0.9.1-py_0.tar.bz2#402668adee8fcba9a9c265cdc2a88f5a
 https://conda.anaconda.org/conda-forge/noarch/sphinx-3.5.4-pyh44b312d_0.tar.bz2#0ebc444f001f73c4f6de01057b0be392
