@@ -2,11 +2,11 @@
 
 *Pint meets attrs*
 
-[![Documentation Status](https://img.shields.io/readthedocs/pinttrs?style=flat-square)](https://pinttrs.readthedocs.io)
 [![PyPI version](https://img.shields.io/pypi/v/pinttrs?color=blue&style=flat-square)](https://pypi.org/project/pinttrs)
 [![Conda version](https://img.shields.io/conda/v/eradiate/pinttrs?color=blue&style=flat-square)](https://anaconda.org/eradiate/pinttrs)
 
-[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/leroyvn/pinttrs/Tests/main)](https://github.com/leroyvn/pinttrs/actions/workflows/tests.yml)
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/leroyvn/pinttrs/Tests/main?style=flat-square)](https://github.com/leroyvn/pinttrs/actions/workflows/tests.yml)
+[![Documentation Status](https://img.shields.io/readthedocs/pinttrs?style=flat-square)](https://pinttrs.readthedocs.io)
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-black?style=flat-square)](https://black.readthedocs.io)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-blue?style=flat-square&labelColor=orange)](https://pycqa.github.io/isort)
