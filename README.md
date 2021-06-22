@@ -38,7 +38,7 @@ Pinttrs is distributed under the terms of the
 
 Pinttrs is written and maintained by [Vincent Leroy](https://github.com/leroyvn).
 
-The development is supported by [Rayference](https://www.rayference.eu).
+Development is supported by [Rayference](https://www.rayference.eu).
 
 Pinttrs is a component of the
 [Eradiate radiative transfer model](https://www.eradiate.eu).

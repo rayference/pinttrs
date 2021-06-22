@@ -19,6 +19,9 @@ Pinttrs v\ |release|.
 .. image:: https://img.shields.io/github/workflow/status/leroyvn/pinttrs/Tests/main?style=flat-square
    :target: https://github.com/leroyvn/pinttrs/actions/workflows/tests.yml
 
+.. image:: https://codecov.io/gh/leroyvn/pinttrs/branch/main/graph/badge.svg?style=flat-square
+   :target: https://codecov.io/gh/leroyvn/pinttrs
+
 .. image:: https://img.shields.io/readthedocs/pinttrs?style=flat-square
    :target: https://pinttrs.readthedocs.io
 
@@ -30,7 +33,7 @@ Pinttrs v\ |release|.
 
 *Pint meets attrs.*
 
-Pinttrs provides tools to bring extra functionality to your |attrs|_ classes 
+Pinttrs provides tools to bring extra functionality to your |attrs|_ classes
 using Pint_.
 
 .. |attrs| replace:: ``attrs``
@@ -81,7 +84,7 @@ About
 
 Pinttrs is written and maintained by `Vincent Leroy <https://github.com/leroyvn>`_.
 
-The development is supported by `Rayference <https://www.rayference.eu>`_.
+Development is supported by `Rayference <https://www.rayference.eu>`_.
 
 Pinttrs is a component of the
 `Eradiate radiative transfer model <https://www.eradiate.eu>`_.
