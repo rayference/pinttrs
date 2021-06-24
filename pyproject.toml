@@ -40,6 +40,7 @@ sphinx = ">=3.1"
 furo = "*"
 sphinx-copybutton = "*"
 sphinx-autodoc-typehints = "*"
+towncrier = "^21.3.0"
 
 [tool.conda-lock]
 channels = ["conda-forge"]
@@ -67,3 +68,35 @@ line-length = 88
 
 [tool.isort]
 profile = "black"
+
+# -- Changelog management ------------------------------------------------------
+
+[tool.towncrier]
+directory = "changes"
+package = "pinttr"
+package_dir = "src"
+filename = "CHANGELOG.rst"
+title_format = false  # Title handled by template
+template = "changes/_template.rst"
+underlines = "-^~"
+wrap = true
+
+[[tool.towncrier.type]]
+directory = "feature"
+name = "Features"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "bugfix"
+name = "Bugfixes"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "removal"
+name = "Deprecations and removals"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "dev"
+name = "Developer-side changes"
+showcontent = true

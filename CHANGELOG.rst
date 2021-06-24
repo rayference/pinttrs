@@ -4,9 +4,7 @@ Changelog
 .. image:: https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue
    :target: https://calver.org/
 
-..
-  Upcoming release
-  ----------------
+.. towncrier release notes start
 
 21.2.0 (2021-04-26)
 -------------------
