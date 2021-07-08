@@ -58,6 +58,7 @@ test:
 
 docs:
 	make -C docs html
+	@echo "Access documentation at docs/_build/html/index.html"
 
 .PHONY: docs
 
