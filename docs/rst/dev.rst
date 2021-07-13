@@ -16,10 +16,12 @@ News fragment format:
 
 * The filename should be ``<issue_or_hash>.<category>``.
 * Supported categories are:
+
   * feature;
   * bugfix;
   * removal;
   * dev.
+
 * File content should contain a brief description of the changes made.
 
 To update the changelog during release preparation, just call
