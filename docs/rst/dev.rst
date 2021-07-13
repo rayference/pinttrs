@@ -158,7 +158,8 @@ Publishing
    .. note:: The ``--new-version`` option overrides the target version value.
 
 **... update the changelog**
-  Let Towncrier do the job:
+  Let Towncrier do the job (don't hesitate to use the ``--draft`` flag if
+  unsure):
 
   .. code-block:: bash
 
