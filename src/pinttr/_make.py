@@ -99,7 +99,7 @@ def attrib(
 
             def f(x):
                 if isinstance(x, pint.Quantity):
-                    return f"{x:~H}"
+                    return f"{x:~P}"
                 else:
                     return x.__repr__()
 
