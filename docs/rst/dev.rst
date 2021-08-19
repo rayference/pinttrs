@@ -165,6 +165,13 @@ Publishing
 
      towncrier build
 
+**... update lock files**
+   Use the dedicated make target:
+
+   .. code-block:: bash
+
+      make lock
+
 **... create a release on GitHub**
    1. Make sure that the `GitHub CLI <https://cli.github.com/>`_ is installed on
       your machine.
