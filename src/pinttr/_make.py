@@ -1,4 +1,4 @@
-from typing import Callable, Optional, Union
+from typing import Union
 
 import attr
 import pint
@@ -13,7 +13,7 @@ from .validators import has_compatible_units
 def attrib(
     default=NOTHING,
     validator=NOTHING,
-    repr=True,
+    repr=NOTHING,
     cmp=None,
     hash=None,
     init=True,
@@ -35,6 +35,11 @@ def attrib(
         If set to :class:`~attr.NOTHING` and ``units`` is not ``None``, defaults
         to :func:`~pinttr.validators.has_compatible_units` (possibly wrapped in
         :func:`attr.validators.optional` if ``default`` is ``None``).
+        Otherwise retains original behaviour.
+
+    :param repr:
+        If set to :class:`~attr.NOTHING` and ``units`` is not ``None``, defaults
+        to a callable printing quantities nicely.
         Otherwise retains original behaviour.
 
     :param converter:
@@ -67,9 +72,7 @@ def attrib(
             unit_generator = UnitGenerator(units)
 
         else:
-            raise TypeError(
-                "Argument 'units' must be a pint.Units or a UnitGenerator"
-            )
+            raise TypeError("Argument 'units' must be a pint.Units or a UnitGenerator")
 
         metadata[MetadataKey.UNITS] = unit_generator
 
@@ -89,9 +92,18 @@ def attrib(
 
         # Ensure that unit conversion and validation is carried out upon setting
         if on_setattr is NOTHING:
-            on_setattr = attr.setters.pipe(
-                attr.setters.convert, attr.setters.validate
-            )
+            on_setattr = attr.setters.pipe(attr.setters.convert, attr.setters.validate)
+
+        # Set field repr
+        if repr is NOTHING:
+
+            def f(x):
+                if isinstance(x, pint.Quantity):
+                    return f"{x:~H}"
+                else:
+                    return x.__repr__()
+
+            repr = f
 
     # If one of the following hasn't been set because units is unset, we set it
     # to the original default value
@@ -101,6 +113,8 @@ def attrib(
         validator = None
     if on_setattr is NOTHING:
         on_setattr = None
+    if repr is NOTHING:
+        repr = True
 
     return attr.ib(
         default=default,

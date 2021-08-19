@@ -30,7 +30,7 @@ is the main difference and allows for the attachment of units to a field:
    ... class MyClass:
    ...     field = pinttr.ib(units=ureg.km)
    >>> MyClass(1.0)
-   MyClass(field=<Quantity(1.0, 'kilometer')>)
+   MyClass(field=1.0 km)
 
 .. note:: If ``units`` is unset, :func:`pinttr.ib` behaves exactly like
    :func:`attr.ib`.
@@ -43,7 +43,7 @@ assigned to the attribute without modification:
 .. doctest::
 
    >>> MyClass(1.0 * ureg.m)
-   MyClass(field=<Quantity(1.0, 'meter')>)
+   MyClass(field=1.0 m)
 
 If units are incompatible, the built-in validator will fail and raise a
 :class:`~pinttr.exceptions.UnitsError`:
@@ -62,17 +62,48 @@ setting:
 
    >>> o = MyClass(1.0)
    >>> o
-   MyClass(field=<Quantity(1.0, 'kilometer')>)
+   MyClass(field=1.0 km)
    >>> o.field = 1.0 * ureg.s
    Traceback (most recent call last):
        ...
    pinttr.exceptions.UnitsError: Cannot convert from 'second' to 'kilometer': incompatible units 'second' used to set field 'field' (allowed: 'kilometer').
    >>> o.field = 1.0 * ureg.m
    >>> o
-   MyClass(field=<Quantity(1.0, 'meter')>)
+   MyClass(field=1.0 m)
    >>> o.field = 1.0
    >>> o
-   MyClass(field=<Quantity(1.0, 'kilometer')>)
+   MyClass(field=1.0 km)
+
+.. note::
+   The original behaviour can be restored by setting ``on_setattr`` to ``None``.
+   This is sometimes required (*e.g.* if the class is frozen).
+
+   .. doctest::
+
+      >>> @attr.s
+      ... class AnotherClass:
+      ...     field = pinttr.ib(units=ureg.km, on_setattr=None)
+      >>> o = AnotherClass(1.0)
+      >>> o
+      AnotherClass(field=1.0 km)
+      >>> o.field = 1.0
+      >>> o
+      AnotherClass(field=1.0)
+
+By default, the created attribute is assigned a ``repr`` value well-suited for
+displaying units.
+
+.. note::
+   The original repr can be restored by passing ``repr=True``:
+
+   .. doctest::
+
+      >>> @attr.s
+      ... class AnotherClass:
+      ...     field = pinttr.ib(units=ureg.km, repr=True)
+      >>> o = AnotherClass(1.0)
+      >>> o
+      AnotherClass(field=<Quantity(1.0, 'kilometer')>)
 
 .. _usage-attach_units-validators_converters:
 
@@ -117,7 +148,7 @@ are requested, *e.g.* by a converter or a validator:
    ... class MyClass:
    ...     field = pinttr.ib(units=ugen)
    >>> MyClass(1.0)
-   MyClass(field=<Quantity(1.0, 'meter')>)
+   MyClass(field=1.0 m)
 
 .. note:: Under the hood, units attached to attributes with :func:`pinttr.ib`
    are always stored as unit generators.
@@ -155,10 +186,10 @@ Override can be used to vary dynamically default units attached to an attribute:
    ... class MyClass:
    ...     field = pinttr.ib(units=ugen)
    >>> MyClass(1.0)
-   MyClass(field=<Quantity(1.0, 'meter')>)
+   MyClass(field=1.0 m)
    >>> with ugen.override(ureg.s):
    ...     MyClass(1.0)
-   MyClass(field=<Quantity(1.0, 'second')>)
+   MyClass(field=1.0 s)
 
 Composed unit generators
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -247,7 +278,7 @@ The returned unit generator can be used to attach units to an attribute:
    ... class MyClass:
    ...     field = pinttr.ib(units=uctx.deferred("length"))
    >>> MyClass(1.0)
-   MyClass(field=<Quantity(1.0, 'meter')>)
+   MyClass(field=1.0 m)
 
 When initialising a context or registering additional units to it, units can be
 directly passed and will be turned into generators automatically:
@@ -390,7 +421,7 @@ Example:
    ... class MyClass:
    ...     field = pinttr.ib(units=ugen)
    >>> MyClass(**interpret_units({"field": 1.0, "field_units": "m"}, ureg))
-   MyClass(field=<Quantity(1.0, 'meter')>)
+   MyClass(field=1.0 m)
    >>> MyClass(**interpret_units({"field": 1.0, "field_units": "s"}, ureg))
    Traceback (most recent call last):
        ...
