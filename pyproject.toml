@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "pinttrs"
-version = "21.3.0-dev0"
+version = "21.3.0"
 description = "Pint meets attrs"
 authors = ["Vincent Leroy <vincent.leroy@rayference.eu>"]
 maintainers = ["Vincent Leroy <vincent.leroy@rayference.eu>"]
