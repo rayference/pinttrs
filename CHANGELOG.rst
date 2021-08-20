@@ -1,7 +1,7 @@
 Changelog
 =========
 
-.. image:: https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue
+.. image:: https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue?style=flat-square
    :target: https://calver.org/
 
 .. towncrier release notes start
