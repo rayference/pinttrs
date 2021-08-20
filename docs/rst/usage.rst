@@ -75,8 +75,7 @@ setting:
    MyClass(field=1.0 km)
 
 .. note::
-   The original behaviour can be restored by setting ``on_setattr`` to ``None``.
-   This is sometimes required (*e.g.* if the class is frozen).
+   The original behaviour can be restored by setting ``on_setattr`` to ``None``:
 
    .. doctest::
 
@@ -89,6 +88,20 @@ setting:
       >>> o.field = 1.0
       >>> o
       AnotherClass(field=1.0)
+
+   This is sometimes required, typically if the class is frozen:
+
+   .. doctest::
+
+      >>> @attr.s(frozen=True)
+      ... class AnotherClass:
+      ...     field = pinttr.ib(units=ureg.m)
+      Traceback (most recent call last):
+          ...
+      ValueError: Frozen classes can't use on_setattr.
+      >>> @attr.s(frozen=True)
+      ... class AnotherClass:
+      ...     field = pinttr.ib(units=ureg.m, on_setattr=None)
 
 By default, the created attribute is assigned a ``repr`` value well-suited for
 displaying units.
@@ -114,6 +127,24 @@ Under the hood, Pinttrs's attribute conversion system leverages simple validator
 and converters which can be used manually to further customise the behaviour of
 attributes. See relevant API sections for further information:
 :ref:`api-converters`, :ref:`api-validators`.
+
+.. _usage-attach_units-next_gen_apis:
+
+Next-generation APIs
+^^^^^^^^^^^^^^^^^^^^
+
+Pinttrs also defines APIs matching the ``attrs``
+`next-generation APIs <https://www.attrs.org/en/stable/api.html#next-generation-apis>`_
+for syntactic consistency. Currently, Pinttrs defines :func:`pinttr.field`.
+Writing a class in that style will likely look like:
+
+.. doctest::
+
+   >>> @attr.define
+   ... class MyClass:
+   ...     field = pinttr.field(units=ureg.m)
+   >>> MyClass(1.0)
+   MyClass(field=1.0 m)
 
 Unit generators
 ---------------

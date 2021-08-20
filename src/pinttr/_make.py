@@ -57,6 +57,9 @@ def attrib(
     :param units:
         Default units attached to the defined attribute. Accepts a
         :class:`UnitGenerator` instance. Has no effect if set to ``None``.
+
+    .. versionchanged:: 21.3.0
+       Added prettier default repr.
     """
 
     # Initialise attr.ib arguments

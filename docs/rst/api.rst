@@ -70,3 +70,12 @@ Exceptions [``pinttr.exceptions``]
 
 .. autoexception:: pinttr.exceptions.UnitsError
    :show-inheritance:
+
+Next-generation APIs
+--------------------
+
+Pinttrs provides APIs matching ``attrs``
+`next-generation APIs <https://www.attrs.org/en/stable/api.html#next-generation-apis>`_
+for syntactic homogeneity.
+
+.. autofunction:: pinttr.field
