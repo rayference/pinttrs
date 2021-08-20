@@ -32,8 +32,8 @@ is the main difference and allows for the attachment of units to a field:
    >>> MyClass(1.0)
    MyClass(field=1.0 km)
 
-.. note:: If ``units`` is unset, :func:`pinttr.ib` behaves exactly like
-   :func:`attr.ib`.
+.. note::
+   If ``units`` is unset, :func:`pinttr.ib` behaves exactly like :func:`attr.ib`.
 
 Scalar values are automatically wrapped in Pint units. If a Pint quantity is
 passed as an attribute value, its units will be checked. If they prove to be
