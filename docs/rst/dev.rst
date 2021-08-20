@@ -268,9 +268,6 @@ Building the documentation
 Roadmap
 -------
 
-**21.3.0**
-    * Support `new-style attrs API <https://www.attrs.org/en/stable/api.html#next-generation-apis>`_.
-
 **Not planned yet**
-    * Automate packaging and publish to conda-forge instead of a private channel
-      on Anaconda Cloud.
+    * Automate Conda packaging.
+    * Publish to conda-forge instead of a private channel on Anaconda Cloud.
