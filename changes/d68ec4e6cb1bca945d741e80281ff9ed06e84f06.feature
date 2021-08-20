@@ -1,1 +1,1 @@
-`pinttr.ib()`: Add nicer default repr.
+``pinttr.ib()``: Add nicer default repr.
