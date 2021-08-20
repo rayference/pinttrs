@@ -68,7 +68,7 @@ build:
 	poetry build
 
 dist-clean:
-	rm -rf dist
+	rm -rf build dist
 
 publish: build
 	poetry publish

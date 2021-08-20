@@ -198,9 +198,7 @@ Publishing
 
       .. code-block:: bash
 
-         make upload-pypi
-
-      .. note:: This make target will also execute the ``dist`` target.
+         make publish
 
 **... publish the package to Anaconda Cloud**
    We don't yet provide a conda-build recipe yet.
