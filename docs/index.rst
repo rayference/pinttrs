@@ -94,16 +94,17 @@ The Pinttrs logo is based on
 the ``attrs`` logo.
 
 .. toctree::
+   :caption: For users
    :hidden:
 
    rst/usage
    rst/compatible
 
 .. toctree::
-   :caption: Development
+   :caption: For developers/contributors
    :hidden:
 
-   rst/dev
    rst/api
+   rst/dev
    rst/changes
    GitHub repository <https://github.com/leroyvn/pinttrs>
