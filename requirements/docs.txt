@@ -1,5 +1,6 @@
-sphinx>=3.1
+attrs
 furo
 pint>=0.16
+sphinx>=3.1
 sphinx-copybutton
 sphinx-autodoc-typehints
