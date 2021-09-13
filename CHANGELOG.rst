@@ -6,6 +6,15 @@ Changelog
 
 .. towncrier release notes start
 
+Pinttrs 21.3.1 (2021-09-13)
+---------------------------
+
+Developer-side changes
+^^^^^^^^^^^^^^^^^^^^^^
+
+- Fix documentation build.
+  (b3e8c1c75f2cd4564383188610b55d18106b2541, 01e68f85fe57421b6ef5ad4be8a2beb2d016c67c)
+
 Pinttrs 21.3.0 (2021-08-20)
 ---------------------------
 

@@ -7,7 +7,7 @@ from ._make import attrib
 from ._next_gen import field
 
 # Package metadata
-__version__ = "21.3.0"
+__version__ = "21.3.1"
 
 # Other definitions
 ib = attrib
