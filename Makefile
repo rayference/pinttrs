@@ -29,11 +29,13 @@ poetry-lock:
 conda-lock:
 	conda-lock --file pyproject.toml \
 	    --filename-template "requirements/environment-{platform}.lock" \
-	    -p $(PLATFORM)
+	    -p $(PLATFORM) \
+	    --mamba
 
 conda-lock-all:
 	conda-lock --file pyproject.toml \
-	    --filename-template "requirements/environment-{platform}.lock"
+	    --filename-template "requirements/environment-{platform}.lock" \
+	    --mamba
 
 # Initialise development environment
 conda-init:
