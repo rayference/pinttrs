@@ -56,7 +56,7 @@ source = ["src", "*/site-packages"]
 
 [tool.coverage.run]
 branch = true
-source = ["pinttr"]
+source = ["src/pinttr"]
 
 [tool.coverage.report]
 show_missing = true
