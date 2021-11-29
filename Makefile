@@ -40,7 +40,7 @@ conda-lock-all:
 # Initialise development environment
 conda-init:
 	conda update --file requirements/environment-$(PLATFORM).lock
-	python setup.py develop --no-deps
+	python3 -m pip install --editable . --no-deps
 
 # Shortcut for poetry and conda lock
 lock: conda-lock-all poetry-lock

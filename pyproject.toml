@@ -1,7 +1,7 @@
 # -- Poetry --------------------------------------------------------------------
 
 [build-system]
-requires = ["poetry_core>=1.0.0"]
+requires = ["pip", "setuptools", "poetry_core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
@@ -22,32 +22,26 @@ packages = [
 
 [tool.poetry.dependencies]
 python = ">=3.6,<4"
-attrs = "*"
+attrs = ">=21"
 pint = ">=0.16"
 
 [tool.poetry.dev-dependencies]
 # test
-pytest = "^3.4"
+pytest = ">=6"
 pytest-cov = "*"
 codecov = "*"
-# dev
-black = "*"
-isort = ">5"
-conda-lock = "^0.10"
-bump2version = "*"
 # docs
 sphinx = ">=3.1"
 furo = "*"
-sphinx-copybutton = "*"
-sphinx-autodoc-typehints = "*"
-towncrier = "^21.3.0"
+sphinx-copybutton = ">=0.4"
+sphinx-autodoc-typehints = ">=1.12"
 
 [tool.conda-lock]
 channels = ["conda-forge"]
 
 [tool.conda-lock.dependencies]
-setuptools = "*"  # Required to install package in dev mode
-poetry = "*"  # Required to manage dependencies
+pip = ">=21"  # Required to install package in dev mode
+setuptools = ">=45"  # Required to install package in dev mode
 
 # -- Coverage ------------------------------------------------------------------
 

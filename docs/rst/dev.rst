@@ -3,6 +3,21 @@
 Developer guide
 ===============
 
+Required tools
+--------------
+
+The following tools are required for development:
+
+* `Poetry <https://python-poetry.org/>`_ >= 1.1.0
+* `Conda lock <https://github.com/conda-incubator/conda-lock>`_ >= 0.10.0
+* `Nox <https://nox.thea.codes/>`_ >= 2021.1.0
+* `isort <https://pycqa.github.io/isort/>`_ >= 5.0.0
+* `Black <https://black.readthedocs.io/>`_ >= 21.0.0
+* `Towncrier <https://github.com/twisted/towncrier>`_ >= 21.3.0
+
+Our dependency files do not include them; instead, we advise on a system
+installation, *e.g.* using `pipx <https://pypa.github.io/pipx/>`_.
+
 Changelog management
 --------------------
 

@@ -21,8 +21,8 @@ def test_poetry_conda(session):
 
 @nox.session(venv_backend="conda", python=["3.6", "3.7", "3.8", "3.9"])
 def test_conda(session):
-    session.conda_install("attrs", "pint", "pytest", "pytest-cov", "setuptools")
-    session.run("python", "setup.py", "develop", "--no-deps")
+    session.conda_install("attrs", "pint", "pip", "pytest", "pytest-cov", "setuptools")
+    session.install("--editable", ".", "--no-deps")
     pytest(session)
 
 
