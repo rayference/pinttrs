@@ -1,33 +1,23 @@
+import os
+
 import nox
-import nox_poetry
 
 
-def pytest(session):
-    args = session.posargs or ["--cov", "--doctest-glob='*.rst'", "docs", "tests"]
-    session.run("pytest", *args)
+def _has_venv(session):
+    return not isinstance(session.virtualenv, nox.virtualenv.PassthroughEnv)
 
 
-@nox_poetry.session(python=["3.6", "3.7", "3.8", "3.9"])
-def test_poetry(session):
-    session.run("poetry", "install", external=True)
-    pytest(session)
+@nox.session(python=("3.7", "3.8", "3.9", "3.10"))
+def test(session):
+    """Run the test suite."""
 
+    # If a virtual environment is used, configure PDM appropriately and install
+    # If --no-venv is used, the install step is skipped
+    if _has_venv(session):
+        os.environ.update({"PDM_USE_VENV": "1", "PDM_IGNORE_SAVED_PYTHON": "1"})
+        session.run("pdm", "install", "-G", "tests", external=True)
 
-@nox.session(venv_backend="conda", python=["3.6", "3.7", "3.8", "3.9"])
-def test_poetry_conda(session):
-    session.run("poetry", "install", external=True)
-    pytest(session)
-
-
-@nox.session(venv_backend="conda", python=["3.6", "3.7", "3.8", "3.9"])
-def test_conda(session):
-    session.conda_install("attrs", "pint", "pip", "pytest", "pytest-cov", "setuptools")
-    session.install("--editable", ".", "--no-deps")
-    pytest(session)
-
-
-@nox_poetry.session(python="3.6")
-def coverage(session):
-    session.install("coverage[toml]", "codecov")
-    session.run("coverage", "xml", "--fail-under=0")
-    session.run("codecov", *session.posargs)
+    # Allow passing arguments to pytest
+    # Example: nox --no-venv -s tests -- tests/my_test.py
+    args = session.posargs if session.posargs else ["tests"]
+    session.run("pdm", "run", "pytest", "-c", "config/pytest.ini", *args, external=True)

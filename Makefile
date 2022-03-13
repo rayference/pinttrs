@@ -1,49 +1,27 @@
-ifeq ($(OS), Windows_NT)
-	PLATFORM := win-64
-else
-	uname := $(shell sh -c 'uname 2>/dev/null || echo unknown')
-	ifeq ($(uname), Darwin)
-		PLATFORM := osx-64
-	else ifeq ($(uname), Linux)
-		PLATFORM := linux-64
-	else
-		@echo "Unsupported platform"
-		exit 1
-	endif
-endif
+# -- Dependency management with PDM --------------------------------------------
 
-all:
-	@echo "Detected platform: $(PLATFORM)"
+# Lock PDM dependencies
+pdm-lock:
+	pdm lock
 
-# -- Dependency management with Poetry -----------------------------------------
-
-# Lock Poetry dependencies
-poetry-lock:
-	poetry lock
-
-.PHONY: poetry-lock
+.PHONY: pdm-lock
 
 # -- Dependency management with Conda ------------------------------------------
 
 # Lock conda dependencies
 conda-lock:
-	conda-lock --file pyproject.toml \
-	    --filename-template "requirements/environment-{platform}.lock" \
-	    -p $(PLATFORM) \
-	    --mamba
-
-conda-lock-all:
-	conda-lock --file pyproject.toml \
-	    --filename-template "requirements/environment-{platform}.lock" \
-	    --mamba
+	conda-lock lock --mamba \
+		--file pyproject.toml \
+		--lockfile requirements/conda-lock.yml
 
 # Initialise development environment
 conda-init:
-	conda update --file requirements/environment-$(PLATFORM).lock
-	python3 -m pip install --editable . --no-deps
+	conda-lock install --mamba --name pinttrs requirements/conda-lock.yml
+	conda run --name pinttrs \
+		python3 -m pip install --editable . --no-deps
 
-# Shortcut for poetry and conda lock
-lock: conda-lock-all poetry-lock
+# Shortcut for PDM and conda lock
+lock: conda-lock pdm-lock
 
 conda-update: conda-lock-all conda-init lock
 
@@ -52,27 +30,36 @@ conda-update: conda-lock-all conda-init lock
 # -- Testing -------------------------------------------------------------------
 
 test:
-	pytest --cov --doctest-glob="*.rst" docs tests
+	nox --no-venv -s test
 
-.PHONY: test
+nox-test:
+	nox -s test
+
+.PHONY: test nox-test
 
 # -- Documentation -------------------------------------------------------------
 
 docs:
-	make -C docs html
+	pdm run sphinx-build -b html docs docs/_build/html
 	@echo "Access documentation at docs/_build/html/index.html"
+
+docs-clean:
+	rm -rf docs/_build/
+
+docs-serve:
+	pdm run sphinx-autobuild docs docs/_build/html
 
 .PHONY: docs
 
 # -- Build ---------------------------------------------------------------------
 
 build:
-	poetry build
+	pdm build
 
 dist-clean:
 	rm -rf build dist
 
 publish: build
-	poetry publish
+	pdm publish
 
 .PHONY: build dist-clean publish
