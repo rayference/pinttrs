@@ -4,34 +4,9 @@
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-import codecs
-import os
-import re
+import pinttr
 
-
-def read(*parts):
-    """
-    Build an absolute path from *parts* and and return the contents of the
-    resulting file.  Assume UTF-8 encoding.
-    """
-    here = os.path.abspath(os.path.dirname(__file__))
-    with codecs.open(os.path.join(here, *parts), "rb", "utf-8") as f:
-        return f.read()
-
-
-def find_version(*file_paths):
-    """
-    Build a path from *file_paths* and search for a ``__version__``
-    string inside.
-    """
-    version_file = read(*file_paths)
-    version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", version_file, re.M)
-    if version_match:
-        return version_match.group(1)
-    raise RuntimeError("Unable to find version string.")
-
-
-# -- Path setup --------------------------------------------------------------
+# -- Path setup ----------------------------------------------------------------
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -40,63 +15,61 @@ def find_version(*file_paths):
 
 # sys.path.insert(0, os.path.abspath("../src"))
 
-# -- Project information -----------------------------------------------------
+# -- Project information -------------------------------------------------------
 
 
 project = "Pinttrs"
 copyright = "2021, Rayference"
 author = "Vincent Leroy"
-release = find_version("../src/pinttr/__init__.py")
-version = release.rsplit(u".", 1)[0]
+release = pinttr.__version__
+version = pinttr.__version__
 
-# -- General configuration ---------------------------------------------------
+# -- General configuration -----------------------------------------------------
 
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
 extensions = [
-    "sphinx.ext.autodoc",  # Core Sphinx library for auto html doc generation from docstrings
-    "sphinx_autodoc_typehints",  # Use type hints in autodoc
-    "sphinx.ext.doctest",  # Insert doctest snippets
-    "sphinx.ext.intersphinx",  # Link to other project's documentation (see mapping below)
-    "sphinx.ext.viewcode",  # Add a link to the Python source code for classes, functions etc.
-    "sphinx_copybutton",  # Copy button in code blocks
+    # Core extensions
+    "sphinx.ext.autodoc",
+    "sphinx.ext.doctest",
+    "sphinx.ext.extlinks",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.viewcode",
+    # Third-party
+    "myst_parser",
+    "sphinx_copybutton",
+    "sphinx_autodoc_typehints",
 ]
 
-# Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
-
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
-# This pattern also affects html_static_path and html_extra_path.
+source_suffix = [".rst", ".md"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
-
-# -- Extension configuration -------------------------------------------------
+# -- Intersphinx options -------------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html
 
 intersphinx_mapping = {
-    "python": ("https://docs.python.org/3/", None),
-    "attrs": ("https://www.attrs.org/en/stable/", None),
-    "pint": ("https://pint.readthedocs.io/en/stable/", None),
-    "more-itertools": (
-        "https://more-itertools.readthedocs.io/en/stable/",
-        None,
-    ),
+    "python": ("https://docs.python.org/3", None),
 }
 
-# -- Options for HTML output -------------------------------------------------
+# -- GitHub quicklinks with 'extlinks' -----------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/extensions/extlinks.html
 
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-html_theme = "furo"
+ghbase = "https://github.com"
+ghroot = f"{ghbase}/leroyvn/pinttrs"
+extlinks = {
+    "ghissue": (f"{ghroot}/issues/%s", "GH%s"),
+    "ghpr": (f"{ghroot}/pull/%s", "PR%s"),
+    "ghcommit": (f"{ghroot}/commit/%s", "%.7s"),
+    "ghuser": (f"{ghbase}/%s", "@%s"),
+}
 
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
+# -- Options for HTML output ---------------------------------------------------
+
 html_static_path = ["_static"]
 html_title = "Pinttrs"
 
-# Logo
+# Use Furo theme
+# https://pradyunsg.me/furo/
+html_theme = "furo"
 html_theme_options = {
     "navigation_with_keys": True,
     "sidebar_hide_name": True,

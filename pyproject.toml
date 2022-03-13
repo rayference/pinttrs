@@ -1,96 +1,86 @@
-# -- Poetry --------------------------------------------------------------------
-
 [build-system]
-requires = ["pip", "setuptools", "poetry_core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["pdm-pep517"]
+build-backend = "pdm.pep517.api"
 
-[tool.poetry]
-name = "pinttrs"
-version = "21.3.1"
-description = "Pint meets attrs"
-authors = ["Vincent Leroy <vincent.leroy@rayference.eu>"]
-maintainers = ["Vincent Leroy <vincent.leroy@rayference.eu>"]
+[project]
+name = "Pinttrs"
+description = "Pint meets attrs."
+authors = [{name = "Vincent Leroy", email = "vincent.leroy@rayference.eu"}]
+license = {file = "LICENSE"}
 readme = "README.md"
-license = "MIT"
-homepage = "https://github.com/leroyvn/pinttrs"
-documentation  = "https://pinttrs.readthedocs.io"
-packages = [
-    { include = "pinttr", from = "src" },
+requires-python = ">=3.7"
+keywords = []
+dynamic = ["version"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: ISC License (ISCL)",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Documentation",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+]
+dependencies = [
+    "attrs>=21",
+    "pint>=0.16",
 ]
 
-# -- Dependencies --------------------------------------------------------------
+[project.optional-dependencies]
 
-[tool.poetry.dependencies]
-python = ">=3.6,<4"
-attrs = ">=21"
-pint = ">=0.16"
+[project.urls]
+Homepage = "https://pinttrs.readthedocs.io"
+Documentation = "https://pinttrs.readthedocs.io"
+Changelog = "https://pinttrs.readthedocs.io/changelog"
+Repository = "https://github.com/leroyvn/pinttrs"
+Issues = "https://github.com/leroyvn/pinttrs/issues"
 
-[tool.poetry.dev-dependencies]
-# test
-pytest = ">=6"
-pytest-cov = "*"
-codecov = "*"
-# docs
-sphinx = ">=3.1"
-furo = "*"
-sphinx-copybutton = ">=0.4"
-sphinx-autodoc-typehints = ">=1.12"
+[tool.pdm]
+version = {use_scm = true}
+package-dir = "src"
 
-[tool.conda-lock]
-channels = ["conda-forge"]
-
-[tool.conda-lock.dependencies]
-pip = ">=21"  # Required to install package in dev mode
-setuptools = ">=45"  # Required to install package in dev mode
-
-# -- Coverage ------------------------------------------------------------------
-
-[tool.coverage.paths]
-source = ["src", "*/site-packages"]
-
-[tool.coverage.run]
-branch = true
-source = ["src/pinttr"]
-
-[tool.coverage.report]
-show_missing = true
-
-# -- Formatters ----------------------------------------------------------------
+[tool.pdm.dev-dependencies]
+docs = [
+    "sphinx>=4.0",
+    "furo>=2021.11",
+    "myst-parser>=0.16",
+    "sphinx-autobuild>=2021.3",
+    "sphinx-copybutton>=0.4",
+    "sphinx_autodoc_typehints",
+]
+format = [
+    "autoflake>=1.4",
+    "black>=22.1",
+    "isort>=5.10",
+]
+maintain = []
+quality = []
+security = []
+tests = [
+    "pytest>=6.2",
+    "pytest-xdist>=2.4",
+    "pytest-cov>=3.0",
+    "xdoctest>=0.15.0",
+]
+typing = []
 
 [tool.black]
 line-length = 88
 
 [tool.isort]
-profile = "black"
+line_length = 88
+style = "black"
 
-# -- Changelog management ------------------------------------------------------
+[tool.conda-lock]
+channels = ["conda-forge", "defaults"]
 
-[tool.towncrier]
-directory = "changes"
-package = "pinttr"
-package_dir = "src"
-filename = "CHANGELOG.rst"
-title_format = false  # Title handled by template
-template = "changes/_template.rst"
-underlines = "-^~"
-wrap = true
-
-[[tool.towncrier.type]]
-directory = "feature"
-name = "Features"
-showcontent = true
-
-[[tool.towncrier.type]]
-directory = "bugfix"
-name = "Bugfixes"
-showcontent = true
-
-[[tool.towncrier.type]]
-directory = "removal"
-name = "Deprecations and removals"
-showcontent = true
-
-[[tool.towncrier.type]]
-directory = "dev"
-name = "Developer-side changes"
-showcontent = true
+[tool.conda-lock.dependencies]
+pip = "*"
