@@ -54,7 +54,7 @@ docs = [
     "myst-parser>=0.16",
     "sphinx-autobuild>=2021.3",
     "sphinx-copybutton>=0.4",
-    "sphinx_autodoc_typehints",
+    "sphinx-autodoc-typehints",
 ]
 format = [
     "autoflake>=1.4",
