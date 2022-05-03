@@ -1,4 +1,4 @@
-# Changelog
+# What's new?
 
 [![CalVer](https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue?style=flat-square)](https://calver.org/)
 
@@ -58,6 +58,6 @@
 * Raised test coverage to 100%.
 * Upgraded dependency pinning system for cleaner environment setup and update.
 
-# Pinttrs 1.0.0 (2021-02-04)
+## Pinttrs 1.0.0 (2021-02-04)
 
 Initial release.
