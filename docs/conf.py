@@ -5,6 +5,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 import pinttr
+import datetime
 
 # -- Path setup ----------------------------------------------------------------
 
@@ -17,9 +18,8 @@ import pinttr
 
 # -- Project information -------------------------------------------------------
 
-
 project = "Pinttrs"
-copyright = "2021, Rayference"
+copyright = f"2021-{datetime.datetime.now().year}, Rayference"
 author = "Vincent Leroy"
 release = pinttr.__version__
 version = pinttr.__version__
