@@ -7,6 +7,9 @@
 ### Developer-side changes
 
 * Move to PDM for dependency and project management.
+* Apply [Copier template](https://github.com/leroyvn/copier-pdm) for easier
+  tooling management.
+* Drop Towncrier-based changelog management.
 
 ## Pinttrs 21.3.1 (2021-09-13)
 
