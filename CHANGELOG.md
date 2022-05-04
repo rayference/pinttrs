@@ -12,21 +12,21 @@
 
 ### Developer-side changes
 
-* Fix documentation build. (b3e8c1c75f2cd4564383188610b55d18106b2541, 01e68f85fe57421b6ef5ad4be8a2beb2d016c67c)
+* Fix documentation build ({ghcommit}`b3e8c1`, {ghcommit}`01e68f`).
 
 ## Pinttrs 21.3.0 (2021-08-20)
 
 ### Features
 
-* Add ``pinttr.field()``. (992acfa6985cead9b592aaf56c5b9ad6df7a98b8)
-* ``pinttr.ib()``: Add nicer default repr. (d68ec4e6cb1bca945d741e80281ff9ed06e84f06)
+* Add ``pinttr.field()`` ({ghcommit}`992acf`).
+* ``pinttr.ib()``: Add nicer default repr ({ghcommit}`d68ec4`).
 
 
 ### Developer-side changes
 
-* Automate testing with GitHub actions. (1997a78759be1e5ce1e0d7accefb187a68f2783b)
-* Manage changelog with Towncrier. (644ecc7e03d822723f0584767e83b253dafdce8c)
-* Add coverage report with Codecov. (fa658d3e3e45f6b2e6d044662fa68ed016f22375)
+* Automate testing with GitHub actions ({ghcommit}`1997a7`).
+* Manage changelog with Towncrier ({ghcommit}`644ecc`).
+* Add coverage report with Codecov ({ghcommit}`fa658d`).
 
 
 ## Pinttrs 21.2.0 (2021-04-26)

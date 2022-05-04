@@ -105,7 +105,7 @@ the ``attrs`` logo.
    :hidden:
 
    rst/api
-   src/CHANGELOG.md
+   src/whats_new.md
 
 .. toctree::
    :caption: Develop
