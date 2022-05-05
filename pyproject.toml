@@ -14,7 +14,7 @@ dynamic = ["version"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: ISC License (ISCL)",
+    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
@@ -84,3 +84,45 @@ channels = ["conda-forge", "defaults"]
 
 [tool.conda-lock.dependencies]
 pip = "*"
+
+[tool.coverage.run]
+branch = true
+parallel = true
+source = [
+  "src/",
+]
+
+[tool.coverage.paths]
+equivalent = [
+  "src/",
+  "__pypackages__/",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+omit = [
+  "src/*/__init__.py",
+  "src/*/__main__.py",
+  "src/*/_version.py",
+]
+precision = 2
+
+[tool.pytest.ini_options]
+addopts = "--doctest-glob='*.rst'"
+norecursedirs = [
+  ".git",
+  ".env",
+  "dist",
+  "build",
+  "__pypackages__",
+]
+python_files = [
+  "test_*.py",
+  "*_test.py",
+  "tests.py",
+]
+testpaths = [
+  "tests",
+  "docs",
+]

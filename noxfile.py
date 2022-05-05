@@ -18,6 +18,15 @@ def test(session):
         session.run("pdm", "install", "-G", "tests", external=True)
 
     # Allow passing arguments to pytest
-    # Example: nox --no-venv -s tests -- tests/my_test.py
-    args = session.posargs if session.posargs else ["tests"]
-    session.run("pdm", "run", "pytest", "-c", "config/pytest.ini", *args, external=True)
+    # Example: nox --no-venv -s test -- tests/my_test.py
+    args = session.posargs if session.posargs else []
+    session.run(
+        "pdm",
+        "run",
+        "coverage",
+        "run",
+        "-m",
+        "pytest",
+        *args,
+        external=True,
+    )
