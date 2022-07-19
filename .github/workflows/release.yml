@@ -1,0 +1,52 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  release-pypi:
+    name: release-pypi
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: pdm-project/setup-pdm@main
+        name: Setup PDM
+        with:
+          python-version: "3.9"
+          architecture: x64
+          prerelease: true
+          enable-pep582: false
+
+      - name: Build artifacts
+        run: |
+          pdm build
+
+      - name: Test Build
+        run: |
+          python3 -m venv fresh_env
+          . fresh_env/bin/activate
+          pip install dist/*.whl
+          fresh_env/bin/python -c "import pinttr; print(pinttr.__version__)"
+
+      # - name: Upload to Pypi
+      #   run: |
+      #     pip install twine
+      #     twine upload --username __token__ --password ${{ secrets.PYPI_TOKEN }} dist/*
+      # - name: Get Changelog
+      #   id: get-changelog
+      #   run: |
+      #     awk '/-{3,}/{flag=1;next}/Release/{if (flag==1)exit}flag' CHANGELOG.md > .changelog.md
+      # - name: Create Release
+      #   uses: actions/create-release@main
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     tag_name: ${{ github.ref }}
+      #     release_name: v${{ github.ref }}
+      #     body_path: .changelog.md
+      #     draft: false
+      #     prerelease: false
