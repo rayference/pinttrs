@@ -80,3 +80,24 @@ make pdm-lock    # lock PDM dependencies
 make conda-lock  # lock Conda dependencies
 make lock        # chains PDM and Conda locking
 ```
+
+## Building the documentation
+
+To build the documentation, use the dedicated Make target:
+
+```bash
+make docs
+```
+
+Incremental autobuild is also supported:
+
+```bash
+make docs-serve
+```
+
+## Roadmap
+
+**Not planned yet**
+
+* Automate Conda packaging.
+* Publish to conda-forge instead of a private channel on Anaconda Cloud.
