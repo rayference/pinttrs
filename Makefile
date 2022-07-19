@@ -17,9 +17,12 @@ conda-lock:
 
 # Initialise development environment
 conda-init:
-	conda-lock install --mamba --name pinttrs requirements/conda-lock.yml
-	conda run --name pinttrs \
-	    python3 -m pip install --editable . --no-deps
+	conda-lock install --mamba \
+	    --name pinttrs \
+		requirements/conda-lock.yml
+	conda run \
+	    --name pinttrs \
+	    python3 -m pip install --editable --no-deps .
 
 # Shortcut for PDM and conda lock
 lock: conda-lock pdm-lock
@@ -36,7 +39,10 @@ test:
 nox-test:
 	nox -s test
 
-.PHONY: test nox-test
+test-clean:
+	rm -f .coverage*
+
+.PHONY: test nox-test test-clean
 
 # -- Documentation -------------------------------------------------------------
 
