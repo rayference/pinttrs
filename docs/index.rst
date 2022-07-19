@@ -19,9 +19,6 @@ Pinttrs v\ |release|.
 .. image:: https://img.shields.io/github/workflow/status/leroyvn/pinttrs/Tests/main?style=flat-square
    :target: https://github.com/leroyvn/pinttrs/actions/workflows/tests.yml
 
-.. image:: https://img.shields.io/codecov/c/gh/leroyvn/pinttrs?style=flat-square
-   :target: https://codecov.io/gh/leroyvn/pinttrs
-
 .. image:: https://img.shields.io/readthedocs/pinttrs?style=flat-square
    :target: https://pinttrs.readthedocs.io
 
