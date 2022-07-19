@@ -1,6 +1,6 @@
 
 # Changes here will be overwritten by Copier
-_commit: 0.6.1
+_commit: 0.7.1
 _src_path: ../copier-pdm
 author_email: vincent.leroy@rayference.eu
 author_fullname: Vincent Leroy
@@ -10,7 +10,7 @@ copyright_holder: Vincent Leroy
 copyright_holder_email: vincent.leroy@rayference.eu
 copyright_license: MIT
 docs_sphinx: true
-project_description: Pint meets attrs.
+project_description: Pint meets attrs
 project_name: Pinttrs
 python_conda_env_name: pinttrs
 python_package_command_line_name: pinttrs

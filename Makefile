@@ -10,7 +10,7 @@ pdm-lock:
 
 # Lock conda dependencies
 conda-lock:
-	mkdir requirements
+	mkdir -p requirements
 	conda-lock lock --mamba \
 	    --file pyproject.toml \
 	    --lockfile requirements/conda-lock.yml

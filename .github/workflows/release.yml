@@ -32,6 +32,6 @@ jobs:
           pip install dist/*.whl
           fresh_env/bin/python -c "import pinttr; print(pinttr.__version__)"
 
-      - name: Upload to Pypi
+      - name: Upload to PyPI
         run: |
           pdm publish --no-build -r pypi --username __token__ --password ${{ secrets.PYPI_TOKEN }}
