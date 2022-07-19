@@ -1,6 +1,6 @@
-attrs
-furo
-pint>=0.16
-sphinx>=3.1
-sphinx-copybutton
+sphinx>=4.5
+furo>=2021.11
+myst-parser>=0.16
+sphinx-autobuild>=2021.3
+sphinx-copybutton>=0.4
 sphinx-autodoc-typehints
