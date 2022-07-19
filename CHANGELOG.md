@@ -2,7 +2,7 @@
 
 [![CalVer](https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue?style=flat-square)](https://calver.org/)
 
-## Pinttrs 22.1.0 (unreleased)
+## Pinttrs 22.1.0 (2022-07-19)
 
 ### Developer-side changes
 

@@ -3,7 +3,7 @@ requires = ["pdm-pep517"]
 build-backend = "pdm.pep517.api"
 
 [project]
-name = "Pinttrs"
+name = "pinttrs"
 description = "Pint meets attrs."
 authors = [{name = "Vincent Leroy", email = "vincent.leroy@rayference.eu"}]
 license = {file = "LICENSE"}
@@ -22,9 +22,9 @@ dependencies = [
 [project.optional-dependencies]
 
 [project.urls]
-Homepage = "https://pinttrs.readthedocs.io"
+Homepage = "https://github.com/leroyvn/pinttrs"
 Documentation = "https://pinttrs.readthedocs.io"
-Changelog = "https://pinttrs.readthedocs.io/changelog"
+Changelog = "https://github.com/leroyvn/pinttrs/blob/main/CHANGELOG.md"
 Repository = "https://github.com/leroyvn/pinttrs"
 Issues = "https://github.com/leroyvn/pinttrs/issues"
 
@@ -88,7 +88,6 @@ show_missing = true
 skip_covered = true
 omit = [
   "src/*/__init__.py",
-  "src/*/__main__.py",
   "src/*/_version.py",
 ]
 precision = 2
