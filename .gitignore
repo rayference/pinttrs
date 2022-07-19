@@ -27,7 +27,6 @@ docs/_build/
 .ipynb_checkpoints/
 
 # Local settings and contents
-.copier-answers.yml
 .pdm.toml
 __pypackages__/
 .venv/
