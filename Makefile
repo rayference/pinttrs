@@ -18,10 +18,10 @@ conda-lock:
 # Initialise development environment
 conda-init:
 	conda-lock install --mamba \
-	    --name {{ python_conda_env_name }} \
+	    --name pinttrs \
 		requirements/conda-lock.yml
 	conda run \
-	    --name {{ python_conda_env_name }} \
+	    --name pinttrs \
 	    python3 -m pip install --editable --no-deps .
 
 # Shortcut for PDM and conda lock
