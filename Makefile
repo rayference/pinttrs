@@ -19,10 +19,10 @@ conda-lock:
 conda-init:
 	conda-lock install --mamba \
 	    --name pinttrs \
-		requirements/conda-lock.yml
+	    requirements/conda-lock.yml
 	conda run \
 	    --name pinttrs \
-	    python3 -m pip install --editable --no-deps .
+	    python3 -m pip install --editable . --no-deps
 
 # Shortcut for PDM and conda lock
 lock: conda-lock pdm-lock
