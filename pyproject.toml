@@ -62,7 +62,7 @@ line-length = 88
 
 [tool.isort]
 line_length = 88
-style = "black"
+profile = "black"
 
 [tool.conda-lock]
 channels = ["conda-forge", "defaults"]

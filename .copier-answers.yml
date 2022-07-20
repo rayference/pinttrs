@@ -1,7 +1,7 @@
 
 # Changes here will be overwritten by Copier
-_commit: 0.7.1
-_src_path: ../copier-pdm
+_commit: 0.7.2
+_src_path: gh:leroyvn/copier-pdm
 author_email: vincent.leroy@rayference.eu
 author_fullname: Vincent Leroy
 author_username: leroyvn
