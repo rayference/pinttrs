@@ -16,8 +16,8 @@ Pinttrs v\ |release|.
 .. image:: https://img.shields.io/conda/v/eradiate/pinttrs?color=blue&style=flat-square
    :target: https://anaconda.org/eradiate/pinttrs
 
-.. image:: https://img.shields.io/github/workflow/status/leroyvn/pinttrs/Tests/main?style=flat-square
-   :target: https://github.com/leroyvn/pinttrs/actions/workflows/tests.yml
+.. image:: https://img.shields.io/github/actions/workflow/status/leroyvn/pinttrs/ci.yml?branch=main&style=flat-square
+   :target: https://github.com/leroyvn/pinttrs/actions/workflows/ci.yml
 
 .. image:: https://img.shields.io/readthedocs/pinttrs?style=flat-square
    :target: https://pinttrs.readthedocs.io
