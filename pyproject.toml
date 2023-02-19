@@ -92,6 +92,12 @@ omit = [
 ]
 precision = 2
 
+[tool.coverage.html]
+directory = "./reports/coverage/html"
+
+[tool.coverage.json]
+output = "./reports/coverage/coverage.json"
+
 [tool.pytest.ini_options]
 addopts = "--doctest-glob='*.rst'"
 norecursedirs = [

@@ -15,7 +15,7 @@ dist/
 *.egg-info/
 
 # Unit test / coverage reports
-htmlcov/
+reports/
 .coverage*
 .pytest_cache/
 .nox
