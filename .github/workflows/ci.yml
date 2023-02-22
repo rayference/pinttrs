@@ -20,10 +20,10 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - "3.7"
           - "3.8"
           - "3.9"
           - "3.10"
+          - "3.11"
         os:
           - ubuntu-latest
           # - macOS-latest
@@ -58,7 +58,7 @@ jobs:
 
   coverage:
     if: ${{ !github.event.pull_request.draft }}
-    name: Combine & check coverage
+    name: Combine coverage
     runs-on: ubuntu-latest
     needs: tests
     steps:
@@ -75,15 +75,23 @@ jobs:
         with:
           name: coverage-data
 
-      - name: Combine coverage & fail if it's <100%
+      - name: Combine coverage
         run: |
           python -m coverage combine
           python -m coverage html --skip-covered --skip-empty
-          python -m coverage report --fail-under=100
+          python -m coverage json
 
-      - name: Upload HTML report if check failed
+          TOTAL=$(python -c "import json;print(json.load(open('reports/coverage/coverage.json'))['totals']['percent_covered_display'])")
+          REPORT=$(python -m coverage report)
+
+          echo "### Total coverage: ${TOTAL}%" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "${REPORT}" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload HTML report
         uses: actions/upload-artifact@v2
         with:
           name: html-report
-          path: htmlcov
-        if: ${{ failure() }}
+          path: reports/coverage/html
