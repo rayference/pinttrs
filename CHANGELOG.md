@@ -2,6 +2,12 @@
 
 [![CalVer](https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue?style=flat-square)](https://calver.org/)
 
+## Pinttrs 23.1.0 (2023-02-22)
+
+### Developer-side changes
+
+* Drop Python 3.7 support, add Python 3.11 support ({ghcommit}`191677`)
+
 ## Pinttrs 22.1.0 (2022-07-19)
 
 ### Developer-side changes
