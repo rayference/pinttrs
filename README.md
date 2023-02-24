@@ -9,7 +9,7 @@
 [![Documentation Status](https://img.shields.io/readthedocs/pinttrs?style=flat-square)](https://pinttrs.readthedocs.io)
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-black?style=flat-square)](https://black.readthedocs.io)
-[![Imports: isort](https://img.shields.io/badge/%20imports-isort-blue?style=flat-square&labelColor=orange)](https://pycqa.github.io/isort)
+[![Linter: ruff](https://img.shields.io/badge/%E2%9A%A1%EF%B8%8F-ruff-red?style=flat-square)](https://ruff.rs)
 
 ## Motivation
 

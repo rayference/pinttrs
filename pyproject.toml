@@ -1,68 +1,66 @@
 [build-system]
-requires = ["pdm-pep517"]
 build-backend = "pdm.pep517.api"
+requires = ["pdm-pep517"]
 
 [project]
-name = "pinttrs"
-description = "Pint meets attrs."
 authors = [{name = "Vincent Leroy", email = "vincent.leroy@rayference.eu"}]
-license = {file = "LICENSE"}
-readme = "README.md"
-requires-python = ">=3.8"
-keywords = []
-dynamic = ["version"]
 classifiers = [
-    "Development Status :: 3 - Alpha"
+  "Development Status :: 3 - Alpha",
 ]
 dependencies = [
-    "attrs>=21.3",
-    "pint>=0.16",
+  "attrs>=21.3",
+  "pint>=0.16",
 ]
+description = "Pint meets attrs."
+dynamic = ["version"]
+keywords = []
+license = {file = "LICENSE"}
+name = "pinttrs"
+readme = "README.md"
+requires-python = ">=3.8"
 
 [project.optional-dependencies]
 
 [project.urls]
-Homepage = "https://github.com/leroyvn/pinttrs"
-Documentation = "https://pinttrs.readthedocs.io"
 Changelog = "https://github.com/leroyvn/pinttrs/blob/main/CHANGELOG.md"
-Repository = "https://github.com/leroyvn/pinttrs"
+Documentation = "https://pinttrs.readthedocs.io"
+Homepage = "https://github.com/leroyvn/pinttrs"
 Issues = "https://github.com/leroyvn/pinttrs/issues"
+Repository = "https://github.com/leroyvn/pinttrs"
 
 [tool.pdm]
-version = {use_scm = true}
 package-dir = "src"
+version = {use_scm = true}
 
 [tool.pdm.dev-dependencies]
 docs = [
-    "sphinx>=4.5",
-    "furo>=2021.11",
-    "myst-parser>=0.16",
-    "sphinx-autobuild>=2021.3",
-    "sphinx-copybutton>=0.4",
-    "sphinx-autodoc-typehints",
+  "sphinx>=4.5",
+  "furo>=2021.11",
+  "myst-parser>=0.16",
+  "sphinx-autobuild>=2021.3",
+  "sphinx-copybutton>=0.4",
+  "sphinx-autodoc-typehints",
 ]
 format = [
-    "autoflake>=1.4",
-    "black>=22.1",
-    "isort>=5.10",
+  "black>=22.1",
+  "ruff>=0.0.245",
 ]
 maintain = []
 quality = []
 security = []
 tests = [
-    "pytest>=6.2",
-    "pytest-xdist>=2.4",
-    "pytest-cov>=3.0",
-    "xdoctest>=0.15.0",
+  "pytest>=6.2",
+  "pytest-xdist>=2.4",
+  "pytest-cov>=3.0",
+  "xdoctest>=0.15.0",
 ]
 typing = []
 
 [tool.black]
 line-length = 88
 
-[tool.isort]
-line_length = 88
-profile = "black"
+[tool.ruff]
+select = ["I"]
 
 [tool.conda-lock]
 channels = ["conda-forge", "defaults"]
@@ -84,13 +82,13 @@ equivalent = [
 ]
 
 [tool.coverage.report]
-show_missing = true
-skip_covered = true
 omit = [
   "src/*/__init__.py",
   "src/*/_version.py",
 ]
 precision = 2
+show_missing = true
+skip_covered = true
 
 [tool.coverage.html]
 directory = "./reports/coverage/html"

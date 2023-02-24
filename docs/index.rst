@@ -25,8 +25,8 @@ Pinttrs v\ |release|.
 .. image:: https://img.shields.io/badge/code%20style-black-black?style=flat-square
    :target: https://github.com/psf/black
 
-.. image:: https://img.shields.io/badge/%20imports-isort-blue?style=flat-square&labelColor=orange
-   :target: https://pycqa.github.io/isort
+.. image:: https://img.shields.io/badge/%E2%9A%A1%EF%B8%8F-ruff-red?style=flat-square
+   :target: https://ruff.rs
 
 *Pint meets attrs.*
 
