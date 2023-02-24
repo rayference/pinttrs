@@ -15,7 +15,7 @@ classifiers = [
     "Development Status :: 3 - Alpha"
 ]
 dependencies = [
-    "attrs>=21",
+    "attrs>=21.3",
     "pint>=0.16",
 ]
 

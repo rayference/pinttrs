@@ -1,4 +1,4 @@
-import pinttr
+import pinttrs
 import datetime
 
 # -- Project information -------------------------------------------------------
@@ -6,8 +6,8 @@ import datetime
 project = "Pinttrs"
 copyright = f"2021-{datetime.datetime.now().year}, Rayference"
 author = "Vincent Leroy"
-release = pinttr.__version__
-version = pinttr.__version__
+release = pinttrs.__version__
+version = pinttrs.__version__
 
 # -- General configuration -----------------------------------------------------
 

@@ -102,6 +102,8 @@ the ``attrs`` logo.
    :hidden:
 
    rst/api
+   rst/api_classic
+   rst/interface
    src/whats_new.md
 
 .. toctree::

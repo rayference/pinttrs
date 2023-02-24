@@ -10,32 +10,39 @@ Attaching units to attributes
 
 Pinttrs's main functionality is to provide support natural unit support to
 ``attrs`` classes. Units must be specified explicitly, *i.e.* they cannot be
-specified using a string representation, because Pinttrs does not provide a
-Pint unit registry. Therefore, the first thing you need to do is to create a
-Pint unit registry:
+specified using a string representation. Therefore, the first thing you need
+to do is to create a Pint unit registry:
 
 .. doctest::
 
    >>> import pint
    >>> ureg = pint.UnitRegistry()
 
-Pinttrs defines a :func:`pinttr.ib` function similar to :func:`attr.ib`, which
+.. note::
+
+   Although Pinttrs offers a default unit registry (see :func:`.get_unit_registry`),
+   we deliberately made the choice to not support automatic string
+   interpretation. The reason is that automatically interpreting units using
+   the built-in unit registry is a potential source of trouble for users
+   who would also manipulate units created with a different registry.
+
+Pinttrs defines a :func:`pinttrs.field` function similar to :func:`attrs.field`, which
 basically calls the latter after defining some metadata. The ``units`` argument
 is the main difference and allows for the attachment of units to a field:
 
 .. doctest::
 
-   >>> import attr, pinttr
-   >>> @attr.s
+   >>> import attrs, pinttrs
+   >>> @attrs.define
    ... class MyClass:
-   ...     field = pinttr.ib(units=ureg.km)
+   ...     field = pinttrs.field(units=ureg.km)
    >>> MyClass(1.0)
    MyClass(field=1.0 km)
 
 .. note::
-   If ``units`` is unset, :func:`pinttr.ib` behaves exactly like :func:`attr.ib`.
+   If ``units`` is unset, :func:`pinttrs.field` behaves exactly like :func:`attrs.field`.
 
-Scalar values are automatically wrapped in Pint units. If a Pint quantity is
+Unitless values are automatically wrapped in Pint units. If a Pint quantity is
 passed as an attribute value, its units will be checked. If they prove to be
 :ref:`compatible in the sense of Pinttrs <compatible>`, the value will be
 assigned to the attribute without modification:
@@ -79,29 +86,29 @@ setting:
 
    .. doctest::
 
-      >>> @attr.s
+      >>> @attrs.define
       ... class AnotherClass:
-      ...     field = pinttr.ib(units=ureg.km, on_setattr=None)
+      ...     field = pinttrs.field(units=ureg.km, on_setattr=None)
       >>> o = AnotherClass(1.0)
       >>> o
       AnotherClass(field=1.0 km)
       >>> o.field = 1.0
       >>> o
-      AnotherClass(field=1.0)
+      AnotherClass(field=1.0 km)
 
    This is sometimes required, typically if the class is frozen:
 
    .. doctest::
 
-      >>> @attr.s(frozen=True)
+      >>> @attrs.frozen
       ... class AnotherClass:
-      ...     field = pinttr.ib(units=ureg.m)
+      ...     field = pinttrs.field(units=ureg.m)
       Traceback (most recent call last):
           ...
       ValueError: Frozen classes can't use on_setattr.
-      >>> @attr.s(frozen=True)
+      >>> @attrs.frozen
       ... class AnotherClass:
-      ...     field = pinttr.ib(units=ureg.m, on_setattr=None)
+      ...     field = pinttrs.field(units=ureg.m, on_setattr=None)
 
 By default, the created attribute is assigned a ``repr`` value well-suited for
 displaying units.
@@ -111,9 +118,9 @@ displaying units.
 
    .. doctest::
 
-      >>> @attr.s
+      >>> @attrs.define
       ... class AnotherClass:
-      ...     field = pinttr.ib(units=ureg.km, repr=True)
+      ...     field = pinttrs.field(units=ureg.km, repr=True)
       >>> o = AnotherClass(1.0)
       >>> o
       AnotherClass(field=<Quantity(1.0, 'kilometer')>)
@@ -128,24 +135,6 @@ and converters which can be used manually to further customise the behaviour of
 attributes. See relevant API sections for further information:
 :ref:`api-converters`, :ref:`api-validators`.
 
-.. _usage-attach_units-next_gen_apis:
-
-Next-generation APIs
-^^^^^^^^^^^^^^^^^^^^
-
-Pinttrs also defines APIs matching the ``attrs``
-`next-generation APIs <https://www.attrs.org/en/stable/api.html#next-generation-apis>`_
-for syntactic consistency. Currently, Pinttrs defines :func:`pinttr.field`.
-Writing a class in that style will likely look like:
-
-.. doctest::
-
-   >>> @attr.define
-   ... class MyClass:
-   ...     field = pinttr.field(units=ureg.m)
-   >>> MyClass(1.0)
-   MyClass(field=1.0 m)
-
 Unit generators
 ---------------
 
@@ -156,7 +145,7 @@ class stores Pint units and returns them when called:
 
 .. doctest::
 
-   >>> ugen = pinttr.UnitGenerator(ureg.m)
+   >>> ugen = pinttrs.UnitGenerator(ureg.m)
    >>> ugen()
    <Unit('meter')>
 
@@ -168,20 +157,20 @@ Stored units can then be dynamically modified:
    >>> ugen()
    <Unit('second')>
 
-The :func:`pinttr.ib` function's ``units`` parameter also accepts unit
+The :func:`pinttrs.field` function's ``units`` parameter also accepts unit
 generators. When this happens, the stored generator is evaluated each time units
 are requested, *e.g.* by a converter or a validator:
 
 .. doctest::
 
-   >>> ugen = pinttr.UnitGenerator(ureg.m)
-   >>> @attr.s
+   >>> ugen = pinttrs.UnitGenerator(ureg.m)
+   >>> @attrs.define
    ... class MyClass:
-   ...     field = pinttr.ib(units=ugen)
+   ...     field = pinttrs.field(units=ugen)
    >>> MyClass(1.0)
    MyClass(field=1.0 m)
 
-.. note:: Under the hood, units attached to attributes with :func:`pinttr.ib`
+.. note:: Under the hood, units attached to attributes with :func:`pinttrs.field`
    are always stored as unit generators.
 
 Temporary override
@@ -212,10 +201,10 @@ Override can be used to vary dynamically default units attached to an attribute:
 
 .. doctest::
 
-   >>> ugen = pinttr.UnitGenerator(ureg.m)
-   >>> @attr.s
+   >>> ugen = pinttrs.UnitGenerator(ureg.m)
+   >>> @attrs.define
    ... class MyClass:
-   ...     field = pinttr.ib(units=ugen)
+   ...     field = pinttrs.field(units=ugen)
    >>> MyClass(1.0)
    MyClass(field=1.0 m)
    >>> with ugen.override(ureg.s):
@@ -232,9 +221,9 @@ can be used, but this is of limited utility). For instance:
 
 .. doctest::
 
-   >>> ugen_length = pinttr.UnitGenerator(ureg.m)
-   >>> ugen_time = pinttr.UnitGenerator(ureg.s)
-   >>> ugen_speed = pinttr.UnitGenerator(lambda: ugen_length() / ugen_time())
+   >>> ugen_length = pinttrs.UnitGenerator(ureg.m)
+   >>> ugen_time = pinttrs.UnitGenerator(ureg.s)
+   >>> ugen_speed = pinttrs.UnitGenerator(lambda: ugen_length() / ugen_time())
    >>> ugen_speed()
    <Unit('meter / second')>
 
@@ -262,14 +251,14 @@ string-keyed dictionaries:
 
 .. doctest::
 
-   >>> uctx = pinttr.UnitContext({"length": pinttr.UnitGenerator(ureg.m)})
+   >>> uctx = pinttrs.UnitContext({"length": pinttrs.UnitGenerator(ureg.m)})
 
 Additional units can be registered after context object creation using the
 :meth:`~.UnitContext.register` method:
 
 .. doctest::
 
-   >>> uctx.register("time", pinttr.UnitGenerator(ureg.s))
+   >>> uctx.register("time", pinttrs.UnitGenerator(ureg.s))
    >>> uctx.get_all()
    {'length': <Unit('meter')>, 'time': <Unit('second')>}
 
@@ -289,7 +278,7 @@ method:
       >>> uctx["time"] = ureg.ms
       >>> uctx["time"]
       <Unit('millisecond')>
-      >>> uctx["time"] = pinttr.UnitGenerator(ureg.s)
+      >>> uctx["time"] = pinttrs.UnitGenerator(ureg.s)
       >>> uctx["time"]
       <Unit('second')>
 
@@ -305,9 +294,9 @@ The returned unit generator can be used to attach units to an attribute:
 
 .. doctest::
 
-   >>> @attr.s
+   >>> @attrs.define
    ... class MyClass:
-   ...     field = pinttr.ib(units=uctx.deferred("length"))
+   ...     field = pinttrs.field(units=uctx.deferred("length"))
    >>> MyClass(1.0)
    MyClass(field=1.0 m)
 
@@ -316,7 +305,7 @@ directly passed and will be turned into generators automatically:
 
 .. doctest::
 
-   >>> uctx = pinttr.UnitContext({"length": ureg.m})
+   >>> uctx = pinttrs.UnitContext({"length": ureg.m})
    >>> uctx.deferred("length")
    UnitGenerator(units=<Unit('meter')>)
    >>> uctx.register("time", ureg.s)
@@ -387,7 +376,7 @@ declare it as the key converter:
 
 .. doctest::
 
-   >>> uctx = pinttr.UnitContext(key_converter=PhysicalQuantity)
+   >>> uctx = pinttrs.UnitContext(key_converter=PhysicalQuantity)
 
 We can then use strings or enum members indifferently to access context
 contents:
@@ -396,7 +385,7 @@ contents:
    >>> uctx.register("time", ureg.s)
    >>> uctx.deferred(PhysicalQuantity.TIME)
    UnitGenerator(units=<Unit('second')>)
-   >>> uctx.register(PhysicalQuantity.SPEED, pinttr.UnitGenerator(
+   >>> uctx.register(PhysicalQuantity.SPEED, pinttrs.UnitGenerator(
    ...     lambda: uctx.get(PhysicalQuantity.LENGTH) /
    ...             uctx.get(PhysicalQuantity.TIME)
    ... ))
@@ -414,11 +403,11 @@ argument. If it is unset, the unit registry returned by
 
 .. doctest::
 
-   >>> uctx = pinttr.UnitContext({"length": "m", "time": "s"}, interpret_str=True)
+   >>> uctx = pinttrs.UnitContext({"length": "m", "time": "s"}, interpret_str=True)
    >>> uctx.get_all()
    {'length': <Unit('meter')>, 'time': <Unit('second')>}
 
-.. warning:: Interpreting units base on Pinttrs's default registry can have
+.. warning:: Interpreting units based on Pinttrs's default registry can have
    unintended consequences. Be careful when using this feature!
 
    .. doctest::
@@ -433,12 +422,12 @@ argument. If it is unset, the unit registry returned by
 Interpreting units in dicts
 ---------------------------
 
-Pinttrs ships a helper function :func:`pinttr.interpret_units` which can be
+Pinttrs ships a helper function :func:`pinttrs.interpret_units` which can be
 used to interpret units in a dictionary with string-valued keys:
 
 .. doctest::
 
-   >>> pinttr.interpret_units({"field": 1.0, "field_units": "m"}, ureg)
+   >>> pinttrs.interpret_units({"field": 1.0, "field_units": "m"}, ureg)
    {'field': <Quantity(1.0, 'meter')>}
 
 This is useful to *e.g.* initialise objects using simple JSON fragments.
@@ -446,11 +435,11 @@ Example:
 
 .. doctest::
 
-   >>> from pinttr import interpret_units
-   >>> ugen = pinttr.UnitGenerator(ureg.m)
-   >>> @attr.s
+   >>> from pinttrs import interpret_units
+   >>> ugen = pinttrs.UnitGenerator(ureg.m)
+   >>> @attrs.define
    ... class MyClass:
-   ...     field = pinttr.ib(units=ugen)
+   ...     field = pinttrs.field(units=ugen)
    >>> MyClass(**interpret_units({"field": 1.0, "field_units": "m"}, ureg))
    MyClass(field=1.0 m)
    >>> MyClass(**interpret_units({"field": 1.0, "field_units": "s"}, ureg))
@@ -468,9 +457,9 @@ will be performed (and will fail if incompatible units are detected):
 
 .. doctest::
 
-   >>> pinttr.interpret_units({"field": 1.0 * ureg.m, "field_units": "km"}, ureg)
+   >>> pinttrs.interpret_units({"field": 1.0 * ureg.m, "field_units": "km"}, ureg)
    {'field': <Quantity(0.001, 'kilometer')>}
-   >>> pinttr.interpret_units({"field": 1.0 * ureg.s, "field_units": "m"}, ureg)
+   >>> pinttrs.interpret_units({"field": 1.0 * ureg.s, "field_units": "m"}, ureg)
    Traceback (most recent call last):
        ...
    pint.errors.DimensionalityError: Cannot convert from 'second' ([time]) to 'meter' ([length])
