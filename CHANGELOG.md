@@ -2,6 +2,10 @@
 
 [![CalVer](https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue?style=flat-square)](https://calver.org/)
 
+## Pinttrs 23.2.0 (2023-02-24)
+
+* Support `import pinttrs`, promote this namespace and modern APIs in documentation ({ghpr}`5`).
+
 ## Pinttrs 23.1.1 (2023-02-22)
 
 *Minor release with tooling updates.*
