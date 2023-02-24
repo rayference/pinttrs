@@ -3,25 +3,25 @@
 API Reference
 =============
 
-.. currentmodule:: pinttr
+.. currentmodule:: pinttrs
 
 .. _api-main:
 
 Main interface
 --------------
 
-.. autofunction:: pinttr.ib
+.. autofunction:: pinttrs.field
 
 .. _api-dynamic:
 
 Dynamic unit management
 -----------------------
 
-.. autoclass:: pinttr.UnitGenerator
+.. autoclass:: pinttrs.UnitGenerator
    :members:
    :special-members: __call__
 
-.. autoclass:: pinttr.UnitContext
+.. autoclass:: pinttrs.UnitContext
    :members:
    :special-members: __getitem__, __setitem__
 
@@ -30,52 +30,43 @@ Dynamic unit management
 Default unit registry
 ---------------------
 
-.. autofunction:: pinttr.get_unit_registry
-.. autofunction:: pinttr.set_unit_registry
+.. autofunction:: pinttrs.get_unit_registry
+.. autofunction:: pinttrs.set_unit_registry
 
 .. _api-dict_interpretation:
 
 Dictionary interpretation
 -------------------------
 
-.. autofunction:: pinttr.interpret_units
+.. autofunction:: pinttrs.interpret_units
 
 .. _api-converters:
 
-Converters [``pinttr.converters``]
-----------------------------------
+Converters [``pinttrs.converters``]
+-----------------------------------
 
-.. autofunction:: pinttr.converters.to_units
+.. autofunction:: pinttrs.converters.to_units
 
 .. _api-validators:
 
-Validators [``pinttr.validators``]
-----------------------------------
+Validators [``pinttrs.validators``]
+-----------------------------------
 
-.. autofunction:: pinttr.validators.has_compatible_units
+.. autofunction:: pinttrs.validators.has_compatible_units
 
 .. _api-utilities:
 
-Utilities [``pinttr.util``]
----------------------------
+Utilities [``pinttrs.util``]
+----------------------------
 
-.. autofunction:: pinttr.util.always_iterable
-.. autofunction:: pinttr.converters.ensure_units
-.. autofunction:: pinttr.util.units_compatible
+.. autofunction:: pinttrs.util.always_iterable
+.. autofunction:: pinttrs.converters.ensure_units
+.. autofunction:: pinttrs.util.units_compatible
 
 .. _api-exceptions:
 
-Exceptions [``pinttr.exceptions``]
-----------------------------------
+Exceptions [``pinttrs.exceptions``]
+-----------------------------------
 
-.. autoexception:: pinttr.exceptions.UnitsError
+.. autoexception:: pinttrs.exceptions.UnitsError
    :show-inheritance:
-
-Next-generation APIs
---------------------
-
-Pinttrs provides APIs matching ``attrs``
-`next-generation APIs <https://www.attrs.org/en/stable/api.html#next-generation-apis>`_
-for syntactic homogeneity.
-
-.. autofunction:: pinttr.field
