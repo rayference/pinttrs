@@ -1,20 +1,5 @@
-# Configuration file for the Sphinx documentation builder.
-#
-# This file only contains a selection of the most common options. For a full
-# list see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
-
 import pinttr
 import datetime
-
-# -- Path setup ----------------------------------------------------------------
-
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-#
-
-# sys.path.insert(0, os.path.abspath("../src"))
 
 # -- Project information -------------------------------------------------------
 
@@ -48,6 +33,8 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
+    "attrs": ("https://www.attrs.org/en/stable", None),
+    "pint": ("https://pint.readthedocs.io/en/stable", None),
 }
 
 # -- GitHub quicklinks with 'extlinks' -----------------------------------------
