@@ -2,9 +2,14 @@
 
 [![CalVer](https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue?style=flat-square)](https://calver.org/)
 
-## Pinttrs 23.2.0 (2023-02-24)
+## Pinttrs 23.2.0 (2023-02-25)
 
 * Support `import pinttrs`, promote this namespace and modern APIs in documentation ({ghpr}`5`).
+
+### Developer-side changes
+
+* Move from isort to ruff for import sorting. This also opens the door to linting features ({ghcommit}`9a4ed0`).
+* Add pre-commit hooks ({ghcommit}`5b4ab9`).
 
 ## Pinttrs 23.1.1 (2023-02-22)
 
@@ -36,13 +41,11 @@
 * Add ``pinttr.field()`` ({ghcommit}`992acf`).
 * ``pinttr.ib()``: Add nicer default repr ({ghcommit}`d68ec4`).
 
-
 ### Developer-side changes
 
 * Automate testing with GitHub actions ({ghcommit}`1997a7`).
 * Manage changelog with Towncrier ({ghcommit}`644ecc`).
 * Add coverage report with Codecov ({ghcommit}`fa658d`).
-
 
 ## Pinttrs 21.2.0 (2021-04-26)
 
