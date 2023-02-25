@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: Pinttrs
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Vincent
+    family-names: Leroy
+    email: vincent.leroy@rayference.eu
+    affiliation: Rayference
+    orcid: 'https://orcid.org/0000-0002-5407-0237'
+repository-code: 'https://github.com/leroyvn/pinttrs'
+url: 'https://pinttrs.readthedocs.io'
+abstract: >-
+  Pinttrs provides a way to apply units automatically and
+  reliably to attrs attributes with Pint.
+license: MIT
