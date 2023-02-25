@@ -30,7 +30,8 @@ jobs:
           python3 -m venv fresh_env
           . fresh_env/bin/activate
           pip install dist/*.whl
-          fresh_env/bin/python -c "import pinttr; print(pinttrs.__version__)"
+          fresh_env/bin/python -c "import pinttr; print(pinttr.__version__)"
+          fresh_env/bin/python -c "import pinttrs; print(pinttrs.__version__)"
 
       - name: Upload to PyPI
         run: |
