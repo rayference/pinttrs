@@ -3,18 +3,24 @@ build-backend = "pdm.pep517.api"
 requires = ["pdm-pep517"]
 
 [project]
-authors = [{name = "Vincent Leroy", email = "vincent.leroy@rayference.eu"}]
+authors = [{ name = "Vincent Leroy", email = "vincent.leroy@rayference.eu" }]
 classifiers = [
-  "Development Status :: 3 - Alpha",
+    "Development Status :: 6 - Mature",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering",
 ]
 dependencies = [
-  "attrs>=21.3",
-  "pint>=0.16",
+    "attrs>=21.3",
+    "pint>=0.16",
 ]
 description = "Pint meets attrs."
 dynamic = ["version"]
 keywords = []
-license = {file = "LICENSE"}
+license = { file = "LICENSE" }
 name = "pinttrs"
 readme = "README.md"
 requires-python = ">=3.8"
@@ -30,29 +36,29 @@ Repository = "https://github.com/leroyvn/pinttrs"
 
 [tool.pdm]
 package-dir = "src"
-version = {use_scm = true}
+version = { use_scm = true }
 
 [tool.pdm.dev-dependencies]
 docs = [
-  "sphinx>=4.5",
-  "furo>=2021.11",
-  "myst-parser>=0.16",
-  "sphinx-autobuild>=2021.3",
-  "sphinx-copybutton>=0.4",
-  "sphinx-autodoc-typehints",
+    "sphinx>=4.5",
+    "furo>=2021.11",
+    "myst-parser>=0.16",
+    "sphinx-autobuild>=2021.3",
+    "sphinx-copybutton>=0.4",
+    "sphinx-autodoc-typehints",
 ]
 format = [
-  "black>=22.1",
-  "ruff>=0.0.245",
+    "black>=22.1",
+    "ruff>=0.0.245",
 ]
 maintain = []
 quality = []
 security = []
 tests = [
-  "pytest>=6.2",
-  "pytest-xdist>=2.4",
-  "pytest-cov>=3.0",
-  "xdoctest>=0.15.0",
+    "pytest>=6.2",
+    "pytest-xdist>=2.4",
+    "pytest-cov>=3.0",
+    "xdoctest>=0.15.0",
 ]
 typing = []
 
@@ -75,19 +81,19 @@ pip = "*"
 branch = true
 parallel = true
 source = [
-  "src/",
+    "src/",
 ]
 
 [tool.coverage.paths]
 equivalent = [
-  "src/",
-  "__pypackages__/",
+    "src/",
+    "__pypackages__/",
 ]
 
 [tool.coverage.report]
 omit = [
-  "src/*/__init__.py",
-  "src/*/_version.py",
+    "src/*/__init__.py",
+    "src/*/_version.py",
 ]
 precision = 2
 show_missing = true
@@ -102,18 +108,18 @@ output = "./reports/coverage/coverage.json"
 [tool.pytest.ini_options]
 addopts = "--doctest-glob='*.rst'"
 norecursedirs = [
-  ".git",
-  ".env",
-  "dist",
-  "build",
-  "__pypackages__",
+    ".git",
+    ".env",
+    "dist",
+    "build",
+    "__pypackages__",
 ]
 python_files = [
-  "test_*.py",
-  "*_test.py",
-  "tests.py",
+    "test_*.py",
+    "*_test.py",
+    "tests.py",
 ]
 testpaths = [
-  "tests",
-  "docs",
+    "tests",
+    "docs",
 ]
