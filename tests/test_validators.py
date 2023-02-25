@@ -1,8 +1,7 @@
-import attr
+import attrs
 import pint
-import pytest
-
 import pinttr
+import pytest
 from pinttr.exceptions import UnitsError
 from pinttr.validators import has_compatible_units
 
@@ -13,7 +12,7 @@ def test_has_compatible_units():
     """
     ureg = pint.UnitRegistry()
 
-    @attr.s
+    @attrs.define
     class MyClass:
         length = pinttr.ib(
             default=0.0 * ureg.m,

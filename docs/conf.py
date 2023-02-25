@@ -1,5 +1,6 @@
-import pinttrs
 import datetime
+
+import pinttrs
 
 # -- Project information -------------------------------------------------------
 

@@ -1,7 +1,7 @@
 from contextlib import ExitStack, contextmanager
 from typing import Callable, Dict, Hashable, Optional, Union
 
-import attr
+import attrs
 import pint
 
 from ._defaults import get_unit_registry
@@ -9,7 +9,7 @@ from ._func import identity
 from ._generator import UnitGenerator
 
 
-@attr.s
+@attrs.define
 class UnitContext:
     """
     An overridable registry of :class:`.UnitGenerator` objects.
@@ -20,7 +20,7 @@ class UnitContext:
 
     :Attributes / constructor arguments:
 
-        * **registry** (Dict[Hashable, :class:`.UnitGenerator`]) –
+        * **registry** (Dict[Hashable, :class:`~pinttrs.UnitGenerator`]) –
           Unit generator registry. Keys can be any hashable type, but
           :class:`str` or :class:`~enum.Enum` are recommended.
           Defaults to an empty dictionary.
@@ -44,10 +44,10 @@ class UnitContext:
        Added ``ureg``.
     """
 
-    registry: Dict[Hashable, UnitGenerator] = attr.ib(factory=dict)
-    interpret_str: bool = attr.ib(default=False)
-    ureg: Optional[pint.UnitRegistry] = attr.ib(default=None)
-    key_converter: Callable = attr.ib(default=identity)
+    registry: Dict[Hashable, UnitGenerator] = attrs.field(factory=dict)
+    interpret_str: bool = attrs.field(default=False)
+    ureg: Optional[pint.UnitRegistry] = attrs.field(default=None)
+    key_converter: Callable = attrs.field(default=identity)
 
     def __attrs_post_init__(self):
         # Convert keys when relevant
@@ -235,7 +235,9 @@ class UnitContext:
         """
         return self.get(key)
 
-    def __setitem__(self, key: Hashable, value: Union[UnitGenerator, pint.Unit, str]) -> None:
+    def __setitem__(
+        self, key: Hashable, value: Union[UnitGenerator, pint.Unit, str]
+    ) -> None:
         """
         Alias to :meth:`register`.
 

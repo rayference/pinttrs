@@ -1,8 +1,7 @@
-import attr
+import attrs
 import pint
-import pytest
-
 import pinttr
+import pytest
 from pinttr._metadata import MetadataKey
 from pinttr.exceptions import UnitsError
 
@@ -19,15 +18,15 @@ def test_attrib_metadata():
     assert MetadataKey.UNITS not in field_no_quantity.metadata
 
     # Units are wrapped into generators and registered as field metadata
-    field_distance = pinttr.ib(units=ureg.m)
+    field_distance = pinttr.attrib(units=ureg.m)
     assert field_distance.metadata[MetadataKey.UNITS]() == ureg.m
 
-    field_angle = pinttr.ib(units=ureg.deg)
+    field_angle = pinttr.attrib(units=ureg.deg)
     assert field_angle.metadata[MetadataKey.UNITS]() == ureg.deg
 
     # Units specified with generators  are directly registered as metadata
     ugen = pinttr.UnitGenerator(ureg.m)
-    field_distance = pinttr.ib(units=ugen)
+    field_distance = pinttr.attrib(units=ugen)
     assert field_distance.metadata[MetadataKey.UNITS]() == ureg.m
 
     # Units registered with a generator can be overridden
@@ -37,7 +36,7 @@ def test_attrib_metadata():
 
     # If 'units' argument is not a pint.Unit or a callable returning a pint.Unit, raise
     with pytest.raises(TypeError):
-        pinttr.ib(units="km")
+        pinttr.attrib(units="km")
 
 
 def test_attrib_converter_validator():
@@ -47,9 +46,9 @@ def test_attrib_converter_validator():
     ugen = pinttr.UnitGenerator(ureg.m)
 
     # If no converter is defined, automatic unit conversion and validation is added
-    @attr.s
+    @attrs.define
     class MyClass:
-        field = pinttr.ib(default=None, units=ugen)
+        field = pinttr.attrib(default=None, units=ugen)
 
     # Default set to None makes converter optional
     assert MyClass().field is None
@@ -68,7 +67,7 @@ def test_attrib_converter_validator():
     # And it should raise if units are not compatible
     ugen.units = ureg.s
     with pytest.raises(UnitsError):
-        MyClass(1.0 * ureg.m).field
+        MyClass(1.0 * ureg.m)
 
     # With defaults, we should also have automatic conversion and validation upon setting field
     ugen.units = ureg.m

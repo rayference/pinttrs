@@ -1,4 +1,3 @@
-
 .. _usage-interface:
 
 About the Pinttrs interface
@@ -7,8 +6,10 @@ About the Pinttrs interface
 .. admonition:: TL;DR
    :class: note
 
-   * As of Pinttrs v23.2.0, using the modern APIs is recommended. The classic APIs are, however, still available.
-   * As of Pinttrs v23.2.0, using `import attrs` is recommended. The classic `import attr` is still supported.
+   * As of Pinttrs v23.2.0, using the modern interface :func:`pinttrs.field` is
+     recommended. The classic interface :func:`pinttr.ib` is still available.
+   * As of Pinttrs v23.2.0, using ``import attrs`` is recommended. The classic
+     ``import attr`` is still supported.
 
 Pinttrs initially mimicked the ``attrs`` import and interface policies so
 that using it would feel natural to ``attrs`` users. Therefore, the code was
@@ -27,7 +28,8 @@ Typically, a field definition would look like this:
 
 As mentioned in the `documentation <https://www.attrs.org/en/latest/names.html>`_,
 the ``attrs`` interface then evolved. Pinttrs followed the movement in order
-to provide similar expressiveness. Consequently, we introduced :class:`pinttrs.field` and the ``pinttrs`` package:
+to provide similar expressiveness. Consequently, we introduced
+:class:`pinttrs.field` and the ``pinttrs`` package:
 
 .. doctest::
 

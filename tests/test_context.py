@@ -1,10 +1,8 @@
 import enum
 
-import pytest
-
 import pinttr
-from pinttr import UnitContext
-from pinttr import UnitGenerator
+import pytest
+from pinttr import UnitContext, UnitGenerator
 
 ureg = pinttr.get_unit_registry()
 

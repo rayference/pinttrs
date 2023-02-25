@@ -1,19 +1,19 @@
 from contextlib import contextmanager
 from copy import copy
-from typing import Union, Callable
+from typing import Callable, Union
 
-import attr
+import attrs
 import pint
 
 
-@attr.s
+@attrs.define
 class UnitGenerator:
     """
     A callable object which returns units objects.
-    Stored units can be contextually overridden using the :meth:`.override`
-    method.
+    Stored units can be contextually overridden using the
+    :meth:`~pinttrs.UnitGenerator.override` method.
 
-    .. seealso:: :class:`.UnitContext`
+    .. seealso:: :class:`~pinttrs.UnitContext`
 
     :Attributes / constructor arguments:
 
@@ -21,14 +21,14 @@ class UnitGenerator:
         Stored units or generator.
     """
 
-    units: Union[pint.Unit, Callable] = attr.ib()
+    units: Union[pint.Unit, Callable] = attrs.field()
 
     def __call__(self) -> pint.Unit:
         """
         :returns:
             If ``units`` is a :class:`pint.Unit`, it is returned; if ``units``
-            is a callable (typically, another :class:`UnitGenerator`), the
-            result of its evaluation will be returned.
+            is a callable (typically, another :class:`~pinttrs.UnitGenerator`),
+            the result of its evaluation will be returned.
         """
         if callable(self.units):
             return self.units()

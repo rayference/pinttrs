@@ -1,7 +1,6 @@
 import pint
-import pytest
-
 import pinttr
+import pytest
 
 
 def test_set_unit_registry():

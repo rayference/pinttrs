@@ -20,7 +20,7 @@ to do is to create a Pint unit registry:
 
 .. note::
 
-   Although Pinttrs offers a default unit registry (see :func:`.get_unit_registry`),
+   Although Pinttrs offers a default unit registry (see :func:`~pinttrs.get_unit_registry`),
    we deliberately made the choice to not support automatic string
    interpretation. The reason is that automatically interpreting units using
    the built-in unit registry is a potential source of trouble for users

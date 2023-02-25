@@ -1,7 +1,6 @@
 import pint
 import pytest
 from pint import DimensionalityError
-
 from pinttr import UnitGenerator
 from pinttr.util import always_iterable, ensure_units, units_compatible
 
@@ -13,6 +12,7 @@ def test_always_iterable():
     Unit tests for :func:`pinttrs.util.always_iterable`.
     More tests on original code [https://github.com/more-itertools].
     """
+
     # Utility function to check for success
     def is_iterable(value):
         try:
