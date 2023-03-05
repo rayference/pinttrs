@@ -41,7 +41,9 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Setup Nox
-        uses: excitedleigh/setup-nox@main
+        uses: wntrblm/nox@2022.11.21
+        with:
+          python-versions: ${{ matrix.python-version }}
 
       - name: Install dependencies
         run: pdm install
