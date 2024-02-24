@@ -16,7 +16,7 @@ class UnitContext:
 
     This class maintains a registry of :class:`.UnitGenerator` instances.
     Stored :class:`.UnitGenerator` objects can be conveniently overridden using
-    the :meth:`.override` context manager.
+    the :meth:`~UnitContext.override` context manager.
 
     :Attributes / constructor arguments:
 
