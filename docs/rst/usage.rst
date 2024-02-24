@@ -9,8 +9,8 @@ Attaching units to attributes
 -----------------------------
 
 Pinttrs's main functionality is to provide support natural unit support to
-``attrs`` classes. Units must be specified explicitly, *i.e.* they cannot be
-specified using a string representation. Therefore, the first thing you need
+``attrs`` classes. Units must be specified explicitly, *i.e.* as :class:`~pint.Unit`
+instances created by a unit registry. Therefore, the first thing you need
 to do is to create a Pint unit registry:
 
 .. doctest::
@@ -25,6 +25,10 @@ to do is to create a Pint unit registry:
    interpretation. The reason is that automatically interpreting units using
    the built-in unit registry is a potential source of trouble for users
    who would also manipulate units created with a different registry.
+
+   It should however be noted that with the application registry, Pint makes
+   using a shared registry much safer. We might support automatic string
+   interpretation using the default registry in a future release.
 
 Pinttrs defines a :func:`pinttrs.field` function similar to :func:`attrs.field`, which
 basically calls the latter after defining some metadata. The ``units`` argument

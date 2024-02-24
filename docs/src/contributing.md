@@ -56,3 +56,10 @@ Incremental autobuild is also supported:
 ```bash
 make docs-serve
 ```
+
+## Roadmap
+
+**Not planned yet**
+
+* Allow automatic string interpretation using the built-in registry (this feature
+  should have a switch based on a user setting).
