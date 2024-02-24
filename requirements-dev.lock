@@ -76,6 +76,7 @@ pyyaml==6.0.1
     # via myst-parser
 requests==2.31.0
     # via sphinx
+setuptools==69.1.1
 six==1.16.0
     # via livereload
 snowballstemmer==2.2.0

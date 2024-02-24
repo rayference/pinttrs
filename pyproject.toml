@@ -103,6 +103,7 @@ dev-dependencies = [
   "sphinx-autodoc-typehints",
   "sphinx-copybutton>=0.4",
   "sphinx>=7",
-  "xdoctest>=0.15.0"
+  "xdoctest>=0.15.0",
+  "setuptools>=69.1.1"
 ]
 managed = true
