@@ -62,7 +62,7 @@ source = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/pinttrs"]
+packages = ["src/pinttrs", "src/pinttr"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
