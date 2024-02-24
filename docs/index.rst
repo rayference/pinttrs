@@ -1,8 +1,3 @@
-.. pinttrs documentation master file, created by
-   sphinx-quickstart on Tue Jan 19 18:21:12 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 :hide-toc:
 
 Pinttrs
@@ -10,23 +5,28 @@ Pinttrs
 
 Pinttrs v\ |release|.
 
-.. image:: https://img.shields.io/pypi/v/pinttrs?color=blue&style=flat-square
+.. image:: https://img.shields.io/pypi/v/pinttrs?color=blue
    :target: https://pypi.org/project/pinttrs
 
-.. image:: https://img.shields.io/conda/v/eradiate/pinttrs?color=blue&style=flat-square
+.. image:: https://img.shields.io/conda/v/eradiate/pinttrs?color=blue
    :target: https://anaconda.org/eradiate/pinttrs
 
-.. image:: https://img.shields.io/github/actions/workflow/status/leroyvn/pinttrs/ci.yml?branch=main&style=flat-square
+.. image:: https://img.shields.io/github/actions/workflow/status/leroyvn/pinttrs/ci.yml?branch=main
    :target: https://github.com/leroyvn/pinttrs/actions/workflows/ci.yml
 
-.. image:: https://img.shields.io/readthedocs/pinttrs?style=flat-square
+.. image:: https://img.shields.io/readthedocs/pinttrs
    :target: https://pinttrs.readthedocs.io
 
-.. image:: https://img.shields.io/badge/code%20style-black-black?style=flat-square
-   :target: https://github.com/psf/black
+.. image:: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/mitsuhiko/rye/main/artwork/badge.json
+    :target: https://rye-up.com
+    :alt: Rye
 
-.. image:: https://img.shields.io/badge/%E2%9A%A1%EF%B8%8F-ruff-red?style=flat-square
-   :target: https://ruff.rs
+.. image:: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json
+    :target: https://github.com/astral-sh/ruff
+    :alt: Ruff
+
+.. image:: https://img.shields.io/badge/code%20style-black-black
+   :target: https://github.com/psf/black
 
 *Pint meets attrs.*
 

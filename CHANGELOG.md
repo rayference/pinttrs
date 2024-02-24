@@ -2,6 +2,17 @@
 
 [![CalVer](https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue?style=flat-square)](https://calver.org/)
 
+## Pinttrs 24.1.0 (upcoming release)
+
+* Add Python 3.12 support ({ghpr}`7`).
+
+### Developer-side changes
+
+* Move from PDM to Rye for project management ({ghpr}`7`).
+* Drop Nox for testing ({ghpr}`7`).
+* Drop Conda development environment support ({ghpr}`7`).
+* Use the Ruff formatter instead of Black in pre-commit hooks ({ghpr}`7`).
+
 ## Pinttrs 23.2.0 (2023-02-25)
 
 * Support `import pinttrs`, promote this namespace and modern APIs in documentation ({ghpr}`5`).
