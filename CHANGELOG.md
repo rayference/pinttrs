@@ -12,6 +12,7 @@
 * Drop Nox for testing ({ghpr}`7`).
 * Drop Conda development environment support ({ghpr}`7`).
 * Use the Ruff formatter instead of Black in pre-commit hooks ({ghpr}`7`).
+* Drop Copier template ({ghpr`7`}).
 
 ## Pinttrs 23.2.0 (2023-02-25)
 
