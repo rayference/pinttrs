@@ -24,7 +24,7 @@ license = {file = "LICENSE"}
 name = "pinttrs"
 readme = "README.md"
 requires-python = ">=3.8"
-version = "24.1.0.dev0"
+version = "24.1.0"
 
 [project.urls]
 Changelog = "https://github.com/leroyvn/pinttrs/blob/main/CHANGELOG.md"
