@@ -14,14 +14,14 @@
 ## Motivation
 
 The amazing [`attrs`](https://www.attrs.org) library is a game-changer when it
-comes to writing classes. Its initialisation sequence notably allows for
+comes to writing classes. Its initialization sequence notably allows for
 automated conversion and verification of attribute values. This package is an
 attempt at designing a system to apply units automatically and reliably to
 attributes with [Pint](https://pint.readthedocs.io).
 
 ## Features
 
-- Attach automatically units to unitless values passed to initialise an attribute
+- Attach automatically units to unitless values passed to initialize an attribute
 - Verify unit compatibility when assigning a value to an attribute
 - Interpret units in dictionaries with a simple syntax
 - Define unit context to vary unitless value interpretation dynamically

@@ -62,7 +62,7 @@ def attrib(
        Added prettier default repr.
     """
 
-    # Initialise attr.ib arguments
+    # Initialize attr.ib arguments
     metadata = dict() if not metadata else metadata
 
     # Process declared compatible units

@@ -25,7 +25,7 @@ class UnitContext:
           :class:`str` or :class:`~enum.Enum` are recommended.
           Defaults to an empty dictionary.
 
-          .. note:: The initialisation sequence will make repeated calls to
+          .. note:: The initialization sequence will make repeated calls to
              :meth:`register` and will consequently apply the same key and value
              conversion rules.
 

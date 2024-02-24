@@ -45,7 +45,7 @@ def ensure_units(
         Value to ensure the wrapping of.
 
     :param default_units:
-        Units to use to initialise the :class:`pint.Quantity` if ``value`` is
+        Units to use to initialize the :class:`pint.Quantity` if ``value`` is
         not a :class:`pint.Quantity`. A callable can be passed;
         in this case, the applied units will be ``default_units()``.
 
