@@ -7,8 +7,8 @@ def test_set_unit_registry():
     """
     Unit tests for :func:`pinttr._interpret.interpret_units`.
     """
-    # The default unit registry is a pint.UnitRegistry instance
-    assert isinstance(pinttr.get_unit_registry(), pint.UnitRegistry)
+    # The default unit registry is the application registry.
+    assert isinstance(pinttr.get_unit_registry(), pint.ApplicationRegistry)
     ureg = pint.UnitRegistry()
     assert ureg is not pinttr.get_unit_registry()
 

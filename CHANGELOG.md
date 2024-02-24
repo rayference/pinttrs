@@ -5,6 +5,7 @@
 ## Pinttrs 24.1.0 (upcoming release)
 
 * Add Python 3.12 support ({ghpr}`7`).
+* The default registry is now the Pint application registry ({ghpr}`8`).
 
 ### Developer-side changes
 
