@@ -3,7 +3,7 @@
 *Pint meets attrs*
 
 [![PyPI version](https://img.shields.io/pypi/v/pinttrs?color=blue)](https://pypi.org/project/pinttrs)
-[![Conda version](https://img.shields.io/conda/v/eradiate/pinttrs?color=blue)](https://anaconda.org/eradiate/pinttrs)
+[![Conda version](https://img.shields.io/conda/v/conda-forge/pinttrs?color=blue)](https://anaconda.org/conda-forge/pinttrs)
 
 [![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/leroyvn/pinttrs/ci.yml?branch=main)](https://github.com/leroyvn/pinttrs/actions/workflows/ci.yml)
 [![Documentation Status](https://img.shields.io/readthedocs/pinttrs)](https://pinttrs.readthedocs.io)

@@ -8,8 +8,8 @@ Pinttrs v\ |release|.
 .. image:: https://img.shields.io/pypi/v/pinttrs?color=blue
    :target: https://pypi.org/project/pinttrs
 
-.. image:: https://img.shields.io/conda/v/eradiate/pinttrs?color=blue
-   :target: https://anaconda.org/eradiate/pinttrs
+.. image:: https://img.shields.io/conda/v/conda-forge/pinttrs?color=blue
+   :target: https://anaconda.org/conda-forge/pinttrs
 
 .. image:: https://img.shields.io/github/actions/workflow/status/leroyvn/pinttrs/ci.yml?branch=main
    :target: https://github.com/leroyvn/pinttrs/actions/workflows/ci.yml
@@ -66,7 +66,7 @@ Using Conda:
 
 .. code-block:: bash
 
-   conda install -c eradiate pinttrs -c conda-forge
+   conda install -c conda-forge pinttrs
 
 The :ref:`usage` section presents Pinttrs's features and how to use them.
 

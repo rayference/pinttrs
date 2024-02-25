@@ -2,6 +2,10 @@
 
 [![CalVer](https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue)](https://calver.org/)
 
+## Pinttrs 24.2.0 (upcoming release)
+
+* Pinttrs is now available on [conda-forge]().
+
 ## Pinttrs 24.1.0 (2024-02-24)
 
 * Add Python 3.12 support ({ghpr}`7`).
