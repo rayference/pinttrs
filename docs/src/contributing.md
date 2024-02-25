@@ -75,7 +75,7 @@ make docs-serve
 
 **Release steps**
 
-1. Create a [new release on GitHub](https://github.com/rayference/pinttrs/releases>).
+1. Create a [new release on GitHub](https://github.com/rayference/pinttrs/releases).
 2. When asked for a tag, create a new one (`v<MAJOR.MINOR.PATCH>`).
 3. The automated workflow will build the package and upload it to PyPI.
 
