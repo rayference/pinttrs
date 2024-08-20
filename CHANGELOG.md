@@ -6,6 +6,10 @@
 
 * Pinttrs is now available on [conda-forge](https://anaconda.org/conda-forge/pinttrs).
 
+### Developer-side changes
+
+* Use Rye tasks instead of Makefile ({ghcommit}`beef8e`).
+
 ## Pinttrs 24.1.0 (2024-02-24)
 
 * Add Python 3.12 support ({ghpr}`7`).
