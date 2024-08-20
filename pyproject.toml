@@ -107,3 +107,9 @@ dev-dependencies = [
   "setuptools>=69.1.1"
 ]
 managed = true
+
+[tool.rye.scripts]
+docs = {cmd = "sphinx-build -b html docs docs/_build/html"}
+docs-clean = {cmd = "rm -rf docs/_build/"}
+docs-serve = {cmd = "sphinx-autobuild docs docs/_build/html"}
+test = {cmd = "pytest"}

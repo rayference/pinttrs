@@ -33,11 +33,11 @@ pre-commit install
 
 ### Running tests
 
-The testing process of Pinttrs uses [pytest](https://docs.pytest.org). A Make target is defined to
+The testing process of Pinttrs uses [pytest](https://docs.pytest.org). A Rye task is defined to
 help you run the tests:
 
 ```bash
-make test
+rye run test
 ```
 
 This will run pytest for all relevant files (unit tests and doctests included
@@ -45,16 +45,16 @@ in the documentation).
 
 ## Building the documentation
 
-To build the documentation, use the dedicated Make target:
+To build the documentation, use the dedicated Rye task:
 
 ```bash
-make docs
+rye run docs
 ```
 
 Incremental autobuild is also supported:
 
 ```bash
-make docs-serve
+rye run docs-serve
 ```
 
 ## Maintainers: release process

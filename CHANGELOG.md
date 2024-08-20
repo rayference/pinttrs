@@ -4,7 +4,7 @@
 
 ## Pinttrs 24.2.0 (upcoming release)
 
-* Pinttrs is now available on [conda-forge]().
+* Pinttrs is now available on [conda-forge](https://anaconda.org/conda-forge/pinttrs).
 
 ## Pinttrs 24.1.0 (2024-02-24)
 
