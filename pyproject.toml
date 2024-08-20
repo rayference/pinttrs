@@ -27,11 +27,11 @@ requires-python = ">=3.8"
 version = "24.2.0.dev0"
 
 [project.urls]
-Changelog = "https://github.com/leroyvn/pinttrs/blob/main/CHANGELOG.md"
+Changelog = "https://github.com/rayference/pinttrs/blob/main/CHANGELOG.md"
 Documentation = "https://pinttrs.readthedocs.io"
-Homepage = "https://github.com/leroyvn/pinttrs"
-Issues = "https://github.com/leroyvn/pinttrs/issues"
-Repository = "https://github.com/leroyvn/pinttrs"
+Homepage = "https://github.com/rayference/pinttrs"
+Issues = "https://github.com/rayference/pinttrs/issues"
+Repository = "https://github.com/rayference/pinttrs"
 
 [tool.coverage.html]
 directory = "./reports/coverage/html"
@@ -87,7 +87,7 @@ testpaths = [
 ]
 
 [tool.ruff]
-select = ["I"]
+select = ["I", "E", "D"]
 
 [tool.ruff.isort]
 relative-imports-order = "closest-to-furthest"
