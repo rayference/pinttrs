@@ -1,6 +1,7 @@
 """
 APIs in the style of attrs's next-generation APIs.
 """
+
 from typing import Union
 
 import pint

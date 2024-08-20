@@ -86,10 +86,10 @@ testpaths = [
   "docs"
 ]
 
-[tool.ruff]
-select = ["I", "E", "D"]
+[tool.ruff.lint]
+select = ["I", "E", "F"]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 relative-imports-order = "closest-to-furthest"
 
 [tool.rye]

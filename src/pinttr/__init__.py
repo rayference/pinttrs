@@ -13,7 +13,7 @@ from ._make import attrib
 from ._next_gen import field
 
 # Package metadata
-from ._version import version as __version__
+from ._version import version as __version__  # noqa: F401
 
 # Other definitions
 ib = attrib
@@ -30,4 +30,5 @@ __all__ = [
     "set_unit_registry",
     "util",
     "validators",
+    "__version__",
 ]
