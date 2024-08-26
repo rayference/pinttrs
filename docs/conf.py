@@ -42,7 +42,7 @@ intersphinx_mapping = {
 # https://www.sphinx-doc.org/en/master/usage/extensions/extlinks.html
 
 ghbase = "https://github.com"
-ghroot = f"{ghbase}/leroyvn/pinttrs"
+ghroot = f"{ghbase}/rayference/pinttrs"
 extlinks = {
     "ghissue": (f"{ghroot}/issues/%s", "GH%s"),
     "ghpr": (f"{ghroot}/pull/%s", "PR%s"),

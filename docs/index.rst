@@ -11,8 +11,8 @@ Pinttrs v\ |release|.
 .. image:: https://img.shields.io/conda/v/conda-forge/pinttrs?color=blue
    :target: https://anaconda.org/conda-forge/pinttrs
 
-.. image:: https://img.shields.io/github/actions/workflow/status/leroyvn/pinttrs/ci.yml?branch=main
-   :target: https://github.com/leroyvn/pinttrs/actions/workflows/ci.yml
+.. image:: https://img.shields.io/github/actions/workflow/status/rayference/pinttrs/ci.yml?branch=main
+   :target: https://github.com/rayference/pinttrs/actions/workflows/ci.yml
 
 .. image:: https://img.shields.io/readthedocs/pinttrs
    :target: https://pinttrs.readthedocs.io
@@ -110,4 +110,4 @@ the *attrs* logo.
    :hidden:
 
    src/contributing.md
-   GitHub repository <https://github.com/leroyvn/pinttrs>
+   GitHub repository <https://github.com/rayference/pinttrs>
