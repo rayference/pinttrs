@@ -14,7 +14,7 @@
 
 ## Motivation
 
-The amazing [`attrs`](https://www.attrs.org) library is a game-changer when it
+The amazing [*attrs*](https://www.attrs.org) library is a game-changer when it
 comes to writing classes. Its initialization sequence notably allows for
 automated conversion and verification of attribute values. This package is an
 attempt at designing a system to apply units automatically and reliably to
@@ -45,4 +45,4 @@ Pinttrs is a component of the
 
 The Pinttrs logo is based on
 [Agus Nugroho](https://www.iconfinder.com/nugrohoagus)'s glass icon and parts of
-the ``attrs`` logo.
+the *attrs* logo.

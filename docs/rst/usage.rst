@@ -9,7 +9,7 @@ Attaching units to attributes
 -----------------------------
 
 Pinttrs's main functionality is to provide support natural unit support to
-``attrs`` classes. Units must be specified explicitly, *i.e.* as :class:`~pint.Unit`
+*attrs* classes. Units must be specified explicitly, *i.e.* as :class:`~pint.Unit`
 instances created by a unit registry. Therefore, the first thing you need
 to do is to create a Pint unit registry:
 

@@ -11,8 +11,8 @@ About the Pinttrs interface
    * As of Pinttrs v23.2.0, using ``import attrs`` is recommended. The classic
      ``import attr`` is still supported.
 
-Pinttrs initially mimicked the ``attrs`` import and interface policies so
-that using it would feel natural to ``attrs`` users. Therefore, the code was
+Pinttrs initially mimicked the *attrs* import and interface policies so
+that using it would feel natural to *attrs* users. Therefore, the code was
 located in a ``pinttr`` package, and the main interface was :func:`pinttr.ib`.
 Typically, a field definition would look like this:
 
@@ -27,9 +27,9 @@ Typically, a field definition would look like this:
    MyClass(field=1.0 m)
 
 As mentioned in the `documentation <https://www.attrs.org/en/latest/names.html>`_,
-the ``attrs`` interface then evolved. Pinttrs followed the movement in order
-to provide similar expressiveness. Consequently, we introduced
-:class:`pinttrs.field` and the ``pinttrs`` package:
+the *attrs* interface then evolved. Pinttrs followed the movement to provide
+similar expressiveness. Consequently, we introduced :class:`pinttrs.field` and
+the ``pinttrs`` package:
 
 .. doctest::
 

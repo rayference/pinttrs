@@ -30,10 +30,9 @@ Pinttrs v\ |release|.
 
 *Pint meets attrs.*
 
-Pinttrs provides tools to bring extra functionality to your |attrs|_ classes
+Pinttrs provides tools to bring extra functionality to your *attrs* classes
 using Pint_.
 
-.. |attrs| replace:: ``attrs``
 .. _attrs: https://www.attrs.org/
 .. _Pint: https://pint.readthedocs.io/
 
@@ -88,7 +87,7 @@ Pinttrs is a component of the
 
 The Pinttrs logo is based on
 `Agus Nugroho <https://www.iconfinder.com/nugrohoagus>`_'s glass icon and parts of
-the ``attrs`` logo.
+the *attrs* logo.
 
 .. toctree::
    :caption: Use

@@ -47,9 +47,9 @@ neither declare as incompatible quantities which should not be mixed such as
 radiance (W/m²/sr) and irradiance (W/m²).
 
 For this reason, Pinttrs implements a stricter unit compatibility checker
-function :func:`~pinttrs.util.units_compatible` which will declare as
-incompatible dimensionless quantities with inconvertible units. For instance,
-while this will return ``True``
+function, :func:~pinttrs.util.units_compatible, that will declare dimensionless
+quantities with inconvertible units as incompatible. For instance, while this
+will return ``True``
 
 .. doctest::
 
@@ -66,6 +66,6 @@ the following will not
    >>> pinttrs.util.units_compatible(u1, u2)
    False
 
-While this does not prevent from adding radiances and irradiances, it, at least,
-provides a means for checking that attributes which should be passed a radiance
-will not receive an irradiance.
+Although this does not prevent the addition of radiances and irradiances, it
+provides at least a means to check that attributes which should be passed a
+radiance will not receive an irradiance.
