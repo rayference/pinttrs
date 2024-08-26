@@ -13,13 +13,14 @@ from ._make import attrib
 from ._next_gen import field
 
 # Package metadata
-from ._version import version as __version__  # noqa: F401
+from ._version import version as __version__
 
 # Other definitions
 ib = attrib
 __all__ = [
     "UnitContext",
     "UnitGenerator",
+    "__version__",
     "attrib",
     "converters",
     "exceptions",
@@ -30,5 +31,4 @@ __all__ = [
     "set_unit_registry",
     "util",
     "validators",
-    "__version__",
 ]
