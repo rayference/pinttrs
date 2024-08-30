@@ -25,9 +25,6 @@ Pinttrs v\ |release|.
     :target: https://github.com/astral-sh/ruff
     :alt: Ruff
 
-.. image:: https://img.shields.io/badge/code%20style-black-black
-   :target: https://github.com/psf/black
-
 *Pint meets attrs.*
 
 Pinttrs provides tools to bring extra functionality to your *attrs* classes
@@ -39,7 +36,7 @@ using Pint_.
 Motivation
 ----------
 
-The amazing attrs_ library is a game-changer when it comes to writing classes.
+The amazing *attrs* library is a game-changer when it comes to writing classes.
 Its initialisation sequence notably allows for automated conversion and
 verification of attribute values. This package is an attempt at designing a
 system to apply units automatically and reliably to attributes with Pint_.
