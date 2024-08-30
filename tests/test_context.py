@@ -1,7 +1,8 @@
 import enum
 
-import pinttr
 import pytest
+
+import pinttr
 from pinttr import UnitContext, UnitGenerator
 
 ureg = pinttr.get_unit_registry()
@@ -17,7 +18,7 @@ def test_unit_context_init():
     """
     Unit tests for :meth:`pinttr._context.UnitContext()`.
     """
-    # Empty initialisation doesn't raise
+    # Empty initialization doesn't raise
     UnitContext()
 
     # Init from str: UnitGenerator map

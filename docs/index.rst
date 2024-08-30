@@ -37,14 +37,14 @@ Motivation
 ----------
 
 The amazing *attrs* library is a game-changer when it comes to writing classes.
-Its initialisation sequence notably allows for automated conversion and
+Its initialization sequence notably allows for automated conversion and
 verification of attribute values. This package is an attempt at designing a
 system to apply units automatically and reliably to attributes with Pint_.
 
 Features
 --------
 
-- :ref:`Attach automatically units to unitless values passed to initialise an attribute <usage-attach_units>`
+- :ref:`Attach automatically units to unitless values passed to initialize an attribute <usage-attach_units>`
 - :ref:`Verify unit compatibility when assigning a value to an attribute <usage-attach_units-validators_converters>`
 - :ref:`Interpret units in dictionaries with a simple syntax <usage-interpret_dicts>`
 - :ref:`Define unit context to vary unitless value interpretation dynamically <usage-unit_contexts>`
