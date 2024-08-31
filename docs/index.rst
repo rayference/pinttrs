@@ -100,7 +100,7 @@ the *attrs* logo.
    rst/api
    rst/api_classic
    rst/interface
-   src/whats_new.md
+   src/release_notes.md
 
 .. toctree::
    :caption: Develop

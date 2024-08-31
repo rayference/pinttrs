@@ -1,4 +1,4 @@
-# What's new?
+# Release notes
 
 [![CalVer](https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue)](https://calver.org/)
 
