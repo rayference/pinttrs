@@ -25,6 +25,7 @@ jobs:
           - "3.10"
           - "3.11"
           - "3.12"
+          - "3.13"
         os:
           - ubuntu-latest
           # - macOS-latest
@@ -36,17 +37,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Rye
-        uses: eifinger/setup-rye@v4
+      - name: Install uv and set the python version (${{ matrix.python-version }})
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python-version }}
 
-      - name: Pin active Python
-        run: rye pin ${{ matrix.python-version }}
+      - name: Set up Python
+        run: uv python install
 
       - name: Install dependencies
-        run: rye sync
+        run: uv sync
 
       - name: Run Tests
-        run: rye run coverage run -m pytest
+        run: uv run coverage run -m pytest
 
       - name: Upload coverage data
         uses: actions/upload-artifact@v4
