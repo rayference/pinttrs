@@ -2,6 +2,8 @@
 
 [![CalVer](https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue)](https://calver.org/)
 
+## Pinttrs 25.2.0 (*upcoming release*)
+
 ## Pinttrs 25.1.0 (2025-06-25)
 
 * Pinttrs is now available on
