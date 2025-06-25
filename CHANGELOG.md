@@ -2,11 +2,11 @@
 
 [![CalVer](https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue)](https://calver.org/)
 
-## Pinttrs 25.1.0 (upcoming release)
+## Pinttrs 25.1.0 (2025-06-25)
 
-* Pinttrs is now available
-  on [conda-forge](https://anaconda.org/conda-forge/pinttrs).
-* Pinttrs is now tested on Python 3.13.
+* Pinttrs is now available on
+  [conda-forge](https://anaconda.org/conda-forge/pinttrs).
+* Add Python 3.13 support.
 
 ### Developer-side changes
 
