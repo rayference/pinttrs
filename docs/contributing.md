@@ -33,8 +33,8 @@ pre-commit install
 
 ### Running tests
 
-The testing process of Pinttrs uses [pytest](https://docs.pytest.org). A task is defined to
-help you run the tests:
+The testing process of Pinttrs uses [pytest](https://docs.pytest.org). A task is
+defined to help you run the tests:
 
 ```bash
 uv run task test
@@ -75,13 +75,14 @@ uv run task docs-serve
 
 **Release steps**
 
-1. Create a [new release on GitHub](https://github.com/rayference/pinttrs/releases).
+1. Create a
+   [new release on GitHub](https://github.com/rayference/pinttrs/releases).
 2. When asked for a tag, create a new one (`v<MAJOR.MINOR.PATCH>`).
 3. The automated workflow will build the package and upload it to PyPI.
 
 **Post-release steps**
 
-1. Create a new section in the change log (`whats_new.md`) with the title
+1. Create a new section in the change log (`CHANGELOG.md`) with the title
    *Pinttrs <MAJOR.MINOR.PATCH> (upcoming release)*.
 2. Bump the version to the next development one:
 
@@ -96,5 +97,5 @@ uv run task docs-serve
 
 **Not planned yet**
 
-* Allow automatic string interpretation using the built-in registry (this feature
-  should have a switch based on a user setting).
+* Allow automatic string interpretation using the built-in registry (this
+  feature should have a switch based on a user setting).
