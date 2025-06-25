@@ -838,7 +838,7 @@ wheels = [
 
 [[package]]
 name = "pinttrs"
-version = "24.2.0.dev0"
+version = "25.1.0.dev0"
 source = { editable = "." }
 dependencies = [
     { name = "attrs" },
