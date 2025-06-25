@@ -6,7 +6,7 @@
 
 Developing requires:
 
-* the [Rye](https://rye-up.com/) package manager;
+* the [uv](https://docs.astral.sh/uv/) package manager;
 * the [pre-commit](https://pre-commit.com/) git hook manager, typically
   installed with [pipx](https://pipx.pypa.io/stable/).
 
@@ -22,7 +22,7 @@ Enter the created repository and set up the development environment:
 
 ```bash
 cd pinttrs
-rye sync
+uv sync
 ```
 
 Finally, activate the pre-commit hooks:
@@ -33,11 +33,11 @@ pre-commit install
 
 ### Running tests
 
-The testing process of Pinttrs uses [pytest](https://docs.pytest.org). A Rye task is defined to
+The testing process of Pinttrs uses [pytest](https://docs.pytest.org). A task is defined to
 help you run the tests:
 
 ```bash
-rye run test
+uv run task test
 ```
 
 This will run pytest for all relevant files (unit tests and doctests included
@@ -45,16 +45,16 @@ in the documentation).
 
 ## Building the documentation
 
-To build the documentation, use the dedicated Rye task:
+To build the documentation, use the dedicated task:
 
 ```bash
-rye run docs
+uv run task docs
 ```
 
 Incremental autobuild is also supported:
 
 ```bash
-rye run docs-serve
+uv run task docs-serve
 ```
 
 ## Maintainers: release process
@@ -67,7 +67,7 @@ rye run docs-serve
 3. Set the package version number to the target value:
 
    ```bash
-   rye version <MAJOR.MINOR.PATCH>
+   uv version <MAJOR.MINOR.PATCH>
    ```
 
 4. Create and push a commit with the following message:
@@ -86,7 +86,7 @@ rye run docs-serve
 2. Bump the version to the next development one:
 
    ```bash
-   rye version <MAJOR.MINOR.PATCH>.dev
+   uv version <MAJOR.MINOR.PATCH>.dev
    ```
 
 3. Create and push a commit with the following message:

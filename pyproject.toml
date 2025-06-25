@@ -68,8 +68,8 @@ select = ["I", "E", "F"]
 [tool.ruff.lint.isort]
 relative-imports-order = "closest-to-furthest"
 
-[tool.rye]
-dev-dependencies = [
+[dependency-groups]
+dev = [
   "furo>=2023",
   "myst-parser>=0.16",
   "pytest-cov>=3.0",
@@ -80,11 +80,11 @@ dev-dependencies = [
   "sphinx>=7",
   "xdoctest>=0.15.0",
   "setuptools>=69.1.1",
+  "taskipy>=1.10",
 ]
-managed = true
 
-[tool.rye.scripts]
-docs = { cmd = "sphinx-build -b html docs docs/_build/html" }
-docs-clean = { cmd = "rm -rf docs/_build/" }
-docs-serve = { cmd = "sphinx-autobuild docs docs/_build/html" }
-test = { cmd = "pytest" }
+[tool.taskipy.tasks]
+docs = "sphinx-build -b html docs docs/_build/html"
+docs-clean = "rm -rf docs/_build/"
+docs-serve = "sphinx-autobuild docs docs/_build/html"
+test = "pytest"

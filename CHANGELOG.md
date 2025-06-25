@@ -2,13 +2,17 @@
 
 [![CalVer](https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue)](https://calver.org/)
 
-## Pinttrs 24.2.0 (upcoming release)
+## Pinttrs 25.1.0 (upcoming release)
 
-* Pinttrs is now available on [conda-forge](https://anaconda.org/conda-forge/pinttrs).
+* Pinttrs is now available
+  on [conda-forge](https://anaconda.org/conda-forge/pinttrs).
+* Pinttrs is now tested on Python 3.13.
 
 ### Developer-side changes
 
-* Use Rye tasks instead of Makefile ({ghcommit}`beef8e`).
+* Migrate from Rye to uv for project management ({ghpr}`11`).
+* Use taskipy for task running instead of Makefile ({ghpr}`11`,
+  {ghcommit}`beef8e`).
 
 ## Pinttrs 24.1.0 (2024-02-24)
 
@@ -25,11 +29,13 @@
 
 ## Pinttrs 23.2.0 (2023-02-25)
 
-* Support `import pinttrs`, promote this namespace and modern APIs in documentation ({ghpr}`5`).
+* Support `import pinttrs`, promote this namespace and modern APIs in
+  documentation ({ghpr}`5`).
 
 ### Developer-side changes
 
-* Move from isort to ruff for import sorting. This also opens the door to linting features ({ghcommit}`9a4ed0`).
+* Move from isort to ruff for import sorting. This also opens the door to
+  linting features ({ghcommit}`9a4ed0`).
 * Add pre-commit hooks ({ghcommit}`5b4ab9`).
 
 ## Pinttrs 23.1.1 (2023-02-22)
@@ -89,7 +95,8 @@
 ### Features
 
 * ``pinttr.interpret_units()``: Support for ``pint.Quantity`` magnitude values.
-* ``pinttr.UnitContext``: Added custom unit registry for string-to-units interpretation.
+* ``pinttr.UnitContext``: Added custom unit registry for string-to-units
+  interpretation.
 
 ### Developer-side changes
 
