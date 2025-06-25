@@ -90,21 +90,21 @@ the *attrs* logo.
    :caption: Use
    :hidden:
 
-   rst/usage
-   rst/compatible
+   usage
+   compatible
 
 .. toctree::
    :caption: Reference
    :hidden:
 
-   rst/api
-   rst/api_classic
-   rst/interface
-   src/release_notes.md
+   api
+   api_classic
+   interface
+   release_notes.md
 
 .. toctree::
    :caption: Develop
    :hidden:
 
-   src/contributing.md
+   contributing.md
    GitHub repository <https://github.com/rayference/pinttrs>
