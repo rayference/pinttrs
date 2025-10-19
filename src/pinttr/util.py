@@ -1,6 +1,9 @@
 from typing import Any, Callable, Union
 
+import attrs
 import pint
+
+from .converters import ensure_units as _ensure_units
 
 
 def always_iterable(obj, base_type=(str, bytes)):
@@ -34,48 +37,6 @@ def always_iterable(obj, base_type=(str, bytes)):
         return iter((obj,))
 
 
-def ensure_units(
-    value: Any,
-    default_units: Union[pint.Unit, Callable],
-    convert: bool = False,
-) -> pint.Quantity:
-    """Ensure that a value is wrapped in a Pint quantity container.
-
-    :param value:
-        Value to ensure the wrapping of.
-
-    :param default_units:
-        Units to use to initialize the :class:`pint.Quantity` if ``value`` is
-        not a :class:`pint.Quantity`. A callable can be passed;
-        in this case, the applied units will be ``default_units()``.
-
-    :param convert:
-        If ``True``, ``value`` will also be converted to ``default_units`` if it
-        is a :class:`pint.Quantity`.
-
-    :returns:
-        Converted ``value``.
-
-    .. versionchanged:: 21.1.0
-       Relocated from ``pinttr.converters`` to ``pinttr.util``.
-    """
-    if callable(default_units):
-        units = default_units()
-    else:
-        units = default_units
-
-    if not isinstance(units, pint.Unit):
-        raise TypeError("Argument 'units' must be a pint.Units or a UnitGenerator")
-
-    if isinstance(value, pint.Quantity):
-        if convert:
-            return value.to(units)
-        else:
-            return value
-    else:
-        return value * units
-
-
 def units_compatible(unit1: pint.Unit, unit2: pint.Unit) -> bool:
     """
     Check if two units are compatible. Accounts for angle units.
@@ -91,3 +52,20 @@ def units_compatible(unit1: pint.Unit, unit2: pint.Unit) -> bool:
         ``False`` otherwise.
     """
     return (1.0 * unit1 / unit2).unitless
+
+
+def ensure_units(
+    maybe_value: Any = attrs.NOTHING,
+    *,
+    default_units: Union[pint.Unit, Callable],
+    convert: bool = False,
+) -> Any:
+    """
+    Compatibility alias to :func:`pinttrs.converters.ensure_units`.
+
+    .. deprecated:: 25.2.0
+       Prefer :func:`pinttrs.converters.ensure_units`.
+    """
+    return _ensure_units(
+        maybe_value=maybe_value, default_units=default_units, convert=convert
+    )
