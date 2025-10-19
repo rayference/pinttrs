@@ -45,6 +45,8 @@ Dictionary interpretation
 Converters [``pinttrs.converters``]
 -----------------------------------
 
+.. autofunction:: pinttrs.converters.ensure_units
+.. autofunction:: pinttrs.converters.to_quantity
 .. autofunction:: pinttrs.converters.to_units
 
 .. _api-validators:
@@ -60,7 +62,7 @@ Utilities [``pinttrs.util``]
 ----------------------------
 
 .. autofunction:: pinttrs.util.always_iterable
-.. autofunction:: pinttrs.converters.ensure_units
+.. autofunction:: pinttrs.util.ensure_units
 .. autofunction:: pinttrs.util.units_compatible
 
 .. _api-exceptions:

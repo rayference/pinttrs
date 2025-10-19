@@ -51,6 +51,12 @@ Dictionary interpretation
 Converters [``pinttr.converters``]
 ----------------------------------
 
+.. autofunction:: pinttr.converters.ensure_units
+   :noindex:
+
+.. autofunction:: pinttr.converters.to_quantity
+   :noindex:
+
 .. autofunction:: pinttr.converters.to_units
    :noindex:
 
@@ -70,7 +76,7 @@ Utilities [``pinttr.util``]
 .. autofunction:: pinttr.util.always_iterable
    :noindex:
 
-.. autofunction:: pinttr.converters.ensure_units
+.. autofunction:: pinttr.util.ensure_units
    :noindex:
 
 .. autofunction:: pinttr.util.units_compatible

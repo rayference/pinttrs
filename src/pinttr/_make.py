@@ -6,7 +6,7 @@ from attr import NOTHING
 
 from ._generator import UnitGenerator
 from ._metadata import MetadataKey
-from .converters import to_units
+from .converters import ensure_units
 from .validators import has_compatible_units
 
 
@@ -44,7 +44,7 @@ def attrib(
 
     :param converter:
         If set to :class:`~attr.NOTHING` and ``units`` is not ``None``, defaults
-        to :func:`to_units(units) <pinttr.converters.to_units>`
+        to :func:`ensure_units(default_units=units) <pinttr.converters.ensure_units>`
         (possibly wrapped in :func:`attr.converters.optional` if ``default`` is
         ``None``). Otherwise retains original behaviour.
 
@@ -82,9 +82,11 @@ def attrib(
         # Set field converter
         if converter is NOTHING:
             if default is None:
-                converter = attr.converters.optional(to_units(unit_generator))
+                converter = attr.converters.optional(
+                    ensure_units(default_units=unit_generator)
+                )
             else:
-                converter = to_units(unit_generator)
+                converter = ensure_units(default_units=unit_generator)
 
         # Set field validator
         if validator is NOTHING:
