@@ -4,6 +4,13 @@
 
 ## Pinttrs 25.2.0 (*upcoming release*)
 
+* Move again {func}`ensure_units <.converters.ensure_units>` to the
+  {mod}`.converters` module.
+* Add a deferred version of {func}`.converters.ensure_units`.
+* Deprecate {func}`.to_units`.
+* Deprecate {func}`.util.ensure_units`
+* Add {func}`.to_quantity` converter.
+
 ## Pinttrs 25.1.0 (2025-06-25)
 
 * Pinttrs is now available on
