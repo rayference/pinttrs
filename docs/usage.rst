@@ -135,7 +135,7 @@ Validators and converters
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Under the hood, Pinttrs's attribute conversion system leverages simple validators
-and converters which can be used manually to further customise the behaviour of
+and converters which can be used manually to further customize the behaviour of
 attributes. See relevant API sections for further information:
 :ref:`api-converters`, :ref:`api-validators`.
 
@@ -304,7 +304,7 @@ The returned unit generator can be used to attach units to an attribute:
    >>> MyClass(1.0)
    MyClass(field=1.0 m)
 
-When initialising a context or registering additional units to it, units can be
+When initializing a context or registering additional units to it, units can be
 directly passed and will be turned into generators automatically:
 
 .. doctest::
@@ -434,7 +434,7 @@ used to interpret units in a dictionary with string-valued keys:
    >>> pinttrs.interpret_units({"field": 1.0, "field_units": "m"}, ureg)
    {'field': <Quantity(1.0, 'meter')>}
 
-This is useful to *e.g.* initialise objects using simple JSON fragments.
+This is useful to *e.g.* initialize objects using simple JSON fragments.
 Example:
 
 .. doctest::
