@@ -58,10 +58,10 @@ packages = ["src/pinttrs", "src/pinttr"]
 allow-direct-references = true
 
 [tool.pytest.ini_options]
-addopts = "--doctest-glob='*.rst'"
+addopts = "--doctest-glob='*.rst' --doctest-modules"
 norecursedirs = [".git", ".env", "dist", "build", "__pypackages__"]
 python_files = ["test_*.py", "*_test.py", "tests.py"]
-testpaths = ["tests", "docs"]
+testpaths = ["tests", "docs", "src"]
 
 [tool.ruff.lint]
 select = ["I", "E", "F"]
@@ -83,6 +83,7 @@ dev = [
   "setuptools>=69.1.1",
   "taskipy>=1.10",
   "xarray>=2023.1.0",
+  "numpy>=1.24.4",
 ]
 
 [tool.taskipy.tasks]
