@@ -70,3 +70,35 @@ def test_to_quantity():
     # Excess fields raise
     with pytest.raises(ValueError):
         to_quantity({"m": 1.0, "u": "m", "units": "s"})
+
+
+def test_to_quantity_xarray():
+    """Test conversion of xarray DataArray to Pint quantities."""
+    xr = pytest.importorskip("xarray")
+    import numpy as np
+
+    # DataArray with units attribute is converted
+    data = xr.DataArray([1.0, 2.0, 3.0], attrs={"units": "m"})
+    result = to_quantity(data)
+    assert isinstance(result, ureg.Quantity)
+    assert np.array_equal(result.magnitude, np.array([1.0, 2.0, 3.0]))
+    assert result.units == ureg.m
+
+    # DataArray without units attribute is passed through
+    data_no_units = xr.DataArray([1.0, 2.0, 3.0])
+    result_no_units = to_quantity(data_no_units)
+    assert isinstance(result_no_units, xr.DataArray)
+    assert result_no_units is data_no_units
+
+    # DataArray with empty attrs dict is passed through
+    data_empty_attrs = xr.DataArray([1.0, 2.0, 3.0], attrs={})
+    result_empty_attrs = to_quantity(data_empty_attrs)
+    assert isinstance(result_empty_attrs, xr.DataArray)
+    assert result_empty_attrs is data_empty_attrs
+
+    # Multi-dimensional DataArray
+    data_2d = xr.DataArray([[1.0, 2.0], [3.0, 4.0]], attrs={"units": "km"})
+    result_2d = to_quantity(data_2d)
+    assert isinstance(result_2d, ureg.Quantity)
+    assert np.array_equal(result_2d.magnitude, np.array([[1.0, 2.0], [3.0, 4.0]]))
+    assert result_2d.units == ureg.km

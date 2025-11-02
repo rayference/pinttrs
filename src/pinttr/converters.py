@@ -97,12 +97,30 @@ def to_quantity(value: Any) -> Any:
     * :class:`dict` (or, more generally, mappings): the magnitude (resp. units)
       must be supplied as the ``value``, ``magnitude`` or ``m`` keys (resp.
       ``units`` or ``u``).
+    * :class:`xarray.DataArray`: the magnitude is the underlying data array
+      (converted to a NumPy array) and units are read from the ``units``
+      attribute. If the ``units`` attribute is missing, the DataArray is
+      returned unchanged.
 
     :param value: Object to attempt conversion on.
     """
 
     ureg = get_unit_registry()
 
+    # Handle xarray DataArray
+    try:
+        import xarray as xr
+
+        if isinstance(value, xr.DataArray):
+            if hasattr(value, "attrs") and "units" in value.attrs:
+                magnitude = value.values
+                units = value.attrs["units"]
+                value = ureg.Quantity(magnitude, units)
+            return value
+    except ImportError:
+        pass
+
+    # Handle mappings (dict-like objects)
     if isinstance(value, Mapping):
         value = dict(value)
         for k_m in ["value", "magnitude", "m"]:

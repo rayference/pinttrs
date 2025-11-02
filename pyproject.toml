@@ -82,6 +82,7 @@ dev = [
   "xdoctest>=0.15.0",
   "setuptools>=69.1.1",
   "taskipy>=1.10",
+  "xarray>=2023.1.0",
 ]
 
 [tool.taskipy.tasks]

@@ -10,6 +10,8 @@
 * Deprecate {func}`.to_units`.
 * Deprecate {func}`.util.ensure_units`
 * Add {func}`.to_quantity` converter.
+* Extend {func}`.to_quantity` to support xarray DataArray objects with
+  `units` attributes.
 
 ## Pinttrs 25.1.0 (2025-06-25)
 
