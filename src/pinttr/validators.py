@@ -7,7 +7,25 @@ def has_compatible_units(instance, attribute, value):
     """
     Validate if ``value`` has units compatible (in the sense of
     :func:`~pinttr.units_compatible`) with ``attribute``.
-    Only works with unit-enabled fields created with :func:`pinttr.ib`.
+
+    This validator checks that a Pint quantity has units compatible with the
+    units declared for an attribute. It raises :class:`~pinttrs.exceptions.UnitsError`
+    if the units are incompatible or if a unitless value is provided.
+
+    Only works with unit-enabled fields created with :func:`pinttrs.field` or
+    :func:`pinttr.attrib`.
+
+    :param instance:
+        The class instance being validated.
+
+    :param attribute:
+        The attrs attribute being validated (must have units metadata).
+
+    :param value:
+        The value to validate (should be a Pint quantity).
+
+    :raises  UnitsError:
+        If units are incompatible or if a unitless value is provided.
     """
 
     compatible_units = attribute.metadata[MetadataKey.UNITS]()
