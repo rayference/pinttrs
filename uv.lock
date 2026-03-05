@@ -1206,7 +1206,7 @@ wheels = [
 
 [[package]]
 name = "pinttrs"
-version = "25.2.0.dev0"
+version = "26.1.0.dev0"
 source = { editable = "." }
 dependencies = [
     { name = "attrs" },
