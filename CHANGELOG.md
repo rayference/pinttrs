@@ -2,6 +2,21 @@
 
 [![CalVer](https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue)](https://calver.org/)
 
+## Pinttrs 2.0.0 (*roadmap*)
+
+* Generalize conversion logic: all values supported by Pint can now be converted
+  by {func}`.to_quantity`. **This is a breaking change.**
+* Add strict mode to {func}`.to_quantity`.
+
+**ROADMAP**
+
+* Increase automation of {func}`.ensure_units` by adding automatic calls to
+  {func}`.to_quantity`.
+* Drop legacy interface (no more import pinttr).
+* Go back to semver (calver is not appropriate for this project).
+* Create new repository.
+* Publish new PyPI package pinttrs2 (still provides pinttrs import)
+
 ## Pinttrs 26.2.0 (*upcoming release*)
 
 ## Pinttrs 26.1.0 (2026-03-05)
