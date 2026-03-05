@@ -139,7 +139,7 @@ def to_quantity(value: Any) -> Any:
 
     * :class:`dict` (or, more generally, mappings): the magnitude (resp. units)
       must be supplied as the ``value``, ``magnitude`` or ``m`` keys (resp.
-      ``units`` or ``u``).
+      ``units``, ``unit`` or ``u``).
     * :class:`xarray.DataArray`: the magnitude is the underlying data array
       (converted to a NumPy array) and units are read from the ``units``
       attribute. If the ``units`` attribute is missing, the DataArray is
@@ -193,6 +193,9 @@ def to_quantity(value: Any) -> Any:
       >>> data = xr.DataArray([1.0, 2.0])
       >>> to_quantity(data)  # doctest: +ELLIPSIS
       <xarray.DataArray (dim_0: 2)>...
+
+    .. versionadded:: 26.1.0
+       When converting dictionaries, units can be specified using the ``unit`` field.
     """
 
     ureg = get_unit_registry()
@@ -222,7 +225,7 @@ def to_quantity(value: Any) -> Any:
         else:
             raise ValueError("Supplied value has no magnitude")
 
-        for k_u in ["units", "u"]:
+        for k_u in ["units", "unit", "u"]:
             try:
                 units = value.pop(k_u)
             except KeyError:

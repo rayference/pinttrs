@@ -13,6 +13,7 @@
 * Extend {func}`.to_quantity` to support xarray DataArray objects with
   `units` attributes.
 * Add Python 3.14 support.
+* When converting dictionaries, units can be specified using the ``unit`` field.
 
 ## Pinttrs 25.1.0 (2025-06-25)
 

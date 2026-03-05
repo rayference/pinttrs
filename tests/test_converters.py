@@ -64,7 +64,7 @@ def test_to_quantity():
 
     # Correctly formed dicts are converted
     assert to_quantity({"value": 1.0, "units": "m"}) == 1.0 * ureg.m
-    assert to_quantity({"magnitude": 1.0, "units": "m"}) == 1.0 * ureg.m
+    assert to_quantity({"magnitude": 1.0, "unit": "m"}) == 1.0 * ureg.m
     assert to_quantity({"m": 1.0, "u": "m"}) == 1.0 * ureg.m
 
     # Excess fields raise
