@@ -2,6 +2,8 @@
 
 [![CalVer](https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue)](https://calver.org/)
 
+## Pinttrs 26.2.0 (*upcoming release*)
+
 ## Pinttrs 26.1.0 (2026-03-05)
 
 * Move again {func}`ensure_units <.converters.ensure_units>` to the
