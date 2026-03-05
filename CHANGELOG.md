@@ -2,7 +2,7 @@
 
 [![CalVer](https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue)](https://calver.org/)
 
-## Pinttrs 25.2.0 (*upcoming release*)
+## Pinttrs 26.1.0 (*upcoming release*)
 
 * Move again {func}`ensure_units <.converters.ensure_units>` to the
   {mod}`.converters` module.
@@ -12,6 +12,7 @@
 * Add {func}`.to_quantity` converter.
 * Extend {func}`.to_quantity` to support xarray DataArray objects with
   `units` attributes.
+* Add Python 3.14 support.
 
 ## Pinttrs 25.1.0 (2025-06-25)
 
