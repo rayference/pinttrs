@@ -85,6 +85,8 @@ dev = [
   "taskipy>=1.10",
   "xarray>=2023.1.0",
   "numpy>=1.24.4",
+  "ruff>=0.15.4",
+  "ty>=0.0.20",
 ]
 
 [tool.taskipy.tasks]
