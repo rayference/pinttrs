@@ -4,6 +4,7 @@ from typing import Any, Callable, Union
 
 import attrs
 import pint
+from pint import UndefinedUnitError
 
 from ._defaults import get_unit_registry
 from ._generator import UnitGenerator
@@ -127,7 +128,7 @@ def ensure_units(
         return value * units
 
 
-def to_quantity(value: Any) -> Any:
+def to_quantity(value: Any, strict: bool = False) -> Any:
     """
     Attempts turning an object into a Pint quantity. Unsupported types are
     simply passed through.
@@ -145,20 +146,31 @@ def to_quantity(value: Any) -> Any:
       attribute. If the ``units`` attribute is missing, the DataArray is
       returned unchanged. If the xarray dependency is not installed, conversion
       is skipped.
+    * Other types are tentatively converted to Pint quantities. This, in
+      particular, applies dimensionless units to unitless values.
+
+    Values for which conversion failed are passed through, unless ``strict``
+    mode is active.
 
     .. warning::
        * This converter uses the global unit registry from
          :func:`~pinttrs.get_unit_registry`.
-       * Extra keys in dictionaries will raise a ``ValueError``.
+       * Extra keys in dictionaries will raise.
 
     :param value:
         Object to attempt conversion on.
+
+    :param strict:
+        If ``True``, failed conversion will raise a ValueError.
 
     :raises ValueError:
         When converting a dictionary, if a magnitude or unit key is missing.
 
     :raises ValueError:
         When converting a dictionary, if unhandled keys are supplied.
+
+    :raises ValueError:
+        When conversion to a quantity fails and ``strict`` is ``True``.
 
     .. rubric:: Examples
 
@@ -174,13 +186,6 @@ def to_quantity(value: Any) -> Any:
       >>> to_quantity({"m": 100.0, "u": "cm"})
       <Quantity(100.0, 'centimeter')>
 
-      Unsupported types pass through unchanged:
-
-      >>> to_quantity(42.0)
-      42.0
-      >>> to_quantity("text")
-      'text'
-
     * **Converting xarray DataArrays**: Extracts data and units from DataArrays
       following CF conventions (requires xarray):
 
@@ -194,11 +199,26 @@ def to_quantity(value: Any) -> Any:
       >>> to_quantity(data)  # doctest: +ELLIPSIS
       <xarray.DataArray (dim_0: 2)>...
 
+    * Unitless values are converted to dimensionless quantities:
+
+      >>> to_quantity(42.0)
+      <Quantity(42.0, 'dimensionless')>
+
     .. versionadded:: 26.1.0
        When converting dictionaries, units can be specified using the ``unit`` field.
+
+    .. versionchanged:: 26.1.0
+       All values that can be converted by Pint are now supported.
+
+    .. versionadded:: 26.1.0
+       Added strict mode.
     """
 
     ureg = get_unit_registry()
+
+    # Quantities are passed through
+    if isinstance(value, pint.Quantity):
+        return value
 
     # Handle xarray DataArray
     try:
@@ -215,10 +235,10 @@ def to_quantity(value: Any) -> Any:
 
     # Handle mappings (dict-like objects)
     if isinstance(value, Mapping):
-        value = dict(value)
+        value_ = dict(value)
         for k_m in ["value", "magnitude", "m"]:
             try:
-                magnitude = value.pop(k_m)
+                magnitude = value_.pop(k_m)
             except KeyError:
                 continue
             break
@@ -227,18 +247,27 @@ def to_quantity(value: Any) -> Any:
 
         for k_u in ["units", "unit", "u"]:
             try:
-                units = value.pop(k_u)
+                units = value_.pop(k_u)
             except KeyError:
                 continue
             break
         else:
             raise ValueError("Supplied value has no units")
 
-        if len(value) > 0:
+        if len(value_) > 0:
             raise ValueError(
-                f"Supplied value has extra unused keys {list(value.keys())}"
+                f"Supplied value has extra unused keys {list(value_.keys())}"
             )
 
-        value = ureg.Quantity(magnitude, units)
+        return ureg.Quantity(magnitude, units)
+
+    # Handle other types
+    try:
+        return ureg.Quantity(value)
+    except UndefinedUnitError:
+        pass
+
+    if strict:
+        raise ValueError(f"Conversion of value to quantity failed (got {value!r})")
 
     return value
