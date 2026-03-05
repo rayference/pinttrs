@@ -17,7 +17,7 @@ def to_units(units: Union[pint.Unit, UnitGenerator]) -> Callable[[Any], pint.Qua
     :param units:
         Units to ensure conversion to.
 
-    .. deprecated:: 25.2.0
+    .. deprecated:: 26.1.0
        Prefer :func:`pinttrs.converters.ensure_units` in its
        deferred form.
     """
@@ -93,11 +93,11 @@ def ensure_units(
     .. versionchanged:: 21.1.0
        Relocated from ``pinttr.converters`` to ``pinttr.util``.
 
-    .. versionchanged:: 25.2.0
+    .. versionchanged:: 26.1.0
        Relocated again from ``pinttr.util`` to ``pinttr.converters``. The
        previous is kept as an alias and is deprecated.
 
-    .. versionchanged:: 25.2.0
+    .. versionchanged:: 26.1.0
        The first argument is now optional, which allows both deferred and
        immediate executions.
     """

@@ -63,7 +63,7 @@ def ensure_units(
     """
     Compatibility alias to :func:`pinttrs.converters.ensure_units`.
 
-    .. deprecated:: 25.2.0
+    .. deprecated:: 26.1.0
        Prefer :func:`pinttrs.converters.ensure_units`.
     """
     return _ensure_units(
