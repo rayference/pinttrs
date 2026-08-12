@@ -10,6 +10,13 @@ jobs:
     name: Release to PyPI
     runs-on: ubuntu-latest
 
+    # Trusted Publishing: no API token is used. The 'pypi' environment must be
+    # registered as a trusted publisher for the project on PyPI.
+    # https://docs.pypi.org/trusted-publishers/
+    environment: pypi
+    permissions:
+      id-token: write
+
     steps:
       - uses: actions/checkout@v6
 
@@ -25,9 +32,8 @@ jobs:
           python3 -m venv fresh_env
           . fresh_env/bin/activate
           pip install dist/*.whl
-          fresh_env/bin/python -c "import pinttr; print(pinttr.__version__)"
-          fresh_env/bin/python -c "import pinttrs; print(pinttrs.__version__)"
+          fresh_env/bin/python -c "import pintext; print(pintext.__version__)"
 
       - name: Upload to PyPI
         run: |
-          uv publish --token ${{ secrets.PYPI_TOKEN }}
+          uv publish

@@ -12,7 +12,75 @@ on:
       - synchronize
       - ready_for_review
 
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
+  lint:
+    if: ${{ !github.event.pull_request.draft }}
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Install dependencies
+        run: uv sync --all-extras
+
+      - name: Ruff check
+        run: uv run ruff check
+
+      - name: Ruff format check
+        run: uv run ruff format --check
+
+      - name: Type check
+        run: uv run ty check
+
+  core-only:
+    # The core must depend on Pint alone: install without extras or dev
+    # dependencies and make sure the core imports and its tests pass. A stray
+    # 'import attrs' or 'import pydantic' in the core fails here.
+    if: ${{ !github.event.pull_request.draft }}
+    name: Core-only install
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Install the package without extras
+        run: uv sync --no-default-groups --no-editable
+
+      - name: Check that the core imports
+        run: uv run --no-sync python -c "import pintext; print(pintext.__version__)"
+
+      - name: Check that the integrations are unavailable
+        run: |
+          uv run --no-sync python - <<'EOF'
+          for name, extra in [("pintext.attrs", "attrs"), ("pintext.pydantic", "pydantic")]:
+              try:
+                  __import__(name)
+              except ImportError as e:
+                  assert extra in str(e), f"unhelpful ImportError for {name}: {e}"
+              else:
+                  raise AssertionError(f"{name} imported without the '{extra}' extra")
+          EOF
+
+      - name: Run core tests
+        run: |
+          uv pip install pytest
+          uv run --no-sync pytest tests/core
+
   tests:
     if: ${{ !github.event.pull_request.draft }}
     name: Tests
@@ -20,8 +88,6 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - "3.8"
-          - "3.9"
           - "3.10"
           - "3.11"
           - "3.12"
@@ -47,7 +113,7 @@ jobs:
         run: uv python install
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --all-extras
 
       - name: Run Tests
         run: uv run coverage run -m pytest

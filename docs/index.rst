@@ -1,110 +1,90 @@
 :hide-toc:
+:layout: landing
 
-Pinttrs
+Pintext
 =======
 
-Pinttrs v\ |release|.
+**Date**: |today| | **Version**: |version|
 
-.. image:: https://img.shields.io/pypi/v/pinttrs?color=blue
-   :target: https://pypi.org/project/pinttrs
+*Extend* `Pint <https://pint.readthedocs.io/>`__ *with unit contexts.*
 
-.. image:: https://img.shields.io/conda/v/conda-forge/pinttrs?color=blue
-   :target: https://anaconda.org/conda-forge/pinttrs
+Pintext lets an application decide, at runtime, how unitless values are
+interpreted.
+Optional class-framework integrations for *attrs* and *pydantic* building on
+that core are provided.
 
-.. image:: https://img.shields.io/github/actions/workflow/status/rayference/pinttrs/ci.yml?branch=main
-   :target: https://github.com/rayference/pinttrs/actions/workflows/ci.yml
+.. grid:: 1 1 2 3
+    :gutter: 2
+    :padding: 0
 
-.. image:: https://img.shields.io/readthedocs/pinttrs
-   :target: https://pinttrs.readthedocs.io
+    .. grid-item-card:: :iconify:`material-symbols:book-2 height=1.5em` User guide
+        :link: user_guide/index
+        :link-type: doc
 
-.. image:: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json
-    :target: https://github.com/astral-sh/uv
-    :alt: uv
+        Read the user guide.
 
-.. image:: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json
-    :target: https://github.com/astral-sh/ruff
-    :alt: Ruff
+    .. grid-item-card:: :iconify:`material-symbols:description height=1.5em` API reference
+        :link: api/pintext
+        :link-type: doc
 
-*Pint meets attrs.*
+        Browse the API reference.
 
-Pinttrs provides tools to bring extra functionality to your *attrs* classes
-using Pint_.
+    .. grid-item-card:: :iconify:`material-symbols:swap-horiz height=1.5em` Porting guide
+        :link: porting
+        :link-type: doc
 
-.. _attrs: https://www.attrs.org/
-.. _Pint: https://pint.readthedocs.io/
+        Migrate from Pinttrs.
 
-Motivation
-----------
+    .. grid-item-card:: :iconify:`material-symbols:code height=1.5em` Developer guide
+        :link: dev/index
+        :link-type: doc
 
-The amazing *attrs* library is a game-changer when it comes to writing classes.
-Its initialization sequence notably allows for automated conversion and
-verification of attribute values. This package is an attempt at designing a
-system to apply units automatically and reliably to attributes with Pint_.
+        Contribute to and maintain Pintext.
 
-Features
---------
+    .. grid-item-card:: :iconify:`mdi:clock height=1.5em` Changelog
+        :link: changelog
+        :link-type: doc
 
-- :ref:`Attach automatically units to unitless values passed to initialize an attribute <usage-attach_units>`
-- :ref:`Verify unit compatibility when assigning a value to an attribute <usage-attach_units-validators_converters>`
-- :ref:`Interpret units in dictionaries with a simple syntax <usage-interpret_dicts>`
-- :ref:`Define unit context to vary unitless value interpretation dynamically <usage-unit_contexts>`
+        Release history and migration notes.
 
-Getting started
----------------
+    .. grid-item-card:: :iconify:`simple-icons:github height=1.5em` GitHub
+        :link: https://github.com/rayference/pintext/
 
-Install from PyPI in your virtual environment:
+        Browse the source code.
 
-.. code-block:: bash
-
-   python -m pip install pinttrs
-
-Using Conda:
-
-.. code-block:: bash
-
-   conda install -c conda-forge pinttrs
-
-The :ref:`usage` section presents Pinttrs's features and how to use them.
-
-License
--------
-
-Pinttrs is distributed under the terms of the
-`MIT license <https://choosealicense.com/licenses/mit/>`_.
-
-About
------
-
-Pinttrs is written and maintained by `Vincent Leroy <https://github.com/leroyvn>`_.
-
-Development is supported by `Rayference <https://www.rayference.eu>`_.
-
-Pinttrs is a component of the
-`Eradiate radiative transfer model <https://www.eradiate.eu>`_.
-
-The Pinttrs logo is based on
-`Agus Nugroho <https://www.iconfinder.com/nugrohoagus>`_'s glass icon and parts of
-the *attrs* logo.
+Pintext is distributed under the terms of the
+`MIT license <https://choosealicense.com/licenses/mit/>`_. It is written and
+maintained by `Vincent Leroy <https://github.com/leroyvn>`_, with development
+supported by `Rayference <https://www.rayference.eu>`_, and is a component of
+the `Eradiate radiative transfer model <https://www.eradiate.eu>`_.
 
 .. toctree::
+   :maxdepth: 2
+   :hidden:
    :caption: Use
-   :hidden:
 
-   usage
-   compatible
+   user_guide/index
+   porting
 
 .. toctree::
+   :maxdepth: 2
+   :hidden:
    :caption: Reference
-   :hidden:
 
-   api
-   api_classic
-   interface
-   release_notes.md
+   api/pintext
+   api/pintext.attrs
+   api/pintext.pydantic
 
 .. toctree::
-   :caption: Develop
+   :maxdepth: 2
    :hidden:
+   :caption: Develop
 
-   contributing.md
-   GitHub repository <https://github.com/rayference/pinttrs>
+   dev/index.md
+   GitHub repository <https://github.com/rayference/pintext>
+
+.. toctree::
+   :hidden:
+   :caption: About
+
+   changelog.md

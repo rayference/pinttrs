@@ -1,124 +1,85 @@
 # Release notes
 
-[![CalVer](https://img.shields.io/badge/calver-YY.MINOR.MICRO-blue)](https://calver.org/)
+## Pintext 0.1.0 (*upcoming release*)
 
-## Pinttrs 26.2.0 (*upcoming release*)
+Pinttrs is rescoped and renamed to **Pintext**. The package is now built around
+unit contexts, and *attrs* integration becomes one of two optional
+class-framework integrations.
 
-## Pinttrs 26.1.0 (2026-03-05)
+While most of the semantics and components are kept, all code using Pinttrs will
+require specific migration operations. See the
+[porting guide](https://pintext.readthedocs.io/latest/porting.html)
+for a complete symbol map and migration instructions.
 
-* Move again {func}`ensure_units <.converters.ensure_units>` to the
-  {mod}`.converters` module.
-* Add a deferred version of {func}`.converters.ensure_units`.
-* Deprecate {func}`.to_units`.
-* Deprecate {func}`.util.ensure_units`
-* Add {func}`.to_quantity` converter.
-* Extend {func}`.to_quantity` to support xarray DataArray objects with
-  `units` attributes.
-* Add Python 3.14 support.
-* When converting dictionaries, units can be specified using the ``unit`` field.
+**Package**
 
-## Pinttrs 25.1.0 (2025-06-25)
+- Restructure into a Pint-only core plus optional `pintext.attrs` and
+  `pintext.pydantic` subpackages. attrs is no longer a hard dependency;
+  UnitContext and UnitGenerator are now dataclasses, and a
+  module-private NOTHING sentinel replaces attrs.NOTHING.
+- Add pydantic integration: `Units` is the annotation attaching units to
+  a field, `Quantity` accepts any quantity, and `quantity()` is a
+  shorthand. Dictionary input, JSON round-trips, JSON schema and unit
+  contexts are supported.
+- Extract `check_units()` as the framework-agnostic unit check shared by
+  both integrations; `has_compatible_units` becomes a thin attrs
+  adapter.
+- Remove the legacy interface: the `pinttr` namespace, `attrib()`, `ib`,
+  `to_units()`, the deprecated `util.ensure_units()` alias, and the
+  unused `always_iterable()`.
+- Remove `interpret_units()` and the `*_units` dict-key mechanism;
+  `to_quantity()` is the only dictionary interpretation pattern.
+- Promote `to_quantity()` and `ensure_units()` to the top-level
+  namespace and ship a py.typed marker.
 
-* Pinttrs is now available on
-  [conda-forge](https://anaconda.org/conda-forge/pinttrs).
-* Add Python 3.13 support.
+**Conversion**
 
-### Developer-side changes
+- Generalize `to_quantity()`: all values Pint can convert are now
+  handled. Unit-carrying strings are parsed and unitless values become
+  dimensionless quantities. This is a breaking change: some values that
+  used to pass through are now converted. Failed conversions still pass
+  through, unless strict mode is requested. `TypeError` is caught
+  alongside `UndefinedUnitError`, since Pint raises it for magnitudes such
+  as `None`, which the passthrough contract must keep returning as-is.
+  Parse failures Pint reports outside its own exception hierarchy
+  (`TokenError`, `AssertionError`, `ArithmeticError`) are caught too, so
+  strings such as "(", "3 +" and "1/0" honour the same contract.
+- Parse string values in `ensure_units()`. Multiplying a string by units
+  produced a quantity whose magnitude was the string itself, silently.
+  Strings are now parsed with the default unit registry: unit-carrying
+  strings become quantities, unitless ones receive the default units,
+  and unparsable ones raise.
+- The pydantic integration guards its `to_quantity()` call accordingly.
+  Applying it to a plain magnitude would make it dimensionless and pass
+  it straight through `ensure_units()`, so the field's default units
+  would never apply; only serialized input (mappings, DataArrays) is
+  interpreted. Strings follow `ensure_units()`, so "2" receives the
+  declared units while "2 km" is parsed; unparsable strings are
+  re-raised as a ValueError and hence collected
+  into a ValidationError instead of crashing the caller.
+- Array magnitudes serialize to JSON as arrays, as the JSON schema
+  already advertised.
+- `UnitContext` no longer applies its `key_converter` twice upon
+  registration, which broke non-idempotent converters. Enum converters
+  hid the bug, being idempotent.
 
-* Migrate from Rye to uv for project management ({ghpr}`11`).
-* Use taskipy for task running instead of Makefile ({ghpr}`11`,
-  {ghcommit}`beef8e`).
+**Packaging**
 
-## Pinttrs 24.1.0 (2024-02-24)
+- Reset the version from CalVer 26.2.0.dev0 to SemVer 0.1.0.dev0.
+- Drop Python 3.8 and 3.9; required Python is now 3.10 or later.
+- Publish with PyPI Trusted Publishing instead of an API token.
+- Drop conda-forge packaging; PyPI is the only distribution channel.
+- Declare the xarray extra and make the Read the Docs build install all
+  extras, so every integration is documented.
 
-* Add Python 3.12 support ({ghpr}`7`).
-* The default registry is now the Pint application registry ({ghpr}`8`).
+**Docs and tooling**
 
-### Developer-side changes
-
-* Move from PDM to Rye for project management ({ghpr}`7`).
-* Drop Nox for testing ({ghpr}`7`).
-* Drop Conda development environment support ({ghpr}`7`).
-* Use the Ruff formatter instead of Black in pre-commit hooks ({ghpr}`7`).
-* Drop Copier template ({ghpr}`7`).
-
-## Pinttrs 23.2.0 (2023-02-25)
-
-* Support `import pinttrs`, promote this namespace and modern APIs in
-  documentation ({ghpr}`5`).
-
-### Developer-side changes
-
-* Move from isort to ruff for import sorting. This also opens the door to
-  linting features ({ghcommit}`9a4ed0`).
-* Add pre-commit hooks ({ghcommit}`5b4ab9`).
-
-## Pinttrs 23.1.1 (2023-02-22)
-
-*Minor release with tooling updates.*
-
-## Pinttrs 23.1.0 (2023-02-22)
-
-* Drop Python 3.7 support, add Python 3.11 support ({ghcommit}`191677`)
-
-## Pinttrs 22.1.0 (2022-07-19)
-
-### Developer-side changes
-
-* Move to PDM for dependency and project management ({ghpr}`3`).
-* Apply [Copier template](https://github.com/leroyvn/copier-pdm) for easier
-  tooling management ({ghpr}`3`).
-* Drop Towncrier-based changelog management ({ghpr}`3`).
-
-## Pinttrs 21.3.1 (2021-09-13)
-
-### Developer-side changes
-
-* Fix documentation build ({ghcommit}`b3e8c1`, {ghcommit}`01e68f`).
-
-## Pinttrs 21.3.0 (2021-08-20)
-
-### Features
-
-* Add ``pinttr.field()`` ({ghcommit}`992acf`).
-* ``pinttr.ib()``: Add nicer default repr ({ghcommit}`d68ec4`).
-
-### Developer-side changes
-
-* Automate testing with GitHub actions ({ghcommit}`1997a7`).
-* Manage changelog with Towncrier ({ghcommit}`644ecc`).
-* Add coverage report with Codecov ({ghcommit}`fa658d`).
-
-## Pinttrs 21.2.0 (2021-04-26)
-
-### Features
-
-* ``pinttr.UnitContext``: Added square bracket syntax.
-
-## Pinttrs 21.1.0 (2021-03-08)
-
-### Features
-
-* ``pinttr.converters.ensure_units()``: Moved to ``pinttr.util``.
-
-### Developer-side changes
-
-* Switched to calendar versioning (schema: YY.MINOR.MICRO).
-
-## Pinttrs 1.1.0 (2021-02-18)
-
-### Features
-
-* ``pinttr.interpret_units()``: Support for ``pint.Quantity`` magnitude values.
-* ``pinttr.UnitContext``: Added custom unit registry for string-to-units
-  interpretation.
-
-### Developer-side changes
-
-* Set up bump2version to help with version number management.
-* Raised test coverage to 100%.
-* Upgraded dependency pinning system for cleaner environment setup and update.
-
-## Pinttrs 1.0.0 (2021-02-04)
-
-Initial release.
+- Switch the Sphinx theme from Furo to shibuya and restructure the docs
+  around unit contexts, with attrs and pydantic as sibling integration
+  guides.
+- Add a porting guide for the pinttrs-to-pintext
+  migration.
+- Add a CI job that installs without extras to enforce the Pint-only core, plus
+  a lint job running ruff and ty.
+- Add `AGENTS.md` (with `CLAUDE.md` as a symlink) and `AI_POLICY.md`.
+- Update the pre-commit hooks and satisfy [sp-repo-review](https://github.com/scientific-python/repo-review).

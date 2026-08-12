@@ -5,10 +5,8 @@ requires = ["hatchling"]
 [project]
 authors = [{ name = "Vincent Leroy", email = "vincent.leroy@rayference.eu" }]
 classifiers = [
-  "Development Status :: 6 - Mature",
-  "License :: OSI Approved :: MIT License",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
@@ -16,21 +14,28 @@ classifiers = [
   "Programming Language :: Python :: 3.14",
   "Topic :: Scientific/Engineering",
 ]
-dependencies = ["attrs>=21.3", "pint>=0.16"]
-description = "Pint meets attrs."
-keywords = []
-license = { file = "LICENSE" }
-name = "pinttrs"
+dependencies = ["pint>=0.20"]
+description = "Unit contexts for Pint."
+keywords = ["pint", "units", "quantities"]
+license = "MIT"
+license-files = ["LICENSE"]
+name = "pintext"
 readme = "README.md"
-requires-python = ">=3.8"
-version = "26.2.0.dev0"
+requires-python = ">=3.10"
+version = "0.1.0.dev0"
+
+[project.optional-dependencies]
+all = ["pintext[attrs,pydantic,xarray]"]
+attrs = ["attrs>=22.2"]
+pydantic = ["pydantic>=2.0"]
+xarray = ["xarray>=2023.1.0"]
 
 [project.urls]
-Changelog = "https://github.com/rayference/pinttrs/blob/main/CHANGELOG.md"
-Documentation = "https://pinttrs.readthedocs.io"
-Homepage = "https://github.com/rayference/pinttrs"
-Issues = "https://github.com/rayference/pinttrs/issues"
-Repository = "https://github.com/rayference/pinttrs"
+Changelog = "https://github.com/rayference/pintext/blob/main/CHANGELOG.md"
+Documentation = "https://pintext.readthedocs.io"
+Homepage = "https://github.com/rayference/pintext"
+Issues = "https://github.com/rayference/pintext/issues"
+Repository = "https://github.com/rayference/pintext"
 
 [tool.coverage.html]
 directory = "./reports/coverage/html"
@@ -53,44 +58,72 @@ parallel = true
 source = ["src/"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/pinttrs", "src/pinttr"]
+packages = ["src/pintext"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
 
-[tool.pytest.ini_options]
-addopts = "--doctest-glob='*.rst' --doctest-modules"
+[tool.pytest]
+addopts = [
+  "-ra",
+  "-vv",
+  "--strict-config",
+  "--strict-markers",
+  "--doctest-glob=*.rst",
+  "--doctest-modules",
+]
+filterwarnings = ["error"]
+log_level = "INFO"
+minversion = "9.0"
 norecursedirs = [".git", ".env", "dist", "build", "__pypackages__"]
 python_files = ["test_*.py", "*_test.py", "tests.py"]
 testpaths = ["tests", "docs", "src"]
+xfail_strict = true
 
 [tool.ruff.lint]
-select = ["I", "E", "F"]
+extend-select = ["B", "E", "F", "I", "UP"]
+
+[tool.ty.src]
+include = ["src"]
 
 [tool.ruff.lint.isort]
 relative-imports-order = "closest-to-furthest"
 
 [dependency-groups]
-dev = [
-  "furo>=2023",
-  "myst-parser>=0.16",
-  "pytest-cov>=3.0",
-  "pytest>=6.2",
+docs = [
+  "shibuya>=2024",
   "sphinx-autobuild>=2021.3",
   "sphinx-autodoc-typehints",
   "sphinx-copybutton>=0.4",
+  "sphinx-design>=0.5",
+  "sphinx-iconify>=0.3",
   "sphinx>=7",
-  "xdoctest>=0.15.0",
+  "myst-parser>=0.16",
+]
+test = ["pytest-cov>=3.0", "pytest>=9.0", "numpy>=1.24.4", "xdoctest>=0.15.0"]
+dev = [
+  { include-group = "test" },
+  { include-group = "docs" },
+  "ruff>=0.15.4",
   "setuptools>=69.1.1",
   "taskipy>=1.10",
-  "xarray>=2023.1.0",
-  "numpy>=1.24.4",
-  "ruff>=0.15.4",
   "ty>=0.0.20",
+]
+
+[tool.repo-review]
+ignore = [
+  "PY007", # repo-review recommends nox for task running, but be use taskipy
+  "PC111",
+  "PC140",
+  "PC160",
+  "PC170",
+  "PC180",
+  "MY", # TODO (typing)
 ]
 
 [tool.taskipy.tasks]
 docs = "sphinx-build -b html docs docs/_build/html"
 docs-clean = "rm -rf docs/_build/"
 docs-serve = "sphinx-autobuild docs docs/_build/html"
+docs-lock = "uv export --format requirements.txt --all-extras --group docs --no-hashes -o requirements/docs.txt"
 test = "pytest"

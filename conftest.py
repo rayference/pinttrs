@@ -9,25 +9,66 @@ def add_doctest_imports(doctest_namespace):
 
     This allows doctests in docstrings to use these imports without
     explicitly importing them, keeping examples clean and readable.
+
+    Optional dependencies are guarded so that core doctests still run on a
+    minimal (pint-only) install.
     """
-    import attrs
-    import numpy
     import pint
-    import xarray
 
-    import pinttrs
-    from pinttrs import field
-    from pinttrs.converters import ensure_units, to_quantity
-    from pinttrs.validators import has_compatible_units
+    import pintext
+    from pintext import (
+        UnitContext,
+        UnitGenerator,
+        check_units,
+        ensure_units,
+        to_quantity,
+        units_compatible,
+    )
 
-    # Add to namespace
-    doctest_namespace["attrs"] = attrs
+    # Core namespace
     doctest_namespace["pint"] = pint
-    doctest_namespace["ureg"] = pinttrs.get_unit_registry()
-    doctest_namespace["pinttrs"] = pinttrs
-    doctest_namespace["field"] = field
+    doctest_namespace["pintext"] = pintext
+    doctest_namespace["ureg"] = pintext.get_unit_registry()
+    doctest_namespace["UnitContext"] = UnitContext
+    doctest_namespace["UnitGenerator"] = UnitGenerator
+    doctest_namespace["check_units"] = check_units
     doctest_namespace["ensure_units"] = ensure_units
     doctest_namespace["to_quantity"] = to_quantity
-    doctest_namespace["has_compatible_units"] = has_compatible_units
-    doctest_namespace["np"] = numpy
-    doctest_namespace["xr"] = xarray
+    doctest_namespace["units_compatible"] = units_compatible
+
+    # Optional dependencies
+    try:
+        import attrs
+
+        from pintext.attrs import field, has_compatible_units
+
+        doctest_namespace["attrs"] = attrs
+        doctest_namespace["field"] = field
+        doctest_namespace["has_compatible_units"] = has_compatible_units
+    except ImportError:
+        pass
+
+    try:
+        import pydantic
+
+        from pintext.pydantic import Quantity, quantity
+
+        doctest_namespace["pydantic"] = pydantic
+        doctest_namespace["Quantity"] = Quantity
+        doctest_namespace["quantity"] = quantity
+    except ImportError:
+        pass
+
+    try:
+        import numpy
+
+        doctest_namespace["np"] = numpy
+    except ImportError:
+        pass
+
+    try:
+        import xarray
+
+        doctest_namespace["xr"] = xarray
+    except ImportError:
+        pass

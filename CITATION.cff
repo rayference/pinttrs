@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: Pinttrs
+title: Pintext
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
@@ -10,9 +10,11 @@ authors:
     email: vincent.leroy@rayference.eu
     affiliation: Rayference
     orcid: 'https://orcid.org/0000-0002-5407-0237'
-repository-code: 'https://github.com/leroyvn/pinttrs'
-url: 'https://pinttrs.readthedocs.io'
+repository-code: 'https://github.com/rayference/pintext'
+url: 'https://pintext.readthedocs.io'
 abstract: >-
-  Pinttrs provides a way to apply units automatically and
-  reliably to attrs attributes with Pint.
+  Pintext provides unit contexts for Pint: a registry of
+  named, overridable unit generators that lets an
+  application decide at runtime how unitless values are
+  interpreted.
 license: MIT
